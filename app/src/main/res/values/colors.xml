@@ -16,4 +16,6 @@
     <color name="primary_font">#000000</color>
     <color name="secondary_font">#535353</color>
     <color name="ternary_font">#919191</color>
+    <color name="grey_line">#DFDFDF</color>
+    <color name="grey_dot">#C4C4C4</color>
 </resources>

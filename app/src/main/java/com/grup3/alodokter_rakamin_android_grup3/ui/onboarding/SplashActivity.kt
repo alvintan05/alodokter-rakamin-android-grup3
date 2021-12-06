@@ -1,9 +1,9 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.animation.DecelerateInterpolator
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -40,10 +40,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private fun showSplash() {
         viewModel.splashLoading.observe(this, { status ->
-            if (!status)
-                Toast.makeText(this, "intent", Toast.LENGTH_SHORT).show()
-            else
-                Toast.makeText(this, "loading", Toast.LENGTH_SHORT).show()
+            if (!status) {
+                startActivity(Intent(this, OnboardingActivity::class.java))
+                finish()
+            }
         })
     }
 

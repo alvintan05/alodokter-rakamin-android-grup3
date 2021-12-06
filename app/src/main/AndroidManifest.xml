@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_alodokter_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
-
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.onboarding.SplashActivity"
             android:exported="true">
@@ -19,14 +21,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity android:name=".ui.MainActivity" />
 
-    <meta-data
-        android:name="preloaded_fonts"
-        android:resource="@array/preloaded_fonts" />
-</application>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
 
-    </manifest>
+</manifest>
