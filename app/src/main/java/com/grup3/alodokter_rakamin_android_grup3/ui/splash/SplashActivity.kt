@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.onboarding
+package com.grup3.alodokter_rakamin_android_grup3.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySplashBinding
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.onboarding.OnboardingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +30,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun setUpFullScreen() {
-        supportActionBar?.hide()
         val windowInsetsController =
             ViewCompat.getWindowInsetsController(window.decorView) ?: return
         // Configure the behavior of the hidden system bars
@@ -41,8 +42,13 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     private fun showSplash() {
         viewModel.splashLoading.observe(this, { status ->
             if (!status) {
-                startActivity(Intent(this, OnboardingActivity::class.java))
-                finish()
+                viewModel.getData().observe(this, {
+                    if (it)
+                        startActivity(Intent(this, OnboardingActivity::class.java))
+                    else
+                        startActivity(Intent(this, IndexActivity::class.java))
+                    finish()
+                })
             }
         })
     }

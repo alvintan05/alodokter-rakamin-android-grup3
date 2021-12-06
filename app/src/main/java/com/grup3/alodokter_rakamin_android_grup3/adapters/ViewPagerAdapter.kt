@@ -1,8 +1,9 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.onboarding
+package com.grup3.alodokter_rakamin_android_grup3.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.grup3.alodokter_rakamin_android_grup3.ui.onboarding.OnboardingSliderFragment
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
