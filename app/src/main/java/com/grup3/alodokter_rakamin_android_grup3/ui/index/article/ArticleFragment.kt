@@ -15,6 +15,5 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 }

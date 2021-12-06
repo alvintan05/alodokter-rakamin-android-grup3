@@ -24,6 +24,7 @@ class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setUpViewPager()
+
         binding.btnOnboarding.setOnClickListener {
             if (pagerPosition == 2) {
                 viewModel.updateFirstTimeInstallStatusToFalse()
