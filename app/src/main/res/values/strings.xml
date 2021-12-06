@@ -12,6 +12,13 @@
     <string name="title_activity_index">IndexActivity</string>
     <string name="title_article">Artikel</string>
     <string name="title_booking">Buat Janji</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_forgot_password">Lupa kata sandi</string>
+
+    <string name="button_send_otp">Kirim Kode OTP</string>
+    <string name="message_otp_delivered">Email OTP berhasil terkirim</string>
+    <string name="message_email_not_found">Email tidak terdaftar</string>
+    <string name="email">E-mail</string>
+
+    <!--  Content Description  -->
+    <string name="cd_back_button">Back Button</string>
 </resources>
