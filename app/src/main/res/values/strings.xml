@@ -14,11 +14,16 @@
     <string name="title_booking">Buat Janji</string>
     <string name="title_forgot_password">Lupa kata sandi</string>
 
-    <string name="button_send_otp">Kirim Kode OTP</string>
-    <string name="message_otp_delivered">Email OTP berhasil terkirim</string>
-    <string name="message_email_not_found">Email tidak terdaftar</string>
+    <string name="forgot_pass_button_send_otp">Kirim Kode OTP</string>
+    <string name="forgot_pass_message_otp_delivered">Email OTP berhasil terkirim</string>
+    <string name="forgot_pass_message_email_not_found">Email tidak terdaftar</string>
+    <string name="forgot_pass_otp_desc">Masukkan kode OTP yang telah dikirim pada Anda</string>
+    <string name="forgot_pass_otp_resend_timer">Mohon tunggu dalam <b>%1$d</b> untuk kirim ulang</string>
+    <string name="forgot_pass_otp_resend"><u>Kirim ulang kode OTP</u></string>
+
     <string name="email">E-mail</string>
 
     <!--  Content Description  -->
     <string name="cd_back_button">Back Button</string>
+    <string name="forgot_pass_button_verify_otp">Verifikasi Kode OTP</string>
 </resources>

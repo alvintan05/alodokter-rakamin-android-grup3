@@ -28,6 +28,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
 
         binding.btnSendOtp.setOnClickListener {
             showSnackBar(true)
+            showOTPLayout()
         }
     }
 
@@ -58,8 +59,8 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
     }
 
     private fun showSnackBar(success: Boolean) {
-        val message = if (success) getString(R.string.message_otp_delivered)
-        else getString(R.string.message_email_not_found)
+        val message = if (success) getString(R.string.forgot_pass_message_otp_delivered)
+        else getString(R.string.forgot_pass_message_email_not_found)
 
         val color = if (success) context?.let { ContextCompat.getColor(it, R.color.success) }
         else context?.let { ContextCompat.getColor(it, R.color.error) }
@@ -67,5 +68,10 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
         val sbEmailOTP = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
         color?.let { sbEmailOTP.setBackgroundTint(it) }
         sbEmailOTP.show()
+    }
+
+    private fun showOTPLayout() {
+        binding.btnSendOtp.visibility = View.GONE
+        binding.llOtpField.visibility = View.VISIBLE
     }
 }
