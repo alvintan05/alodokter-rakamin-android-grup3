@@ -25,13 +25,13 @@
             app:titleEnabled="false">
 
             <androidx.appcompat.widget.SearchView
-                app:iconifiedByDefault="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
                 android:layout_marginHorizontal="@dimen/spacing_15"
                 android:layout_marginBottom="@dimen/spacing_15"
                 android:background="@color/white"
+                app:iconifiedByDefault="false"
                 app:queryHint="Cari Artikel" />
 
             <androidx.appcompat.widget.Toolbar
@@ -56,27 +56,38 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/iv_hero_article"
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/slider_article"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="center"
-                android:src="@drawable/example_hero_article"
+                android:layout_height="250dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="right"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/color_accent"
+                app:sliderIndicatorUnselectedColor="@color/white"
+                app:sliderScrollTimeInSec="2"
+                app:sliderStartAutoCycle="true" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinner_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                android:background="@drawable/bg_spinner"
-                android:layout_marginHorizontal="@dimen/spacing_10"
+                android:layout_marginHorizontal="@dimen/spacing_15"
                 android:layout_marginTop="@dimen/spacing_10"
+                android:background="@drawable/bg_spinner"
+                android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_hero_article" />
+                app:layout_constraintTop_toBottomOf="@id/slider_article" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_article"
