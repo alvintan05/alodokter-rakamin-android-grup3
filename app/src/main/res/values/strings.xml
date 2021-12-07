@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Aldokter Grup 3</string>
+    <string name="onboarding_article">Baca Artikel</string>
+    <string name="onboarding_article_desc">Baca artikel terbaru seputar kesehatan dan cari artikel sesuai kata kunci.</string>
+    <string name="onboarding_booking">Buat Janji</string>
+    <string name="onboarding_booking_desc">Buat janji dengan dokter di sekitarmu dan pilih jadwal konsultasi.</string>
+    <string name="onboarding_consultation">Mulai Konsultasi</string>
+    <string name="onboarding_consultation_desc">Lakukan konsultasi dengan dokter pilihanmu</string>
+    <string name="onboarding_button_next">Selanjutnya</string>
+    <string name="onboarding_button_start">Mulai</string>
+
+    <string name="title_activity_index">IndexActivity</string>
+    <string name="title_article">Artikel</string>
+    <string name="title_booking">Buat Janji</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
