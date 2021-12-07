@@ -25,9 +25,12 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     }
 
     private fun setupSpinner() {
-        val value = arrayListOf("Trending", "Hidup Sehat", "Keluarga", "Kesehatan")
         val arrayAdapter =
-            ArrayAdapter(requireActivity(), R.layout.style_spinner, value)
+            ArrayAdapter(
+                requireActivity(),
+                R.layout.style_spinner,
+                resources.getStringArray(R.array.category_array)
+            )
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategory.adapter = arrayAdapter
     }
