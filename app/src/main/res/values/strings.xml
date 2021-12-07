@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">Aldokter Grup 3</string>
+    <string name="email">E-mail</string>
+    <string name="masuk">MASUK</string>
+    <string name="daftar">DAFTAR</string>
+    <string name="laki">Laki-laki</string>
+    <string name="perempuan">Peremuan</string>
+    <string name="belum_punya_akun">Belum punya akun? <b>Daftar sekarang</b></string>
+    <string name="kata_sandi">Kata sandi</string>
+    <string name="konfirmasi_kata_sandi">Konfirmasi Kata sandi</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="lupa_kata_sandi">Lupa kata sandi</string>
+    <string name="sign_in">Masuk dan mulai buat janji \ndengan dokter</string>
+    <string name="sign_up">Daftar dan mulai buat janji \ndengan dokter</string>
+
     <string name="onboarding_article">Baca Artikel</string>
     <string name="onboarding_article_desc">Baca artikel terbaru seputar kesehatan dan cari artikel sesuai kata kunci.</string>
     <string name="onboarding_booking">Buat Janji</string>
@@ -23,7 +37,6 @@
     <string name="forgot_pass_otp_resend"><u>Kirim ulang kode OTP</u></string>
     <string name="forgot_pass_button_verify_otp">Verifikasi Kode OTP</string>
 
-    <string name="email">E-mail</string>
     <string name="password">Kata Sandi</string>
     <string name="confirm_password">Konfirmasi Kata Sandi</string>
 
