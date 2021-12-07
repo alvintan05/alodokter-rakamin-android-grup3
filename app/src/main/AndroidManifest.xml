@@ -11,6 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
         <activity
+            android:name=".ui.SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SignInActivity"
+            android:exported="true" />
+          
+        <activity
             android:name=".ui.index.IndexActivity"
             android:exported="false"
             android:theme="@style/NoActionBar"
@@ -23,12 +30,13 @@
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ui.MainActivity" />
 
         <meta-data
