@@ -11,15 +11,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val PREFS_NAME = "user_prefs"
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PREFS_NAME)
 
 class PrefsStoreImpl @Inject constructor(
     @ApplicationContext val context: Context
 ) : PrefsStore {
 
     companion object {
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PREFS_NAME)
         private val ONBOARDING_STATUS = booleanPreferencesKey("ONBOARDING")
     }
 
