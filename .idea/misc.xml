@@ -8,11 +8,15 @@
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/drawable/ic_article.xml" value="0.2203125" />
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/drawable/ic_back_arrow.xml" value="0.2203125" />
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/drawable/ic_booking.xml" value="0.2203125" />
+        <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/drawable/ic_visibility.xml" value="0.2203125" />
+        <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/drawable/ic_visibility_off.xml" value="0.2203125" />
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/drawable/onboarding_article.xml" value="0.2203125" />
+        <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/drawable/show_password_selector.xml" value="0.2203125" />
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/font/lato.xml" value="0.234375" />
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/layout/activity_splash.xml" value="0.11730072463768115" />
-        <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/layout/fragment_forgot_password.xml" value="0.22" />
+        <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/layout/fragment_create_new_password.xml" value="0.22" />
+        <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/layout/fragment_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/Febian/AndroidStudioProjects/Alodokter Bootcamp Intern/alodokter-rakamin-android-grup3/app/src/main/res/layout/fragment_onboarding_slider.xml" value="0.25" />
       </map>
     </option>

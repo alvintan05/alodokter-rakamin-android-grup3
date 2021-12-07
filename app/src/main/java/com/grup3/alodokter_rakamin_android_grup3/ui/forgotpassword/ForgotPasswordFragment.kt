@@ -27,6 +27,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
         setupEmailListener()
 
         binding.btnSendOtp.setOnClickListener {
+            // !! Update later
             showSnackBar(true)
             showOTPLayout()
         }
