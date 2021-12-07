@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SignInActivity">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/spacing_40"
+        android:src="@drawable/app_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_30"
+        android:text="@string/sign_in"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_24"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sign_in" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:layout_marginRight="@dimen/spacing_40"
+        android:background="@drawable/ic_bg_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+    <TextView
+        android:id="@+id/tv_kata_sandi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:text="@string/kata_sandi"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+
+    <EditText
+        android:id="@+id/et_kata_sandi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:layout_marginRight="@dimen/spacing_40"
+        android:background="@drawable/ic_bg_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_kata_sandi" />
+
+    <TextView
+        android:id="@+id/tv_lupa_kata_sandi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:text="@string/lupa_kata_sandi"
+        app:layout_constraintEnd_toEndOf="@+id/et_kata_sandi"
+        app:layout_constraintTop_toBottomOf="@+id/et_kata_sandi" />
+
+    <Button
+        android:id="@+id/btn_masuk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:layout_marginRight="@dimen/spacing_40"
+        android:backgroundTint="@color/color_primary"
+        android:text="@string/masuk"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lupa_kata_sandi" />
+
+    <TextView
+        android:id="@+id/tv_belum_punya_akun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:text="@string/belum_punya_akun"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_masuk" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
