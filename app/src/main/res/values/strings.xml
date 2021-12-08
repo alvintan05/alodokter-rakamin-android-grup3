@@ -72,7 +72,7 @@
 
     <string name="jasa_konsultasi">Jasa konsultasi: Rp. %1$d</string>
     <string name="doctor_distance">%1$d Km</string>
-    
+
     <string-array name="category_array">
         <item>Trending</item>
         <item>Hidup Sehat</item>
