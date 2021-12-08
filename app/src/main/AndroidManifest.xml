@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grup3.alodokter_rakamin_android_grup3">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".di.MyApplication"
@@ -13,10 +14,14 @@
         android:roundIcon="@mipmap/ic_alodokter_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
+        <activity android:name=".ui.ChangePasswordActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false"
             android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".ui.DetailArticleActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.SignUpActivity"
             android:exported="true" />
@@ -42,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ui.MainActivity" />
 
         <meta-data

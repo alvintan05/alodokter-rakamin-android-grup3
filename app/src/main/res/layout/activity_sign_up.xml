@@ -16,51 +16,56 @@
         android:textSize="@dimen/font_24"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_20"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/tv_nama_lengkap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
-        android:layout_marginTop="@dimen/spacing_20"
-        android:text="@string/nama_lengkap"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sign_up" />
-
-    <EditText
-        android:id="@+id/et_nama_lengkap"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_nama_lengkap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
-        android:layout_marginTop="@dimen/spacing_6"
-        android:layout_marginRight="@dimen/spacing_40"
-        android:background="@drawable/ic_bg_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nama_lengkap" />
-
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
-        android:text="@string/email"
-        android:textColor="@color/black"
+        android:layout_marginEnd="@dimen/spacing_40"
+        android:hint="@string/nama_lengkap"
+        app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_nama_lengkap" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_sign_up">
 
-    <EditText
-        android:id="@+id/et_email"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_nama_lengkap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bg_edit_text"
+            android:maxLines="1">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
-        android:layout_marginTop="@dimen/spacing_6"
-        android:layout_marginRight="@dimen/spacing_40"
-        android:background="@drawable/ic_bg_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+        android:layout_marginStart="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:layout_marginEnd="@dimen/spacing_40"
+        android:hint="@string/email"
+        app:endIconMode="clear_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tl_nama_lengkap">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/ic_bg_edit_text"
+            android:inputType="textEmailAddress"
+            android:maxLines="1">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_jenis_kelamin"
@@ -71,7 +76,7 @@
         android:text="@string/jenis_kelamin"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/tl_email" />
 
     <RadioGroup
         android:id="@+id/rg_jenis_kelamin"
@@ -95,46 +100,56 @@
             android:text="@string/perempuan" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/tv_kata_sandi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
-        android:layout_marginTop="@dimen/spacing_20"
-        android:text="@string/kata_sandi"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_jenis_kelamin" />
 
-    <EditText
-        android:id="@+id/et_kata_sandi"
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_kata_sandi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
-        android:layout_marginRight="@dimen/spacing_40"
-        android:background="@drawable/ic_bg_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kata_sandi" />
-
-    <TextView
-        android:id="@+id/tv_konfirmasi_kata_sandi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
-        android:text="@string/konfirmasi_kata_sandi"
-        android:textColor="@color/black"
+        android:layout_marginEnd="@dimen/spacing_40"
+        android:hint="@string/kata_sandi"
+        app:endIconMode="password_toggle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_kata_sandi" />
+        app:layout_constraintTop_toBottomOf="@+id/rg_jenis_kelamin">
 
-    <EditText
-        android:id="@+id/et_konfirmasi_kata_sandi"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_kata_sandi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bg_edit_text"
+            android:inputType="textPassword">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_konfirmasi_kata_sandi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_40"
-        android:layout_marginTop="@dimen/spacing_6"
-        android:layout_marginRight="@dimen/spacing_40"
-        android:background="@drawable/ic_bg_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/tv_konfirmasi_kata_sandi" />
+        android:layout_marginStart="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:layout_marginEnd="@dimen/spacing_40"
+        android:hint="@string/konfirmasi_kata_sandi"
+        app:endIconMode="password_toggle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tl_kata_sandi">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_konfirmasi_kata_sandi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bg_edit_text"
+            android:inputType="textPassword">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btn_daftar"
@@ -145,7 +160,7 @@
         android:layout_marginRight="@dimen/spacing_40"
         android:backgroundTint="@color/color_primary"
         android:text="@string/daftar"
-        app:layout_constraintTop_toBottomOf="@+id/et_konfirmasi_kata_sandi" />
+        app:layout_constraintTop_toBottomOf="@+id/tl_konfirmasi_kata_sandi" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
