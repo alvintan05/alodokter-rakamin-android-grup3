@@ -1,11 +1,10 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui
+package com.grup3.alodokter_rakamin_android_grup3.ui.signup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {

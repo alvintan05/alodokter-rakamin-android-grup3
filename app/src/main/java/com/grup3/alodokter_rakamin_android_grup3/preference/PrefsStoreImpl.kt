@@ -21,16 +21,33 @@ class PrefsStoreImpl @Inject constructor(
 ) : PrefsStore {
 
     companion object {
-        private val ONBOARDING_STATUS = booleanPreferencesKey("ONBOARDING")
+        private val ONBOARDING_STATUS = booleanPreferencesKey("ONBOARDING_STATUS")
+        private val LOGIN_STATUS = booleanPreferencesKey("LOGIN_STATUS")
     }
 
-    override fun isFirstTimeInstall(): Flow<Boolean> = context.dataStore.data.map {
+    override suspend fun isFirstTimeInstall(): Boolean = context.dataStore.data.map {
         it[ONBOARDING_STATUS] ?: true
-    }
+    }.first()
 
     override suspend fun updateFirstTimeInstall() {
         context.dataStore.edit {
             it[ONBOARDING_STATUS] = false
+        }
+    }
+
+    override suspend fun isUserAlreadyLogin(): Boolean = context.dataStore.data.map {
+        it[LOGIN_STATUS] ?: false
+    }.first()
+
+    override suspend fun saveLoginSessionData() {
+        context.dataStore.edit {
+            it[LOGIN_STATUS] = true
+        }
+    }
+
+    override suspend fun deleteLoginSessionData() {
+        context.dataStore.edit {
+            it[LOGIN_STATUS] = false
         }
     }
 }

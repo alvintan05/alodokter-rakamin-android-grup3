@@ -1,7 +1,6 @@
 package com.grup3.alodokter_rakamin_android_grup3.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ItemSliderBinding
@@ -11,7 +10,7 @@ import com.smarteist.autoimageslider.SliderViewAdapter
 class SliderArticleAdapter : SliderViewAdapter<SliderArticleAdapter.SliderAdapterVH>() {
 
     private val itemList = arrayListOf<SampleArticleSliderItem>()
-    var listener : ((item: SampleArticleSliderItem) -> Unit)? = null
+    var onClickListener : ((item: SampleArticleSliderItem) -> Unit)? = null
 
     fun setItem(list: List<SampleArticleSliderItem>) {
         itemList.addAll(list)
@@ -38,7 +37,7 @@ class SliderArticleAdapter : SliderViewAdapter<SliderArticleAdapter.SliderAdapte
             .fitCenter()
             .into(viewHolder.binding.ivAutoImageSlider)
         viewHolder.binding.root.setOnClickListener {
-            listener?.invoke(item)
+            onClickListener?.invoke(item)
         }
     }
 

@@ -1,9 +1,11 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.index.article
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.adapters.ArticleRecyclerViewAdapter
 import com.grup3.alodokter_rakamin_android_grup3.adapters.SliderArticleAdapter
@@ -11,10 +13,18 @@ import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentArticleBinding
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SampleArticleSliderItem
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail.DetailArticleActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
+
+    private val viewModel: ArticleViewModel by viewModels()
+
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -65,8 +75,8 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             startAutoCycle()
         }
 
-        sliderAdapter.listener = { item ->
-            Toast.makeText(requireActivity(), item.title, Toast.LENGTH_SHORT).show()
+        sliderAdapter.onClickListener = { item ->
+            startActivity(Intent(activity, DetailArticleActivity::class.java))
         }
 
     }
@@ -86,9 +96,30 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         val adapter = ArticleRecyclerViewAdapter()
         binding.rvArticle.setHasFixedSize(true)
         binding.rvArticle.adapter = adapter
+        adapter.onClickListener = {
+            startActivity(Intent(activity, DetailArticleActivity::class.java))
+        }
+    }
+
+    private fun checkUserLoginStatus() {
+        if (viewModel.getUserLoginStatus()) {
+            startActivity(Intent(activity, ProfileActivity::class.java))
+        } else {
+            startActivity(Intent(activity, SignInActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.index_article_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id == R.id.menu_profile) {
+            checkUserLoginStatus()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

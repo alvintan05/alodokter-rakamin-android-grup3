@@ -8,7 +8,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityIndexBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IndexActivity : BaseActivity<ActivityIndexBinding>() {
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityIndexBinding =

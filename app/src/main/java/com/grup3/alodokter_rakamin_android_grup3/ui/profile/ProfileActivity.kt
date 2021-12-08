@@ -4,12 +4,17 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
+
+    private val viewModel: ProfileViewModel by viewModels()
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfileBinding =
         ActivityProfileBinding.inflate(layoutInflater)
@@ -44,10 +49,12 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.konfirmasi_logout))
             .setMessage(getString(R.string.profile_logout_confirmation_message))
-            .setPositiveButton(getString(R.string.keluar)) { _, _ ->
-                this@ProfileActivity.finish()
-
+            .setPositiveButton(getString(R.string.keluar)) { dialog, _ ->
                 // TODO: Add logout function
+                // Remove session first
+                viewModel.removeUserLoginSession()
+                dialog.cancel()
+                this@ProfileActivity.finish()
 
             }
             .setNegativeButton(getString(R.string.batal), null)

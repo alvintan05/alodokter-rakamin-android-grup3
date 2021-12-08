@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SignInActivity">
+    tools:context=".ui.signin.SignInActivity">
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -32,12 +32,18 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
         android:layout_marginEnd="@dimen/spacing_40"
         android:hint="@string/email"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_5"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_5"
+        app:boxCornerRadiusTopStart="@dimen/spacing_5"
+        app:boxStrokeColor="@color/color_primary"
         app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sign_in">
@@ -47,7 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="emailAddress"
-            android:background="@drawable/ic_bg_edit_text"
             android:inputType="textEmailAddress"
             android:maxLines="1">
 
@@ -57,12 +62,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_kata_sandi"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
         android:layout_marginEnd="@dimen/spacing_40"
         android:hint="@string/kata_sandi"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_5"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_5"
+        app:boxCornerRadiusTopStart="@dimen/spacing_5"
         app:endIconMode="password_toggle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tl_email">
@@ -71,7 +81,6 @@
             android:id="@+id/et_kata_sandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_bg_edit_text"
             android:inputType="textPassword">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -87,15 +96,19 @@
         app:layout_constraintEnd_toEndOf="@+id/tl_kata_sandi"
         app:layout_constraintTop_toBottomOf="@+id/tl_kata_sandi" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_masuk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="@dimen/spacing_20"
-        android:layout_marginRight="@dimen/spacing_40"
+        android:layout_marginEnd="@dimen/spacing_40"
         android:backgroundTint="@color/color_primary"
+        android:paddingVertical="@dimen/spacing_15"
         android:text="@string/masuk"
+        app:cornerRadius="@dimen/spacing_5"
+        android:textSize="@dimen/font_14"
+        android:fontFamily="@font/lato_bold"
         app:layout_constraintTop_toBottomOf="@+id/tv_lupa_kata_sandi" />
 
     <TextView
