@@ -1,6 +1,7 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.profile
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfileBinding
+import com.grup3.alodokter_rakamin_android_grup3.ui.profile.changepassword.ChangePasswordActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +32,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
         }
         binding.btnChangePassword.setOnClickListener {
             Toast.makeText(this, "intent to change password", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
         binding.btnBack.setOnClickListener { this.finish() }
         binding.btnSignOut.setOnClickListener { showLogoutConfirmation() }
