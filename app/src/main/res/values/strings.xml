@@ -64,11 +64,14 @@
     <!--  Content Description  -->
     <string name="cd_back_button">Tombol Back</string>
     <string name="cd_foto_profil">Foto Profil</string>
+    <string name="cd_foto_dokter">Foto Dokter</string>
 
     <string name="example_article_title">Sederet Fakta tentang Obat Herbal Hernia</string>
     <string name="example_article_category">Kesehatan</string>
-
     <string name="title_detail_article">Detail Article</string>
+
+    <string name="jasa_konsultasi">Jasa konsultasi: Rp. %1$d</string>
+    <string name="doctor_distance">%1$d Km</string>
     
     <string-array name="category_array">
         <item>Trending</item>
