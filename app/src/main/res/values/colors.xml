@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="color_primary">#4370D4</color>
+    <color name="color_primary">#3570D2</color>
     <color name="color_accent">#EF6F00</color>
     <color name="success">#05B82A</color>
     <color name="error">#BF2827</color>
@@ -16,4 +16,7 @@
     <color name="primary_font">#000000</color>
     <color name="secondary_font">#535353</color>
     <color name="ternary_font">#919191</color>
+    <color name="grey_line">#DFDFDF</color>
+    <color name="grey_dot">#C4C4C4</color>
+    <color name="transparent_black">#7A000000</color>
 </resources>
