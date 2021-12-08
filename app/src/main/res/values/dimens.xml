@@ -14,6 +14,7 @@
     <dimen name="spacing_40">40dp</dimen>
     <dimen name="spacing_48">48dp</dimen>
     <dimen name="spacing_60">60dp</dimen>
+    <dimen name="spacing_64">64dp</dimen>
     <dimen name="spacing_100">100dp</dimen>
 
     <!-- Font -->

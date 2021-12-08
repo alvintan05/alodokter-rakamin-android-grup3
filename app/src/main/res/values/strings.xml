@@ -14,6 +14,12 @@
     <string name="sign_in">Masuk dan mulai buat janji \ndengan dokter</string>
     <string name="sign_up">Daftar dan mulai buat janji \ndengan dokter</string>
     <string name="simpan">Simpan</string>
+    <string name="keluar">Keluar</string>
+    <string name="ubah_kata_sandi">Ubah Kata Sandi</string>
+    <string name="data_saya">Data Saya</string>
+    <string name="akun">Akun</string>
+    <string name="batal">Batal</string>
+    <string name="konfirmasi_logout">Konfirmasi Logout</string>
 
     <string name="onboarding_article">Baca Artikel</string>
     <string name="onboarding_article_desc">Baca artikel terbaru seputar kesehatan dan cari artikel sesuai kata kunci.</string>
@@ -32,6 +38,7 @@
 
     <string name="title_forgot_password">Lupa kata sandi</string>
     <string name="title_create_new_password">Buat kata sandi baru</string>
+    <string name="title_profile">Profil</string>
 
     <string name="forgot_pass_button_send_otp">Kirim Kode OTP</string>
     <string name="forgot_pass_message_otp_delivered">Email OTP berhasil terkirim</string>
@@ -40,9 +47,15 @@
     <string name="forgot_pass_otp_resend_timer">Mohon tunggu dalam <b>%1$d</b> detik untuk kirim ulang</string>
     <string name="forgot_pass_otp_resend"><u>Kirim ulang kode OTP</u></string>
     <string name="forgot_pass_button_verify_otp">Verifikasi Kode OTP</string>
+    <string name="forgot_pass_error_invalid_email">Format email salah</string>
+    <string name="forgot_pass_error_empty_email">Alamat email tidak boleh kosong</string>
+    <string name="forgot_pass_error_confirmation_mismatch">Konfirmasi kata sandi tidak sesuai</string>
+
+    <string name="profile_logout_confirmation_message">Apakah kamu yakin ingin keluar dari aplikasi?</string>
 
     <!--  Content Description  -->
-    <string name="cd_back_button">Back Button</string>
+    <string name="cd_back_button">Tombol Back</string>
+    <string name="cd_foto_profil">Foto Profil</string>
 
     <string name="example_article_title">Sederet Fakta tentang Obat Herbal Hernia</string>
     <string name="example_article_category">Kesehatan</string>
