@@ -63,7 +63,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
 
                 when {
                     inputEmail.isEmpty() -> {
-                        binding.tilEmail.error = "Email can't be empty"
+                        binding.tilEmail.error = getString(R.string.forgot_pass_error_empty_email)
                         binding.btnSendOtp.isEnabled = false
                     }
                     Patterns.EMAIL_ADDRESS.matcher(inputEmail).matches() -> {
@@ -71,7 +71,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
                         binding.btnSendOtp.isEnabled = true
                     }
                     else -> {
-                        binding.tilEmail.error = "Invalid email address"
+                        binding.tilEmail.error = getString(R.string.forgot_pass_error_invalid_email)
                         binding.btnSendOtp.isEnabled = false
                     }
                 }
