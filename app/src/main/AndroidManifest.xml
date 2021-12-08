@@ -13,19 +13,21 @@
         android:roundIcon="@mipmap/ic_alodokter_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
-        <activity android:name=".ui.ChangePasswordActivity" />
+        <activity android:name=".ui.profile.changepassword.ChangePasswordActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".ui.DetailArticleActivity"
+            android:name=".ui.index.article.detail.DetailArticleActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.SignUpActivity"
+            android:name=".ui.signup.SignUpActivity"
+            android:theme="@style/NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".ui.SignInActivity"
+            android:name=".ui.signin.SignInActivity"
+            android:theme="@style/NoActionBar"
             android:exported="true" />
         <activity
             android:name=".ui.index.IndexActivity"
@@ -46,8 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

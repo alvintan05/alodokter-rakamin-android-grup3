@@ -42,13 +42,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     private fun showSplash() {
         viewModel.splashLoading.observe(this, { status ->
             if (!status) {
-                viewModel.getData().observe(this, {
-                    if (it)
-                        startActivity(Intent(this, OnboardingActivity::class.java))
-                    else
-                        startActivity(Intent(this, IndexActivity::class.java))
-                    finish()
-                })
+                if (viewModel.isFirstTimeInstall)
+                    startActivity(Intent(this, OnboardingActivity::class.java))
+                else
+                    startActivity(Intent(this, IndexActivity::class.java))
+                finish()
             }
         })
     }

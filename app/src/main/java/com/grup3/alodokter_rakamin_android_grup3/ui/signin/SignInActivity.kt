@@ -1,16 +1,25 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui
+package com.grup3.alodokter_rakamin_android_grup3.ui.signin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import com.grup3.alodokter_rakamin_android_grup3.R
+import android.view.LayoutInflater
+import androidx.activity.viewModels
+import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignInBinding
-import java.util.regex.Pattern
+import com.grup3.alodokter_rakamin_android_grup3.ui.signup.SignUpActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class SignInActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignInBinding
+@AndroidEntryPoint
+class SignInActivity : BaseActivity<ActivitySignInBinding>() {
+
+    private val viewModel: SignInViewModel by viewModels()
+
+    override fun inflateLayout(layoutInflater: LayoutInflater): ActivitySignInBinding =
+        ActivitySignInBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +29,15 @@ class SignInActivity : AppCompatActivity() {
         setupEmailListener()
         setupKataSandiListener()
 
+        binding.tvBelumPunyaAkun.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        binding.btnMasuk.setOnClickListener {
+            // Change Later with API Function
+            viewModel.saveUserLoginSession()
+            finish()
+        }
     }
 
     private fun setupKataSandiListener() {
@@ -32,7 +50,7 @@ class SignInActivity : AppCompatActivity() {
                 val inputKataSandi = binding.etKataSandi.text.toString().trim()
                 when {
                     inputKataSandi.isEmpty() -> {
-                        binding.tlKataSandi.error =  "Kata sandi tidak boleh kosong"
+                        binding.tlKataSandi.error = "Kata sandi tidak boleh kosong"
                     }
 
                 }
