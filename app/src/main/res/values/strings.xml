@@ -84,6 +84,10 @@
     <string name="jasa_konsultasi">Jasa konsultasi: Rp. %1$d</string>
     <string name="doctor_distance">%1$d Km</string>
 
+    <string name="title_choose_date">Pilih Jadwal</string>
+    <string name="title_fill_data">Isi Data Pasien</string>
+    <string name="title_confirmation_data">Konfirmasi Data</string>
+
     <string-array name="category_array">
         <item>Trending</item>
         <item>Hidup Sehat</item>

@@ -19,4 +19,6 @@
     <color name="grey_line">#DFDFDF</color>
     <color name="grey_dot">#C4C4C4</color>
     <color name="transparent_black">#7A000000</color>
+    <color name="progress_state_text">#808080</color>
+    <color name="progress_state_background">#BDBDBD</color>
 </resources>
