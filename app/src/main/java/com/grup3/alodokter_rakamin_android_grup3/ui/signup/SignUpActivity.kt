@@ -18,6 +18,7 @@ class SignUpActivity : AppCompatActivity() {
 
         setupEmailListener()
         setupKataSandiListener()
+        binding.btnBack.setOnClickListener { this.finish() }
 
     }
 
