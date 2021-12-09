@@ -3,7 +3,6 @@
 
     <string name="label_ubah">Ubah</string>
     <string name="label_ubah_data_saya">Ubah Data Saya</string>
-    <string name="simpan">Simpan</string>
 
     <string name="cd_back_button">Back Button</string>
     <string name="tanggal_lahir">Tanggal Lahir</string>
@@ -18,11 +17,9 @@
     <string name="masuk">MASUK</string>
     <string name="daftar">DAFTAR</string>
     <string name="laki">Laki-laki</string>
-    <string name="perempuan">Peremuan</string>
     <string name="belum_punya_akun">Belum punya akun? <b>Daftar sekarang</b></string>
     <string name="kata_sandi">Kata sandi</string>
     <string name="konfirmasi_kata_sandi">Konfirmasi kata sandi</string>
-    <string name="nama_lengkap">Nama Lengkap</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="lupa_kata_sandi">Lupa kata sandi</string>
     <string name="sign_in">Masuk dan mulai buat janji \ndengan dokter</string>
@@ -38,7 +35,6 @@
     <string name="simpan">Simpan</string>
     <string name="keluar">Keluar</string>
     <string name="ubah_kata_sandi">Ubah Kata Sandi</string>
-    <string name="data_saya">Data Saya</string>
     <string name="akun">Akun</string>
     <string name="batal">Batal</string>
     <string name="konfirmasi_logout">Konfirmasi Logout</string>
@@ -76,7 +72,6 @@
     <string name="profile_logout_confirmation_message">Apakah kamu yakin ingin keluar dari aplikasi?</string>
 
     <!--  Content Description  -->
-    <string name="cd_back_button">Tombol Back</string>
     <string name="cd_foto_profil">Foto Profil</string>
     <string name="cd_foto_dokter">Foto Dokter</string>
 
@@ -85,7 +80,6 @@
     <string name="title_detail_article">Detail Artikel</string>
     <string name="title_daftar">Daftar</string>
 
-    <string name="title_detail_article">Detail Article</string>
 
     <string name="jasa_konsultasi">Jasa konsultasi: Rp. %1$d</string>
     <string name="doctor_distance">%1$d Km</string>
