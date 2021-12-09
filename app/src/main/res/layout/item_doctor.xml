@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_doctor"
+            android:layout_width="@dimen/spacing_60"
+            android:layout_height="@dimen/spacing_60"
+            android:layout_margin="@dimen/spacing_15"
+            android:contentDescription="@string/cd_foto_dokter"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:src="@drawable/example_article" />
+
+        <TextView
+            android:id="@+id/tv_doctor_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_10"
+            android:ellipsize="end"
+            android:fontFamily="@font/lato_bold"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintEnd_toEndOf="@id/gl_name_distance"
+            app:layout_constraintStart_toEndOf="@+id/iv_doctor"
+            app:layout_constraintTop_toTopOf="@id/iv_doctor"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Dr. Budi" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_name_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_15"
+            android:fontFamily="@font/lato"
+            android:text="@string/doctor_distance"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            app:layout_constraintBottom_toBottomOf="@id/tv_doctor_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_doctor_name"
+            app:layout_constraintTop_toTopOf="@id/tv_doctor_name" />
+
+        <TextView
+            android:id="@+id/tv_doctor_specialist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            app:layout_constraintStart_toStartOf="@id/tv_doctor_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_doctor_name"
+            tools:text="Spesialis Tulang" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_15"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintBottom_toTopOf="@id/v_horizontal_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/tv_doctor_specialist"
+            app:layout_constraintTop_toBottomOf="@id/tv_distance"
+            app:layout_constraintVertical_bias="0.485"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_doctor_clinic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_6"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            app:layout_constraintStart_toStartOf="@id/tv_doctor_specialist"
+            app:layout_constraintTop_toBottomOf="@id/tv_doctor_specialist"
+            tools:text="Rs. Siloam" />
+
+        <View
+            android:id="@+id/v_horizontal_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/spacing_15"
+            android:background="@color/grey_line"
+            app:layout_constraintTop_toBottomOf="@id/iv_doctor" />
+
+        <TextView
+            android:id="@+id/tv_consultation_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_6"
+            android:layout_marginBottom="@dimen/spacing_10"
+            android:fontFamily="@font/lato"
+            android:text="@string/jasa_konsultasi"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_doctor"
+            app:layout_constraintTop_toBottomOf="@id/v_horizontal_line" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
