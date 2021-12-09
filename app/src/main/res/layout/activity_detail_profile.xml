@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_detail_profile"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:title="@string/data_saya"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_detail_profile"
+        android:layout_marginStart="@dimen/spacing_18"
+        android:layout_marginEnd="@dimen/spacing_18"
+        android:layout_marginTop="@dimen/spacing_22">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_grey"
+            android:padding="@dimen/spacing_5">
+
+            <ImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                tools:src="@drawable/app_logo" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginVertical="@dimen/spacing_5"
+                android:layout_toEndOf="@+id/profile_picture"
+                android:fontFamily="@font/lato_bold"
+                android:includeFontPadding="false"
+                tools:text="Account Name"
+                android:textColor="@color/primary_font"
+                android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/tv_nomor_telpon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_user_name"
+                android:layout_marginStart="10dp"
+                android:layout_marginVertical="@dimen/spacing_5"
+                android:layout_toEndOf="@+id/profile_picture"
+                android:includeFontPadding="false"
+                tools:text="Phone Number"
+                android:textColor="@color/primary_font"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_nomor_telpon"
+                android:layout_marginVertical="@dimen/spacing_5"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/profile_picture"
+                android:includeFontPadding="false"
+                tools:text="Eamil"
+                android:textColor="@color/primary_font"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_label_tanggal_lahir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_picture"
+                 android:layout_marginTop="@dimen/spacing_20"
+                android:layout_marginStart="@dimen/spacing_10"
+                android:text="@string/tanggal_lahir"
+                android:textColor="@color/primary_font"
+                android:textSize="@dimen/font_12" />
+
+            <TextView
+                android:id="@+id/tv_tanggal_lahir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_10"
+                android:layout_below="@id/tv_label_tanggal_lahir"
+                tools:text="Tanggal Lahir"
+                android:textColor="@color/primary_font"
+                android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/tv_label_nomor_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggal_lahir"
+                android:layout_marginTop="@dimen/spacing_20"
+                android:layout_marginStart="@dimen/spacing_10"
+                android:text="@string/nomor_ktp"
+                android:textColor="@color/secondary_font"
+                android:textSize="@dimen/font_12" />
+
+            <TextView
+                android:id="@+id/tv_nomor_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_label_nomor_ktp"
+                android:layout_marginStart="@dimen/spacing_10"
+                tools:text="3661445297123456"
+                android:textColor="@color/primary_font"
+                android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/tv_label_alamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_nomor_ktp"
+                android:layout_marginTop="@dimen/spacing_20"
+                android:layout_marginStart="@dimen/spacing_10"
+                android:text="@string/alamat"
+                android:textColor="@color/secondary_font"
+                android:textSize="@dimen/font_12" />
+
+            <TextView
+                android:id="@+id/tv_alamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_10"
+                android:layout_below="@id/tv_label_alamat"
+                tools:text="Jl. JendralSudirman"
+                android:textColor="@color/primary_font"
+                android:textSize="@dimen/font_14" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
