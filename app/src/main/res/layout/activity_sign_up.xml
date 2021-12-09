@@ -11,23 +11,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_20"
         android:text="@string/sign_in"
         android:textColor="@color/black"
         android:textSize="@dimen/font_24"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/spacing_20"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_nama_lengkap"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
         android:layout_marginEnd="@dimen/spacing_40"
         android:hint="@string/nama_lengkap"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_5"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_5"
+        app:boxCornerRadiusTopStart="@dimen/spacing_5"
         app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sign_up">
@@ -36,7 +41,6 @@
             android:id="@+id/et_nama_lengkap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_bg_edit_text"
             android:maxLines="1">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -45,12 +49,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
         android:layout_marginEnd="@dimen/spacing_40"
         android:hint="@string/email"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_5"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_5"
+        app:boxCornerRadiusTopStart="@dimen/spacing_5"
         app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tl_nama_lengkap">
@@ -60,7 +69,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="emailAddress"
-            android:background="@drawable/ic_bg_edit_text"
             android:inputType="textEmailAddress"
             android:maxLines="1">
 
@@ -82,8 +90,8 @@
         android:id="@+id/rg_jenis_kelamin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginLeft="@dimen/spacing_40"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_jenis_kelamin">
 
@@ -101,16 +109,19 @@
     </RadioGroup>
 
 
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_kata_sandi"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
         android:layout_marginEnd="@dimen/spacing_40"
         android:hint="@string/kata_sandi"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_5"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_5"
+        app:boxCornerRadiusTopStart="@dimen/spacing_5"
         app:endIconMode="password_toggle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rg_jenis_kelamin">
@@ -119,23 +130,25 @@
             android:id="@+id/et_kata_sandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_bg_edit_text"
             android:inputType="textPassword">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_konfirmasi_kata_sandi"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_20"
         android:layout_marginEnd="@dimen/spacing_40"
         android:hint="@string/konfirmasi_kata_sandi"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_5"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_5"
+        app:boxCornerRadiusTopStart="@dimen/spacing_5"
         app:endIconMode="password_toggle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tl_kata_sandi">
@@ -144,7 +157,6 @@
             android:id="@+id/et_konfirmasi_kata_sandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_bg_edit_text"
             android:inputType="textPassword">
 
         </com.google.android.material.textfield.TextInputEditText>

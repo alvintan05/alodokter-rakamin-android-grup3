@@ -68,8 +68,9 @@
     <string name="example_article_title">Sederet Fakta tentang Obat Herbal Hernia</string>
     <string name="example_article_category">Kesehatan</string>
 
-    <string name="title_detail_article">Detail Article</string>
-    
+    <string name="title_detail_article">Detail Artikel</string>
+    <string name="title_daftar">Daftar</string>
+
     <string-array name="category_array">
         <item>Trending</item>
         <item>Hidup Sehat</item>

@@ -10,7 +10,7 @@
         android:id="@+id/iv_logo"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_60"
         android:src="@drawable/app_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
