@@ -7,10 +7,13 @@
     <dimen name="spacing_8">8dp</dimen>
     <dimen name="spacing_10">10dp</dimen>
     <dimen name="spacing_15">15dp</dimen>
+    <dimen name="spacing_18">18dp</dimen>
     <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_22">22dp</dimen>
     <dimen name="spacing_24">24dp</dimen>
     <dimen name="spacing_30">30dp</dimen>
     <dimen name="spacing_40">40dp</dimen>
+    <dimen name="spacing_95">95dp</dimen>
 
     <!-- Font -->
     <dimen name="font_12">12sp</dimen>

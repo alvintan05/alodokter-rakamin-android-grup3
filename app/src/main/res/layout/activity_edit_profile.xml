@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:title="@string/label_ubah_data_saya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:layout_marginEnd="@dimen/spacing_10"
+        android:hint="@string/nama_lengkap"
+        android:textColorHint="@color/ternary_font"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_10"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_10"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_10"
+        app:boxCornerRadiusTopStart="@dimen/spacing_10"
+        app:boxStrokeColor="@color/background_grey"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_edit_profile">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_phone_number"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        android:layout_marginTop="@dimen/spacing_18"
+        android:layout_marginEnd="@dimen/spacing_10"
+        android:hint="@string/nomor_telepon"
+        android:textColorHint="@color/ternary_font"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_10"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_10"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_10"
+        app:boxCornerRadiusTopStart="@dimen/spacing_10"
+        app:boxStrokeColor="@color/background_grey"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_tanggal_lahir"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:layout_marginEnd="@dimen/spacing_10"
+        android:hint="@string/tanggal_lahir"
+        android:textColorHint="@color/ternary_font"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_10"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_10"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_10"
+        app:boxCornerRadiusTopStart="@dimen/spacing_10"
+        app:boxStrokeColor="@color/background_grey"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_phone_number">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_tanggal_lahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_jenis_kelamin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        android:layout_marginTop="@dimen/spacing_18"
+        android:layout_marginEnd="@dimen/spacing_40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_tanggal_lahir"
+        >
+
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:checked="true"
+            android:buttonTint="@color/color_primary"
+            android:text="@string/laki_laki" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/color_primary"
+            android:text="@string/perempuan" />
+
+
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_nomor_ktp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:layout_marginEnd="@dimen/spacing_10"
+        android:hint="@string/nomor_ktp"
+        android:textColorHint="@color/ternary_font"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_10"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_10"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_10"
+        app:boxCornerRadiusTopStart="@dimen/spacing_10"
+        app:boxStrokeColor="@color/background_grey"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rg_jenis_kelamin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_alamat"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:layout_marginEnd="@dimen/spacing_10"
+        android:hint="@string/alamat"
+        android:textColorHint="@color/ternary_font"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_10"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_10"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_10"
+        app:boxCornerRadiusTopStart="@dimen/spacing_10"
+        app:boxStrokeColor="@color/background_grey"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_nomor_ktp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        android:layout_marginEnd="@dimen/spacing_10"
+        android:layout_marginBottom="@dimen/spacing_95"
+        android:backgroundTint="@color/color_primary"
+        android:text="@string/simpan"
+        android:textSize="@dimen/font_16"
+        app:boxCornerRadiusBottomEnd="@dimen/spacing_10"
+        app:boxCornerRadiusBottomStart="@dimen/spacing_10"
+        app:boxCornerRadiusTopEnd="@dimen/spacing_10"
+        app:boxCornerRadiusTopStart="@dimen/spacing_10"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
