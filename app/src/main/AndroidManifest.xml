@@ -13,6 +13,10 @@
         android:roundIcon="@mipmap/ic_alodokter_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
+        <activity
+            android:name=".ui.booking.BookingProcessActivity"
+            android:exported="true"
+            android:theme="@style/NoActionBar"></activity>
         <activity android:name=".ui.profile.changepassword.ChangePasswordActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"
@@ -23,12 +27,12 @@
             android:exported="true" />
         <activity
             android:name=".ui.signup.SignUpActivity"
-            android:theme="@style/NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.signin.SignInActivity"
-            android:theme="@style/NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.index.IndexActivity"
             android:exported="false"
@@ -53,6 +57,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 
 </manifest>
