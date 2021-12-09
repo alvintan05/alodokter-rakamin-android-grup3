@@ -2,26 +2,57 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grup3.alodokter_rakamin_android_grup3">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
+        android:name=".di.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_alodokter_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_alodokter_round"
         android:supportsRtl="true"
-        android:name=".di.MyApplication"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
+        <activity android:name=".ui.profile.changepassword.ChangePasswordActivity" />
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".ui.index.article.detail.DetailArticleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.signup.SignUpActivity"
+            android:theme="@style/NoActionBar"
+            android:exported="true" />
+        <activity
+            android:name=".ui.signin.SignInActivity"
+            android:theme="@style/NoActionBar"
+            android:exported="true" />
+        <activity
+            android:name=".ui.index.IndexActivity"
+            android:exported="false"
+            android:label="@string/title_activity_index"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 
 </manifest>
