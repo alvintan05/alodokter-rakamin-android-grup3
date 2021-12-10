@@ -5,21 +5,27 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.view.LayoutInflater
 import com.grup3.alodokter_rakamin_android_grup3.R
+import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignUpBinding
 
-class SignUpActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignUpBinding
+class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setSupportActionBar(binding.tbDaftar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Daftar"
 
         setupEmailListener()
         setupKataSandiListener()
-        binding.btnBack.setOnClickListener { this.finish() }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun setupKataSandiListener() {
@@ -71,4 +77,6 @@ class SignUpActivity : AppCompatActivity() {
 
         })
     }
+
+    override fun inflateLayout(layoutInflater: LayoutInflater): ActivitySignUpBinding = ActivitySignUpBinding.inflate(layoutInflater)
 }

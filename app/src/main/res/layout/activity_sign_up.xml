@@ -7,43 +7,13 @@
     tools:context=".ui.signup.SignUpActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/tb_daftar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/white">
-
-            <ImageView
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_24"
-                android:layout_marginTop="@dimen/spacing_20"
-                android:contentDescription="@string/cd_back_button"
-                android:src="@drawable/ic_back_arrow"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_24"
-                android:fontFamily="@font/lato"
-                android:text="@string/title_daftar"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_24"
-                app:layout_constraintBottom_toBottomOf="@id/btn_back"
-                app:layout_constraintStart_toEndOf="@id/btn_back"
-                app:layout_constraintTop_toTopOf="@id/btn_back" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -52,13 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_40"
-        android:layout_marginTop="@dimen/spacing_20"
+        android:layout_marginTop="@dimen/spacing_60"
         android:text="@string/sign_in"
         android:textColor="@color/black"
         android:textSize="@dimen/font_24"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -82,6 +52,7 @@
             android:id="@+id/et_nama_lengkap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
             android:maxLines="1">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -137,13 +108,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_jenis_kelamin">
 
         <RadioButton
-            android:id="@+id/radio_pirates"
+            android:id="@+id/rb_laki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/laki" />
 
         <RadioButton
-            android:id="@+id/radio_ninjas"
+            android:id="@+id/rb_perempuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/perempuan" />
@@ -203,15 +174,16 @@
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_daftar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_15"
+        app:cornerRadius="@dimen/spacing_5"
         android:layout_marginStart="40dp"
         android:layout_marginTop="@dimen/spacing_20"
+        app:backgroundTint="@color/color_primary"
         android:layout_marginEnd="@dimen/spacing_40"
-        android:backgroundTint="@color/color_primary"
         android:text="@string/daftar"
         app:layout_constraintTop_toBottomOf="@+id/tl_konfirmasi_kata_sandi" />
 
