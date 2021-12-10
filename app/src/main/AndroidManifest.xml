@@ -16,7 +16,15 @@
         <activity
             android:name=".ui.booking.BookingProcessActivity"
             android:exported="true"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".ui.profile.changepassword.ChangePasswordActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"
@@ -46,11 +54,7 @@
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
