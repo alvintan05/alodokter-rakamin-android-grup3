@@ -87,6 +87,8 @@
     <string name="title_choose_date">Pilih Jadwal</string>
     <string name="title_fill_data">Isi Data Pasien</string>
     <string name="title_confirmation_data">Konfirmasi Data</string>
+    <string name="message_password_blank_error">Password tidak boleh kosong</string>
+    <string name="message_reset_success">Kata sandi berhasil diperbaharui</string>
 
     <string-array name="category_array">
         <item>Trending</item>

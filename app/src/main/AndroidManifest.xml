@@ -14,9 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
         <activity
+            android:name=".ui.forgotpassword.ForgotPasswordActivity"
+            android:exported="false"
+            android:theme="@style/NoActionBar" />
+        <activity
             android:name=".ui.booking.BookingProcessActivity"
             android:exported="true"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar" />
         <activity android:name=".ui.profile.changepassword.ChangePasswordActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"

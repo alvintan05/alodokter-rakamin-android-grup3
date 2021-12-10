@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword
+package com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword.createnewpassword
 
 import android.os.Bundle
 import android.text.Editable
@@ -23,14 +23,7 @@ class CreateNewPasswordFragment : BaseFragment<FragmentCreateNewPasswordBinding>
         super.onViewCreated(view, savedInstanceState)
 
         setupPasswordConfirmListener()
-        binding.btnBack.setOnClickListener {
-            activity?.onBackPressed()
-        }
-        binding.btnSavePassword.setOnClickListener {
-            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
-
-            // TODO: Send password to API and navigate to login page
-        }
+        binding.btnSavePassword.setOnClickListener { validatePassword() }
     }
 
     private fun setupPasswordConfirmListener() {
@@ -38,7 +31,7 @@ class CreateNewPasswordFragment : BaseFragment<FragmentCreateNewPasswordBinding>
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val inputPassword = binding.edtPasswordConfirm.text.toString().trim()
+                val inputPassword = binding.edtPassword.text.toString().trim()
                 val inputConfirmPassword = binding.edtPasswordConfirm.text.toString().trim()
 
                 if (inputPassword != inputConfirmPassword) {
@@ -51,5 +44,35 @@ class CreateNewPasswordFragment : BaseFragment<FragmentCreateNewPasswordBinding>
 
             override fun afterTextChanged(p0: Editable?) {}
         })
+    }
+
+    private fun validatePassword() {
+        val password = binding.edtPassword.text.toString().trim()
+        val passwordConfirmation = binding.edtPasswordConfirm.text.toString().trim()
+
+        if (password.isEmpty() || passwordConfirmation.isEmpty()) {
+            Toast.makeText(
+                activity,
+                getString(R.string.message_password_blank_error),
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            if (password != passwordConfirmation) {
+                Toast.makeText(
+                    activity,
+                    getString(R.string.forgot_pass_error_confirmation_mismatch),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            } else {
+                Toast.makeText(
+                    activity,
+                    getString(R.string.message_reset_success),
+                    Toast.LENGTH_SHORT
+                ).show()
+                // TODO: Send password to API and navigate to login page
+                activity?.finish()
+            }
+        }
     }
 }
