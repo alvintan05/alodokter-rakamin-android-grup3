@@ -28,7 +28,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
         showData()
 
         binding.btnMyData.setOnClickListener {
-            Toast.makeText(this, "intent to my data", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, DetailProfileActivity::class.java))
         }
         binding.btnChangePassword.setOnClickListener {
             startActivity(Intent(this, ChangePasswordActivity::class.java))

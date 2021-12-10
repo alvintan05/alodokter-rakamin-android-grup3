@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_change"
         android:title="@string/label_ubah"
-        app:showAsAction="withText"/>
+        app:showAsAction="always"/>
 
 
 </menu>
