@@ -11,6 +11,8 @@
         android:id="@+id/tb_detail_profile"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
+        android:elevation="@dimen/spacing_4"
+        android:background="@color/white"
         app:title="@string/data_saya"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
