@@ -1,21 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".ui.booking.choosedate.ChooseDateFragment">
 
-    <!--  HAPUS BUTTON INI , INI HANYA UJI COBA   -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_choose_date"
-        app:backgroundTint="@color/color_accent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_27">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:strokeColor="@color/grey_outline_border"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_bg_layout_white_rounded"
+                android:paddingHorizontal="@dimen/spacing_8"
+                android:paddingTop="@dimen/spacing_4"
+                android:paddingBottom="@dimen/spacing_10">
+
+                <TextView
+                    android:id="@+id/tv_chosen_doctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_chosen_doctor"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_doctor"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/spacing_6"
+                    android:contentDescription="@string/image_doctor_face"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_chosen_doctor" />
+
+                <TextView
+                    android:id="@+id/tv_doctor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_6"
+                    android:layout_marginTop="@dimen/spacing_6"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/text_doctor_name"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/iv_doctor"
+                    app:layout_constraintTop_toTopOf="@id/iv_doctor" />
+
+                <TextView
+                    android:id="@+id/tv_doctor_specialist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_6"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_doctor_specialist"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/tv_doctor_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_doctor_name" />
+
+                <TextView
+                    android:id="@+id/tv_chosen_clinic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_6"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_helper_practice_location"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_13"
+                    app:layout_constraintStart_toStartOf="@id/iv_doctor"
+                    app:layout_constraintTop_toBottomOf="@id/iv_doctor" />
+
+                <TextView
+                    android:id="@+id/tv_doctor_clinic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_6"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_practice_location"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_13"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_chosen_clinic" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_15"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:strokeColor="@color/grey_outline_border"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_bg_layout_white_rounded"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/spacing_10"
+                android:paddingTop="@dimen/spacing_8"
+                android:paddingEnd="@dimen/spacing_14"
+                android:paddingBottom="@dimen/spacing_24">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_helper_choose_practice_date"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
+                        app:boxCornerRadiusBottomStart="@dimen/spacing_5"
+                        app:boxCornerRadiusTopEnd="@dimen/spacing_5"
+                        app:boxCornerRadiusTopStart="@dimen/spacing_5"
+                        app:boxStrokeColor="@color/grey_outline_border">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_practice_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:fontFamily="@font/lato"
+                            android:text="@string/text_choose_practice_date"
+                            android:textColor="@color/black">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_choose_practice_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/spacing_10"
+                        android:background="@color/white"
+                        android:contentDescription="@string/image_choose_date"
+                        android:src="@drawable/ic_date_grey_24" />
+
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_11"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_helper_practice_hour"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_practice_hour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:background="@drawable/bg_spinner_booking"
+                    android:spinnerMode="dialog" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_16"
+            android:backgroundTint="@color/color_accent"
+            android:text="@string/text_next" />
+    </LinearLayout>
+</ScrollView>

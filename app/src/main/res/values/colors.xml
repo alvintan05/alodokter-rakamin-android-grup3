@@ -21,4 +21,5 @@
     <color name="transparent_black">#7A000000</color>
     <color name="progress_state_text">#808080</color>
     <color name="progress_state_background">#BDBDBD</color>
+    <color name="grey_outline_border">#9F9F9F</color>
 </resources>
