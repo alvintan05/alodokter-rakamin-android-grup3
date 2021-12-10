@@ -39,7 +39,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Endpoint =
         Retrofit.Builder()
-            .baseUrl("www.google.com/")
+            .baseUrl("https://hidden-cliffs-45052.herokuapp.com/api/v1/")
             .addConverterFactory(gsonConverterFactory)
             .client(okHttpClient)
             .build()

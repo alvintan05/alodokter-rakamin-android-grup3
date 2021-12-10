@@ -23,19 +23,23 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(binding.tbProfile)
 
+        setupToolbar()
         showData()
 
         binding.btnMyData.setOnClickListener {
-            Toast.makeText(this, "intent to my data", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, DetailProfileActivity::class.java))
         }
         binding.btnChangePassword.setOnClickListener {
-            Toast.makeText(this, "intent to change password", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
-        binding.btnBack.setOnClickListener { this.finish() }
         binding.btnSignOut.setOnClickListener { showLogoutConfirmation() }
+    }
+
+    private fun setupToolbar() {
+        binding.tbProfile.setNavigationIcon(R.drawable.ic_back_arrow)
+        setSupportActionBar(binding.tbProfile)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun showData() {
@@ -53,8 +57,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
             .setTitle(getString(R.string.konfirmasi_logout))
             .setMessage(getString(R.string.profile_logout_confirmation_message))
             .setPositiveButton(getString(R.string.keluar)) { dialog, _ ->
-                // TODO: Add logout function
-                // Remove session first
+                // TODO: Add logout function, Remove session first
                 viewModel.removeUserLoginSession()
                 dialog.cancel()
                 this@ProfileActivity.finish()
@@ -62,5 +65,10 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
             }
             .setNegativeButton(getString(R.string.batal), null)
             .show()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

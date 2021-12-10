@@ -1,7 +1,6 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.signin
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +9,7 @@ import android.view.LayoutInflater
 import androidx.activity.viewModels
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignInBinding
+import com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword.ForgotPasswordActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,6 +31,10 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
         binding.tvBelumPunyaAkun.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        binding.tvLupaKataSandi.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
 
         binding.btnMasuk.setOnClickListener {

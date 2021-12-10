@@ -1,14 +1,25 @@
 <resources>
     <string name="app_name">Aldokter Grup 3</string>
+
+    <string name="label_ubah">Ubah</string>
+    <string name="label_ubah_data_saya">Ubah Data Saya</string>
+
+    <string name="cd_back_button">Back Button</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="nomor_ktp">Nomor KTP</string>
+    <string name="alamat">Alamat</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="laki_laki">Laki-laki</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="data_saya">Data Saya</string>
     <string name="email">E-mail</string>
     <string name="masuk">MASUK</string>
     <string name="daftar">DAFTAR</string>
     <string name="laki">Laki-laki</string>
-    <string name="perempuan">Peremuan</string>
     <string name="belum_punya_akun">Belum punya akun? <b>Daftar sekarang</b></string>
     <string name="kata_sandi">Kata sandi</string>
     <string name="konfirmasi_kata_sandi">Konfirmasi kata sandi</string>
-    <string name="nama_lengkap">Nama Lengkap</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="lupa_kata_sandi">Lupa kata sandi</string>
     <string name="sign_in">Masuk dan mulai buat janji \ndengan dokter</string>
@@ -24,7 +35,6 @@
     <string name="simpan">Simpan</string>
     <string name="keluar">Keluar</string>
     <string name="ubah_kata_sandi">Ubah Kata Sandi</string>
-    <string name="data_saya">Data Saya</string>
     <string name="akun">Akun</string>
     <string name="batal">Batal</string>
     <string name="konfirmasi_logout">Konfirmasi Logout</string>
@@ -62,20 +72,65 @@
     <string name="profile_logout_confirmation_message">Apakah kamu yakin ingin keluar dari aplikasi?</string>
 
     <!--  Content Description  -->
-    <string name="cd_back_button">Tombol Back</string>
     <string name="cd_foto_profil">Foto Profil</string>
+    <string name="cd_foto_dokter">Foto Dokter</string>
 
     <string name="example_article_title">Sederet Fakta tentang Obat Herbal Hernia</string>
     <string name="example_article_category">Kesehatan</string>
-
     <string name="title_detail_article">Detail Artikel</string>
     <string name="title_daftar">Daftar</string>
     <string name="title_profil_dokter">Profil Dokter</string>
+
+
+    <string name="jasa_konsultasi">Jasa konsultasi: Rp. %1$d</string>
+    <string name="doctor_distance">%1$d Km</string>
+
+    <string name="title_choose_date">Pilih Jadwal</string>
+    <string name="title_fill_data">Isi Data Pasien</string>
+    <string name="title_confirmation_data">Konfirmasi Data</string>
+
+    <string name="text_chosen_doctor">Dokter Pilihan Anda</string>
+    <string name="image_doctor_face">Image Doctor Face</string>
+    <string name="text_doctor_name">Dr. Budi</string>
+    <string name="text_doctor_specialist">Spesialis Tulang</string>
+    <string name="text_helper_practice_location">Lokasi Praktik</string>
+    <string name="text_practice_location">Rs. Siloam</string>
+    <string name="text_next">selanjutnya</string>
+    <string name="text_helper_choose_practice_date">Pilih tanggal praktik</string>
+    <string name="text_choose_practice_date">10/20/2021</string>
+    <string name="text_helper_practice_hour">Pilih jam praktik</string>
+    <string name="image_choose_date">Image Choose Date</string>
+    <string name="text_target_booking">Pesan Untuk</string>
+    <string name="text_patient_self">Diri Sendiri</string>
+    <string name="text_patient_family">Anggota Keluarga/Orang lain</string>
+    <string name="text_helper_check_status">Apakah pasien sudah pernah berobat di Rumah Sakit ini ?</string>
+    <string name="text_ever_been">Sudah Pernah</string>
+    <string name="text_not_yet">Belum Pernah</string>
+    <string name="text_patient_data">Data Pasien</string>
+    <string name="text_patient_name">Value Nama Lengkap</string>
+    <string name="text_helper_patient_phone">Nomor Ponsel</string>
+    <string name="text_patient_phone">Value Nomor Ponsel</string>
+    <string name="text_patient_birth_date">Value Tanggal Lahir</string>
+    <string name="text_patient_gender">Value Jenis Kelamin</string>
+    <string name="text_patient_identity_card">Value Nomor KTP</string>
+    <string name="text_patient_address">Value Alamat</string>
+    <string name="text_make_promise">Buat Janji</string>
+    <string name="message_password_blank_error">Password tidak boleh kosong</string>
+    <string name="message_reset_success">Kata sandi berhasil diperbaharui</string>
+
+    <string name="header_api">Bearer %1$s</string>
 
     <string-array name="category_array">
         <item>Trending</item>
         <item>Hidup Sehat</item>
         <item>Keluarga</item>
         <item>Kesehatan</item>
+    </string-array>
+
+    <string-array name="practice_hour_array">
+        <item>13.00 - 15.00</item>
+        <item>16.00 - 17.00</item>
+        <item>18.00 - 19.00</item>
+        <item>19.00 - 22.00</item>
     </string-array>
 </resources>
