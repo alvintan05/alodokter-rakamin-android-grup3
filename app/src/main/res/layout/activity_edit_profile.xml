@@ -108,7 +108,6 @@
         android:layout_marginStart="@dimen/spacing_10"
         android:layout_marginTop="@dimen/spacing_4"
         android:layout_marginEnd="@dimen/spacing_10"
-        android:hint="@string/tanggal_lahir"
         android:textColorHint="@color/ternary_font"
         app:boxCornerRadiusBottomEnd="@dimen/spacing_10"
         app:boxCornerRadiusBottomStart="@dimen/spacing_10"
@@ -116,7 +115,7 @@
         app:boxCornerRadiusTopStart="@dimen/spacing_10"
         app:boxStrokeColor="@color/color_primary"
         app:hintAnimationEnabled="false"
-        app:hintEnabled="true"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_tanggal_lahir">
@@ -126,6 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_date_grey_24"
+            android:focusableInTouchMode="false"
+            android:longClickable="false"
             android:enabled="false"
             android:focusable="false"
             android:maxLines="1" />
