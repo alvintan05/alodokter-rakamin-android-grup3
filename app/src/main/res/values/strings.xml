@@ -79,6 +79,7 @@
     <string name="example_article_category">Kesehatan</string>
     <string name="title_detail_article">Detail Artikel</string>
     <string name="title_daftar">Daftar</string>
+    <string name="title_profil_dokter">Profil Dokter</string>
 
 
     <string name="jasa_konsultasi">Jasa konsultasi: Rp. %1$d</string>
