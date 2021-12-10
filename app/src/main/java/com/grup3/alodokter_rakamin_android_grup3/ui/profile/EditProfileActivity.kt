@@ -2,6 +2,7 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.profile
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -30,11 +31,12 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
             updateLable(myCalendar)
         }
 
-        binding.tilTanggalLahir.setOnClickListener {
+        binding.edtTanggalLahir.inputType = InputType.TYPE_NULL
+
+        binding.edtTanggalLahir.setOnClickListener {
             DatePickerDialog(
                 this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                myCalendar.get(Calendar.DAY_OF_MONTH)
-            )
+                myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }
 
     }
@@ -45,7 +47,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
     }
 
     private fun updateLable(myCalendar: Calendar) {
-        val myFormat = "dd-mm-yyyy"
+        val myFormat = "dd-MM-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.UK)
         binding.edtTanggalLahir.setText(sdf.format(myCalendar.time).toString())
     }
