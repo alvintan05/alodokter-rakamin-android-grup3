@@ -4,11 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignInBinding
+import com.grup3.alodokter_rakamin_android_grup3.models.Resource
+import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword.ForgotPasswordActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,9 +43,34 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
         binding.btnMasuk.setOnClickListener {
             // Change Later with API Function
-            viewModel.saveUserLoginSession()
-            finish()
+            signInUser()
         }
+    }
+
+    private fun signInUser() {
+        viewModel.signInUser(
+            LoginBody("budi@gmail.com", "123456")
+        )
+        viewModel.loading.observe(this, {
+            if (it) {
+                Log.d("Sign In", "Loading...")
+            } else {
+                Log.d("Sign In", "Loading Stop...")
+            }
+        })
+
+        viewModel.userResult.observe(this, { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    Log.d("Sign In", "Success")
+                    viewModel.saveUserLoginSession()
+                    finish()
+                }
+                else ->{
+                    Log.d("Sign In", "Error")
+                }
+            }
+        })
     }
 
     private fun setupKataSandiListener() {
