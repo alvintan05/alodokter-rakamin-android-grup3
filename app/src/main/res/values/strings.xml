@@ -120,6 +120,14 @@
 
     <string name="header_api">Bearer %1$s</string>
 
+    <string name="progress_title">Harap Tunggu …</string>
+    <string name="response_success">success</string>
+    <string name="response_error">Error Please Try Again</string>
+    <string name="response_login_error">Password atau Email salah</string>
+    <string name="message_password_less_than_six">Password tidak boleh kurang dari 6 karakter</string>
+    <string name="message_fix_input_data">Harap perbaiki data yang dimasukkan</string>
+    <string name="message_update_data_success">Data berhasil diperbarui</string>
+
     <string-array name="category_array">
         <item>Trending</item>
         <item>Hidup Sehat</item>
