@@ -16,4 +16,9 @@ interface RemoteDataSource {
         id: Int
     ): Resource<UserEntity>
 
+    suspend fun getDetailProfile(
+        token: String,
+        id: Int
+    ): Resource<UserEntity>
+
 }

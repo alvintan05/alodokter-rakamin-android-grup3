@@ -44,7 +44,9 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
 
     private fun showData() {
         // TODO: Get data from API / Shared Pref
-        binding.tvUserName.text = "Dummy Name"
+//        binding.tvUserName.text = "Dummy Name"
+
+
 
         Glide.with(this)
             .load("https://image.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg")

@@ -13,10 +13,11 @@ import retrofit2.http.*
 
 
 interface Endpoint {
-    @GET("user/{:id}")
+    @GET("users/{id}")
     suspend fun getDetailProfile(
-        @Path("id") string id
-    )
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ) : Response<ApiResponse<UserEntity>>
 
     @POST("users/login")
     suspend fun signInUser(
