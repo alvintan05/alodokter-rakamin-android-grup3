@@ -11,8 +11,9 @@ interface Interactor {
     suspend fun signInUser(loginBody: LoginBody): Resource<SignInEntity>
 
     suspend fun editProfile(
+        token: String,
         editProfileBody: EditProfileBody,
-        id: String
+        id: Int
     ): Resource<UserEntity>
 
 }

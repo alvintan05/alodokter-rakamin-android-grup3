@@ -29,10 +29,11 @@ class RemoteRepository @Inject constructor(
     }
 
     override suspend fun editProfile(
+        token: String,
         editProfileBody: EditProfileBody,
-        id: String
+        id: Int
     ): Resource<UserEntity> {
-        val response = endpoint.editProfile(editProfileBody, id)
+        val response = endpoint.editProfile(token, editProfileBody, id)
         val responseData = response.body()
 
         return if (response.isSuccessful && responseData != null) {

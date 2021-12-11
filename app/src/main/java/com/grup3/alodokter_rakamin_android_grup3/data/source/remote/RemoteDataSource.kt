@@ -10,6 +10,10 @@ interface RemoteDataSource {
 
     suspend fun signInUser(loginBody: LoginBody): Resource<SignInEntity>
 
-    suspend fun editProfile(editProfileBody: EditProfileBody, id: String): Resource<UserEntity>
+    suspend fun editProfile(
+        token: String,
+        editProfileBody: EditProfileBody,
+        id: Int
+    ): Resource<UserEntity>
 
 }

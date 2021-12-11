@@ -16,8 +16,9 @@ class InteractorImpl @Inject constructor(
         remoteRepository.signInUser(loginBody)
 
     override suspend fun editProfile(
+        token: String,
         editProfileBody: EditProfileBody,
-        id: String
-    ): Resource<UserEntity> = remoteRepository.editProfile(editProfileBody, id)
+        id: Int
+    ): Resource<UserEntity> = remoteRepository.editProfile(token, editProfileBody, id)
 
 }

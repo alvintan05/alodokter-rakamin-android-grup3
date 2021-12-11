@@ -18,16 +18,20 @@ class ProfileViewModel @Inject constructor(
     private val repository: RemoteRepository
 ) : ViewModel() {
 
-    private var _loading = MutableLiveData(false)
     val loading get() = _loading
-
-    private var _userResult = MutableLiveData<Resource<UserEntity>>()
     val userResult get() = _userResult
 
-    fun editProfile(editProfileBody: EditProfileBody, id: String) {
+    private var _loading = MutableLiveData(false)
+    private var _userResult = MutableLiveData<Resource<UserEntity>>()
+
+    fun editProfile(editProfileBody: EditProfileBody) {
         _loading.value = true
         viewModelScope.launch {
-            val result = repository.editProfile(editProfileBody, id)
+            val result = repository.editProfile(
+                prefsStoreImpl.getUserToken(),
+                editProfileBody,
+                prefsStoreImpl.getUserId()
+            )
             _userResult.value = result
             _loading.value = false
         }

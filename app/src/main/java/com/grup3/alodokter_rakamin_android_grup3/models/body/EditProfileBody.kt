@@ -3,14 +3,14 @@ package com.grup3.alodokter_rakamin_android_grup3.models.body
 import com.google.gson.annotations.SerializedName
 
 data class EditProfileBody(
-    val email: String,
-    @SerializedName("firstname") val firstName: String,
-    @SerializedName("lastname") val lastName: String,
+    val email: String? = null,
+    @SerializedName("firstname") val firstName: String? = null,
+    @SerializedName("lastname") val lastName: String? = null,
     @SerializedName("birthdate")
-    val birthDate: String,
-    val gender: String,
-    val phone: String,
-    @SerializedName("identity") val identityNumber: String,
-    val address: String,
-    val city: String
+    val birthDate: String? = null,
+    val gender: String? = null,
+    val phone: String? = null,
+    @SerializedName("identity") val identityNumber: String? = null,
+    val address: String? = null,
+    val city: String? = null
 )
