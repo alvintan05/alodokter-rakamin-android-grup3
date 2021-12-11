@@ -122,6 +122,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         sbEditProfile.show()
     }
 
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

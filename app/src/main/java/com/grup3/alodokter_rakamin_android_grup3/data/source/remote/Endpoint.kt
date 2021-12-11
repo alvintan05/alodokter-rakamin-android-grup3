@@ -28,4 +28,5 @@ interface Endpoint {
         @Body editProfileBody: EditProfileBody,
         @Path("id") id: Int
     ): Response<ApiResponse<UserEntity>>
+
 }
