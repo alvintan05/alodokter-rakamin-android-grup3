@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.index.doctor.ProfilDokterActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_profil_dokter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/spacing_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/iv_foto_dokter"
+        android:layout_width="@dimen/spacing_64"
+        android:layout_height="@dimen/spacing_64"
+        android:layout_marginStart="@dimen/spacing_40"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:contentDescription="@string/cd_foto_profil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_profil_dokter"
+        tools:src="@drawable/app_logo" />
+
+    <TextView
+        android:id="@+id/tv_nama_dokter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_20"
+        android:fontFamily="@font/lato"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_20"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_foto_dokter"
+        app:layout_constraintStart_toEndOf="@id/iv_foto_dokter"
+        app:layout_constraintTop_toTopOf="@id/iv_foto_dokter"
+        tools:text="Account Name" />
+
+    <TextView
+        android:id="@+id/tv_nama_spesialis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:text="Specilist Name"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_foto_dokter"
+        app:layout_constraintStart_toStartOf="@+id/tv_nama_dokter"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_dokter" />
+
+    <LinearLayout
+        android:id="@+id/ll_jadwal_dokter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_24"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:background="@drawable/ic_bg_layout_white_rounded"
+        android:elevation="@dimen/spacing_4"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_spesialis"
+        tools:layout_editor_absoluteX="24dp">
+
+        <TextView
+            android:id="@+id/tv_judul_lokasi_jadwal_praktik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_10"
+            android:layout_marginStart="@dimen/spacing_15"
+            android:fontFamily="@font/lato"
+            android:text="Lokasi dan jadwal praktik"
+            android:textColor="@color/secondary_font"
+            android:textSize="@dimen/font_18" />
+
+
+        <TextView
+            android:id="@+id/tv_lokasi_praktik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_40"
+            android:text="Rumah Sakit Siloam"
+            android:textSize="@dimen/font_16"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_10"
+                android:text="Hari"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_20"
+                android:gravity="right"
+                android:text="Jadwal Praktik"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey_line" />
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_jadwal_praktik"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            tools:itemCount="5"-->
+<!--            tools:listitem="@layout/item_jadwal_praktik" />-->
+
+        <ListView
+            android:id="@+id/list_jadwal_praktik"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_account"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="@dimen/spacing_24"
+        android:layout_marginTop="@dimen/spacing_20"
+        android:background="@drawable/ic_bg_layout_white_rounded"
+        android:elevation="@dimen/spacing_4"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/ll_jadwal_dokter"
+        tools:layout_editor_absoluteX="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_10"
+            android:layout_marginTop="@dimen/spacing_10"
+            android:fontFamily="@font/lato"
+            android:text="Profil Dokter"
+            android:textSize="@dimen/font_18"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deskripsi_profil_dokter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_10"
+            android:layout_marginTop="@dimen/spacing_10"
+            android:text="Dokter ini adalah dokter spesialis ....." />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_buat_janji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_40"
+        android:layout_marginEnd="@dimen/spacing_40"
+        android:backgroundTint="@color/color_accent"
+        android:text="Buat janji"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_account" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

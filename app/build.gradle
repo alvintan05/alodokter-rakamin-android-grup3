@@ -4,6 +4,7 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id
 }
 
 android {
@@ -67,10 +68,31 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:2.38.1"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+    implementation 'androidx.datastore:datastore-core:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:2.38.1"
 
     // Pagination
     implementation "androidx.paging:paging-runtime-ktx:3.1.0"
+
+    // ViewPager
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'com.tbuonomo:dotsindicator:4.2'
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    // Image Slider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+
+    // PinView
+    implementation 'io.github.chaosleung:pinview:1.4.4'
+
+    // Location
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    // Step Progress
+    implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
