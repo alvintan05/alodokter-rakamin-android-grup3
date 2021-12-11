@@ -3,20 +3,30 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.profile
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
+import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.RemoteRepository
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfileBinding
+import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.ui.profile.changepassword.ChangePasswordActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
 
     private val viewModel: ProfileViewModel by viewModels()
+    private lateinit var loadingDialog: AlertDialog
+    private lateinit var sbProfile : Snackbar
+
+
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfileBinding =
         ActivityProfileBinding.inflate(layoutInflater)
@@ -24,8 +34,11 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val id = intent.getStringExtra("id")
+
+        id?.let { showData(it) }
         setupToolbar()
-        showData()
+        setupAlertDialog()
 
         binding.btnMyData.setOnClickListener {
             startActivity(Intent(this, DetailProfileActivity::class.java))
@@ -34,6 +47,19 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
             startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
         binding.btnSignOut.setOnClickListener { showLogoutConfirmation() }
+
+        viewModel.userResult.observe(this, { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    val data = resource.data
+                    data?.let { Log.d("RESPONEAPA", it.toString())}
+
+                }
+                is Resource.Error -> {
+                    resource.error?.let {setupSnackbar(it)}
+                }
+            }
+        })
     }
 
     private fun setupToolbar() {
@@ -42,14 +68,41 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun showData() {
-        // TODO: Get data from API / Shared Pref
-        binding.tvUserName.text = "Dummy Name"
+    private fun setupSnackbar(message: String) {
+        sbProfile = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+            .setBackgroundTint(ContextCompat.getColor(this, R.color.error))
+        sbProfile.show()
+    }
 
-        Glide.with(this)
+    private fun setupAlertDialog() {
+        loadingDialog = AlertDialog.Builder(this)
+            .setCancelable(false)
+            .setView(R.layout.custom_progress_dialog)
+            .create()
+    }
+
+    private fun showData(id: String) {
+        // TODO: Get data from API / Shared Pref
+    //    binding.tvUserName.text = "Dummy Name"
+
+        viewModel.getDetailProfile(id)
+
+
+        viewModel.loading.observe(this, {
+            if (it) {
+                loadingDialog.show()
+            } else {
+                loadingDialog.dismiss()
+            }
+        })
+
+
+
+
+        /*Glide.with(this)
             .load("https://image.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg")
             .circleCrop()
-            .into(binding.ivProfilePicture)
+            .into(binding.ivProfilePicture)*/
     }
 
     private fun showLogoutConfirmation() {
@@ -71,4 +124,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
         onBackPressed()
         return true
     }
+
+
+
 }
