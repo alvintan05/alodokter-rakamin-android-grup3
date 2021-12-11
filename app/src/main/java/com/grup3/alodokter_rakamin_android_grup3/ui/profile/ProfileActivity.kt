@@ -36,6 +36,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
 
         setupToolbar()
         setupAlertDialog()
+        showData()
 
         binding.btnMyData.setOnClickListener {
             startActivity(Intent(this, DetailProfileActivity::class.java))
@@ -78,12 +79,12 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
             .create()
     }
 
-    private fun showData(id: String) {
+    private fun showData() {
         // TODO: Get data from API / Shared Pref
-        /*Glide.with(this)
+        Glide.with(this)
             .load("https://image.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg")
             .circleCrop()
-            .into(binding.ivProfilePicture)*/
+            .into(binding.ivProfilePicture)
     }
 
     private fun showLogoutConfirmation() {
