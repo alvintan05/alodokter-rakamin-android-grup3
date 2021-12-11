@@ -9,6 +9,7 @@ import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
 
 class RemoteRepository @Inject constructor(
     private val endpoint: Endpoint,
@@ -27,6 +28,21 @@ class RemoteRepository @Inject constructor(
             Resource.Error(message = context.resources.getString(R.string.response_error))
         }
     }
+
+    override suspend fun signUpUser(registerBody: RegisterBody): Resource<UserEntity> {
+        val response = endpoint.signUpUser(registerBody)
+        val responseData = response.body()
+
+        return if (response.isSuccessful && responseData != null) {
+            Resource.Success(responseData.data)
+        } else if (response.code() == 401) {
+            Resource.Error(message = "Gagal Daftar, isi data yang benar")
+        } else {
+            Resource.Error(message = context.resources.getString(R.string.response_error))
+        }
+    }
+
+
 
     override suspend fun editProfile(
         token: String,

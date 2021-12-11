@@ -23,7 +23,6 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var loadingDialog: AlertDialog
-    private lateinit var sbSignIn: Snackbar
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivitySignInBinding =
         ActivitySignInBinding.inflate(layoutInflater)
@@ -44,6 +43,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
         }
 
         binding.btnMasuk.setOnClickListener {
+            hideKeyboard()
             checkInput()
         }
 
@@ -59,7 +59,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
                     finish()
                 }
                 is Resource.Error -> {
-                    resource.error?.let { setupSnackbar(it) }
+                    resource.error?.let { setupSnackbarError(it) }
                 }
             }
         })
@@ -100,12 +100,6 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
             .create()
     }
 
-    private fun setupSnackbar(message: String) {
-        sbSignIn = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-            .setBackgroundTint(ContextCompat.getColor(this, R.color.error))
-        sbSignIn.show()
-    }
-
     private fun signInUser(email: String, password: String) {
         viewModel.signInUser(LoginBody(email, password))
 
@@ -120,34 +114,6 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
     }
 
-//    private fun setupKataSandiListener() {
-//        binding.etKataSandi.doAfterTextChanged {
-//            val inputKataSandi = it.toString().trim()
-//            when {
-//                inputKataSandi.isEmpty() -> {
-//                    binding.tlKataSandi.error = "Kata sandi tidak boleh kosong"
-//                }
-//            }
-//        }
-//    }
-
-//    private fun setupEmailListener() {
-//        binding.etEmail.doAfterTextChanged {
-//            val inputEmail = it.toString().trim()
-//            when {
-//                inputEmail.isEmpty() -> {
-//                    binding.tlEmail.error = "Email tidak boleh kosong"
-//                }
-//                Patterns.EMAIL_ADDRESS.matcher(inputEmail).matches() -> {
-//                    binding.tlEmail.isErrorEnabled = false
-//                }
-//                else -> {
-//                    binding.tlEmail.error = "Format email salah"
-//                }
-//            }
-//        }
-//    }
-
     private fun checkInput() {
         val email = binding.etEmail.text.toString().trim()
         val password = binding.etKataSandi.text.toString().trim()
@@ -155,7 +121,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
         if (viewModel.checkInput(email, password)) {
             signInUser(email, password)
         } else {
-            setupSnackbar(resources.getString(R.string.message_fix_input_data))
+            setupSnackbarError(resources.getString(R.string.message_fix_input_data))
         }
     }
 }
