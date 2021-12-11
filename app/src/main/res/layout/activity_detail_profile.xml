@@ -46,14 +46,14 @@
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginVertical="@dimen/spacing_5"
+                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/profile_picture"
                 android:fontFamily="@font/lato_bold"
                 android:includeFontPadding="false"
-                tools:text="Account Name"
                 android:textColor="@color/primary_font"
-                android:textSize="@dimen/font_14" />
+                android:textSize="@dimen/font_14"
+                tools:text="Account Name" />
 
             <TextView
                 android:id="@+id/tv_nomor_telpon"
@@ -96,11 +96,11 @@
                 android:id="@+id/tv_tanggal_lahir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_10"
                 android:layout_below="@id/tv_label_tanggal_lahir"
-                tools:text="Tanggal Lahir"
+                android:layout_marginStart="@dimen/spacing_10"
                 android:textColor="@color/primary_font"
-                android:textSize="@dimen/font_14" />
+                android:textSize="@dimen/font_14"
+                tools:text="Tanggal Lahir" />
 
             <TextView
                 android:id="@+id/tv_label_nomor_ktp"
@@ -119,9 +119,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_label_nomor_ktp"
                 android:layout_marginStart="@dimen/spacing_10"
-                tools:text="3661445297123456"
                 android:textColor="@color/primary_font"
-                android:textSize="@dimen/font_14" />
+                android:textSize="@dimen/font_14"
+                tools:text="3661445297123456" />
 
             <TextView
                 android:id="@+id/tv_label_alamat"
@@ -138,11 +138,11 @@
                 android:id="@+id/tv_alamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_10"
                 android:layout_below="@id/tv_label_alamat"
-                tools:text="Jl. JendralSudirman"
+                android:layout_marginStart="@dimen/spacing_10"
                 android:textColor="@color/primary_font"
-                android:textSize="@dimen/font_14" />
+                android:textSize="@dimen/font_14"
+                tools:text="Jl. JendralSudirman" />
 
         </RelativeLayout>
 

@@ -14,6 +14,7 @@ import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignInBindi
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword.ForgotPasswordActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,7 +51,11 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
             when (resource) {
                 is Resource.Success -> {
                     val data = resource.data
-                    data?.let { viewModel.saveUserLoginSession(it.id, it.token) }
+                    data?.let { viewModel.saveUserLoginSession(it.id, it.token)
+                        val intent = Intent(this, ProfileActivity::class.java)
+                        intent.putExtra("id", it.id)
+                        startActivity(intent)
+                    }
                     finish()
                 }
                 is Resource.Error -> {

@@ -37,6 +37,18 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    fun getDetailProfile(){
+        _loading.value = true
+        viewModelScope.launch {
+            val result = repository.getDetailProfile(
+                prefsStoreImpl.getUserToken(),
+                prefsStoreImpl.getUserId()
+            )
+            _userResult.value = result
+            _loading.value = false
+        }
+    }
+
     fun removeUserLoginSession() {
         viewModelScope.launch {
             prefsStoreImpl.deleteLoginSessionData()

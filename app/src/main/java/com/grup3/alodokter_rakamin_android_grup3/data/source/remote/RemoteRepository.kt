@@ -63,4 +63,21 @@ class RemoteRepository @Inject constructor(
         }
     }
 
+    override suspend fun getDetailProfile(
+        token: String,
+        id: Int
+    ): Resource<UserEntity> {
+        val response = endpoint.getDetailProfile(token, id)
+        val responseData = response.body()
+
+        return if (response.isSuccessful && responseData != null) {
+            if (response.body()?.message == "success") {
+                Resource.Success(responseData.data)
+            } else {
+                Resource.Error(responseData.message)
+            }
+        } else {
+            Resource.Error("Error, please try again")
+        }
+    }
 }

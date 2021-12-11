@@ -15,6 +15,7 @@ import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityEditProfileBinding
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +29,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
     private lateinit var dateFormatter: SimpleDateFormat
     private lateinit var datePicker: DatePickerDialog
     private lateinit var calendar: Calendar
+    private var userData : UserEntity? = null
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityEditProfileBinding =
         ActivityEditProfileBinding.inflate(layoutInflater)
@@ -37,6 +39,9 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         setSupportActionBar(binding.tbEditProfile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
+        userData = intent.getParcelableExtra<UserEntity>("Profile_Key")
+        userData?.let { initUserData(it) }
         setupAlertDialog()
         setupDatePickerDialog()
 
@@ -126,5 +131,20 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    private fun initUserData(userEntity: UserEntity) {
+        binding.tilName.editText?.setText(userEntity.firstName)
+        binding.tilPhoneNumber.editText?.setText(userEntity.phone)
+        binding.etTanggalLahir.setText(userEntity.birthDate)
+        binding.etNomorKtp.setText(userEntity.identityNumber)
+        binding.etAlamat.setText(userEntity.address)
+
+        val buttonId = if (userEntity.gender == "Laki-laki") {
+            R.id.rb_gender_male
+        } else {
+            R.id.rb_gender_female
+        }
+        binding.rgJenisKelamin.check(buttonId)
     }
 }
