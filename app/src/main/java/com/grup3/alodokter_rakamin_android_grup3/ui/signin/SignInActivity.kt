@@ -51,11 +51,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
             when (resource) {
                 is Resource.Success -> {
                     val data = resource.data
-                    data?.let { viewModel.saveUserLoginSession(it.id, it.token)
-                        val intent = Intent(this, ProfileActivity::class.java)
-                        intent.putExtra("id", it.id)
-                        startActivity(intent)
-                    }
+                    data?.let { viewModel.saveUserLoginSession(it.id, it.token) }
                     finish()
                 }
                 is Resource.Error -> {
