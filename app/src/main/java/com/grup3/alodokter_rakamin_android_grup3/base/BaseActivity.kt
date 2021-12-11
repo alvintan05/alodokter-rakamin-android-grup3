@@ -10,8 +10,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     protected lateinit var binding: VB
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
         binding = inflateLayout(layoutInflater)
         setContentView(binding.root)
     }
