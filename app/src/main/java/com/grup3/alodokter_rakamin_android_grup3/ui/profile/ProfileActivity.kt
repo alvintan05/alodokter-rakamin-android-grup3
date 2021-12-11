@@ -34,9 +34,6 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val id = intent.getStringExtra("id")
-
-        id?.let { showData(it) }
         setupToolbar()
         setupAlertDialog()
 
@@ -83,22 +80,6 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
 
     private fun showData(id: String) {
         // TODO: Get data from API / Shared Pref
-    //    binding.tvUserName.text = "Dummy Name"
-
-        viewModel.getDetailProfile(id)
-
-
-        viewModel.loading.observe(this, {
-            if (it) {
-                loadingDialog.show()
-            } else {
-                loadingDialog.dismiss()
-            }
-        })
-
-
-
-
         /*Glide.with(this)
             .load("https://image.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg")
             .circleCrop()
