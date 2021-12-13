@@ -15,7 +15,9 @@
         <activity
             android:name=".ui.index.doctor.ProfilDokterActivity"
             android:exported="true"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar" >
+
+        </activity>
 
         <activity android:name=".ui.profile.changepassword.ChangePasswordActivity" />
         <activity

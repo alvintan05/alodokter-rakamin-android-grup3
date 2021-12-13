@@ -2,6 +2,7 @@
     <string name="app_name">Aldokter Grup 3</string>
     <string name="email">E-mail</string>
     <string name="masuk">MASUK</string>
+    <string name="tv_masuk">Masuk</string>
     <string name="daftar">DAFTAR</string>
     <string name="laki">Laki-laki</string>
     <string name="perempuan">Peremuan</string>
@@ -71,6 +72,8 @@
     <string name="title_detail_article">Detail Artikel</string>
     <string name="title_daftar">Daftar</string>
     <string name="title_profil_dokter">Profil Dokter</string>
+    <string name="harap_login_terlebih_dahulu">Harap masuk terlebih dahulu !</string>
+    <string name="nanti">Nanti</string>
 
     <string-array name="category_array">
         <item>Trending</item>
