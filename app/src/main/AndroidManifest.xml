@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
         <activity
-            android:name=".ui.index.doctor.ProfilDokterActivity"
+            android:name=".ui.index.doctor.ProfilDoctorActivity"
             android:exported="true"
             android:theme="@style/NoActionBar" >
 

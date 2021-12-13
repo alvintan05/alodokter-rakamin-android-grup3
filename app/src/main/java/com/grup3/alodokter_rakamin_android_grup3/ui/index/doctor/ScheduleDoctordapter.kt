@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.grup3.alodokter_rakamin_android_grup3.R
 
-class JadwalPraktirDokterAdapter(var mContex: Context, var resources: Int, var items:List<JadwalPraktikDokter>)
-    : ArrayAdapter<JadwalPraktikDokter>(mContex, resources, items){
+class ScheduleDoctordapter(var mContex: Context, var resources: Int, var items:List<ScheduleDoctor>)
+    : ArrayAdapter<ScheduleDoctor>(mContex, resources, items){
 
     override fun getView(position: Int, view: View?, viewGroup: ViewGroup): View {
         val layoutIntflater: LayoutInflater = LayoutInflater.from(mContex)
@@ -18,7 +18,7 @@ class JadwalPraktirDokterAdapter(var mContex: Context, var resources: Int, var i
         val hariPraktik: TextView = view.findViewById(R.id.tv_hari_praktik)
         val jamPraktik: TextView = view.findViewById(R.id.tv_jam_praktik)
 
-        var mItem:JadwalPraktikDokter = items[position]
+        var mItem:ScheduleDoctor = items[position]
         hariPraktik.text = mItem.hari
         jamPraktik.text = mItem.jam
         return view

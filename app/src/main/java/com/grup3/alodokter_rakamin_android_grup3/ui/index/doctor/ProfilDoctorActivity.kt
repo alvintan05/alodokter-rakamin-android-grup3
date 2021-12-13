@@ -7,23 +7,19 @@ import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.viewModels
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
-import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfilDokterBinding
-import com.grup3.alodokter_rakamin_android_grup3.preference.PrefsStoreImpl
-import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
+import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfilDoctorBinding
 import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfilDokterActivity : BaseActivity<ActivityProfilDokterBinding>() {
+class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
 
-    private val viewModel: ProfilDokterViewModel by viewModels()
+    private val viewModel: ProfilDoctorViewModel by viewModels()
     private lateinit var builder: AlertDialog.Builder
-    var user_id = null;
 
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfilDokterBinding = ActivityProfilDokterBinding.inflate(layoutInflater)
+    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfilDoctorBinding = ActivityProfilDoctorBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,20 +32,20 @@ class ProfilDokterActivity : BaseActivity<ActivityProfilDokterBinding>() {
         checkUserLoginStatus()
 
         var listView = binding.listJadwalPraktik
-        var list = mutableListOf<JadwalPraktikDokter>()
+        var list = mutableListOf<ScheduleDoctor>()
 
-        list.add(JadwalPraktikDokter("Senin", "19.00 - 22.00"))
-        list.add(JadwalPraktikDokter("Selasa", "18.00 - 20.00"))
-        list.add(JadwalPraktikDokter("Kamis", "19.00 - 22.00"))
-        list.add(JadwalPraktikDokter("Sabtu", "13.00 - 15.00"))
-        listView.adapter = JadwalPraktirDokterAdapter(this, R.layout.item_jadwal_praktik, list)
+        list.add(ScheduleDoctor("Senin", "19.00 - 22.00"))
+        list.add(ScheduleDoctor("Selasa", "18.00 - 20.00"))
+        list.add(ScheduleDoctor("Kamis", "19.00 - 22.00"))
+        list.add(ScheduleDoctor("Sabtu", "13.00 - 15.00"))
+        listView.adapter = ScheduleDoctordapter(this, R.layout.item_jadwal_praktik, list)
     }
 
     private fun checkUserLogin() {
 
-            val view = View.inflate(this@ProfilDokterActivity, R.layout.custom_alert_dialog_error, null)
+            val view = View.inflate(this@ProfilDoctorActivity, R.layout.custom_alert_dialog_error, null)
 
-            val builder = AlertDialog.Builder(this@ProfilDokterActivity)
+            val builder = AlertDialog.Builder(this@ProfilDoctorActivity)
             builder.setView(view)
 
             val dialog = builder.create()
@@ -57,7 +53,7 @@ class ProfilDokterActivity : BaseActivity<ActivityProfilDokterBinding>() {
             dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
             view.findViewById<TextView>(R.id.tv_yes_login).setOnClickListener {
-                startActivity(Intent(this@ProfilDokterActivity, SignInActivity::class.java))
+                startActivity(Intent(this@ProfilDoctorActivity, SignInActivity::class.java))
             }
 
             view.findViewById<TextView>(R.id.tv_no_login).setOnClickListener {

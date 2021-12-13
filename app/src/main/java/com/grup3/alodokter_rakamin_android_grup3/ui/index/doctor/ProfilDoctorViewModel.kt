@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfilDokterViewModel @Inject constructor(
+class ProfilDoctorViewModel @Inject constructor(
     private val prefsStoreImpl: PrefsStoreImpl
 ): ViewModel() {
 
