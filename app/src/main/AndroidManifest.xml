@@ -15,34 +15,35 @@
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
 
         <activity
+            android:name=".ui.index.doctor.bookhistory.DetailBookingActivity"
+            android:exported="false"
+            android:theme="@style/NoActionBar" />
+        <activity
             android:name=".ui.index.article.search.SearchArticleActivity"
             android:exported="false"
             android:theme="@style/NoActionBar"/>
-        
         <activity
             android:name=".ui.index.doctor.detail.ProfilDoctorActivity"
             android:exported="true"
             android:theme="@style/NoActionBar" />
-
         <activity
             android:name=".ui.forgotpassword.ForgotPasswordActivity"
             android:exported="false"
             android:theme="@style/NoActionBar" />
-      
         <activity
             android:name=".ui.booking.BookingProcessActivity"
             android:exported="true"
-            android:theme="@style/NoActionBar"/>
-
+            android:theme="@style/NoActionBar"></activity>
+        <activity
+            android:name=".ui.index.doctor.bookhistory.ListBookingActivity"
+            android:exported="true">
         <activity
             android:name=".ui.profile.changepassword.ChangePasswordActivity"
             android:theme="@style/NoActionBar" />
-      
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false"
             android:theme="@style/NoActionBar" />
-
         <activity
             android:name=".ui.profile.DetailProfileActivity"
             android:theme="@style/NoActionBar" />
