@@ -1,27 +1,12 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.signup
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
 import android.view.LayoutInflater
-import android.widget.RadioButton
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import androidx.core.widget.doAfterTextChanged
-import com.google.android.material.snackbar.Snackbar
-import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignUpBinding
-import com.grup3.alodokter_rakamin_android_grup3.models.Resource
-import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
-import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
-import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
-import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {

@@ -14,11 +14,11 @@
         android:roundIcon="@mipmap/ic_alodokter_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
-
         <activity
-            android:name=".ui.index.doctor.ProfilDokterActivity"
+            android:name=".ui.index.doctor.ProfilDoctorActivity"
             android:exported="true"
             android:theme="@style/NoActionBar" />
+        </activity>
 
         <activity
             android:name=".ui.forgotpassword.ForgotPasswordActivity"
@@ -27,7 +27,7 @@
         <activity
             android:name=".ui.booking.BookingProcessActivity"
             android:exported="true"
-            android:theme="@style/NoActionBar"></activity>
+                  android:theme="@style/NoActionBar"></activity>
 
         <activity
             android:name=".ui.profile.changepassword.ChangePasswordActivity"
