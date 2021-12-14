@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword
+package com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword.emailconfirmation
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -9,19 +9,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
-import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentForgotPasswordBinding
+import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentEmailConfirmationBinding
 
+class EmailConfirmationFragment : BaseFragment<FragmentEmailConfirmationBinding>() {
 
-class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
+    private lateinit var timer: CountDownTimer
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentForgotPasswordBinding =
-        FragmentForgotPasswordBinding.inflate(inflater, container, false)
+    ): FragmentEmailConfirmationBinding =
+        FragmentEmailConfirmationBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,14 +43,10 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
         binding.btnVerifyOtp.setOnClickListener {
             // TODO: Add OTP verification function here
 
-            val resetPasswordFragment = CreateNewPasswordFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.layout_forgot_password,
-                    resetPasswordFragment
-                )
-                .addToBackStack(null)
-                .commit()
+            timer.cancel()
+            val action =
+                EmailConfirmationFragmentDirections.actionForgotPasswordFragmentToCreateNewPasswordFragment()
+            findNavController().navigate(action)
         }
     }
 
@@ -123,7 +121,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
 
     private fun startOTPResendTimer() {
         binding.tvOtpResendTimer.visibility = View.VISIBLE
-        object : CountDownTimer(60000, 1000) {
+        timer = object : CountDownTimer(60000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 binding.tvOtpResendTimer.text =
@@ -135,5 +133,15 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
                 binding.tvOtpResend.visibility = View.VISIBLE
             }
         }.start()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.pvOtp.text = null
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        timer.cancel()
     }
 }

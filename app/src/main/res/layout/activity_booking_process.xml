@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.booking.BookingProcessActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_booking_process"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/title_choose_date"
+        app:titleTextColor="@color/black" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/booking_state_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_24"
+        android:layout_marginTop="@dimen/spacing_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_booking_process"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_checkStateCompleted="true"
+        app:spb_currentStateDescriptionColor="@color/black"
+        app:spb_currentStateNumber="one"
+        app:spb_descriptionTopSpaceIncrementer="@dimen/spacing_10"
+        app:spb_maxDescriptionLines="2"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="@color/progress_state_background"
+        app:spb_stateDescriptionColor="@color/progress_state_text"
+        app:spb_stateDescriptionSize="@dimen/font_14"
+        app:spb_stateForegroundColor="@color/color_accent"
+        app:spb_stateLineThickness="6dp"
+        app:spb_stateNumberBackgroundColor="@color/progress_state_text"
+        app:spb_stateNumberForegroundColor="@color/white"
+        app:spb_stateSize="30dp" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/booking_fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        android:layout_marginTop="@dimen/spacing_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/booking_state_progress"
+        app:navGraph="@navigation/booking_process_navigation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

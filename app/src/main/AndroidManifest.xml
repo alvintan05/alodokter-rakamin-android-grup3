@@ -3,6 +3,8 @@
     package="com.grup3.alodokter_rakamin_android_grup3">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <application
         android:name=".di.MyApplication"
@@ -13,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
         <activity
-            android:name=".ui.index.doctor.ProfilDoctorActivity"
+            android:name=".ui.index.doctor.ProfilDokterActivity"
             android:exported="true"
-            android:theme="@style/NoActionBar" >
+            android:theme="@style/NoActionBar" />
 
         </activity>
 
@@ -23,6 +25,11 @@
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false"
+            android:theme="@style/NoActionBar" />
+
+        <activity android:name=".ui.profile.DetailProfileActivity"
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".ui.profile.EditProfileActivity"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.index.article.detail.DetailArticleActivity"
