@@ -1,12 +1,20 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.signup
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Patterns
 import android.view.LayoutInflater
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
+import androidx.core.widget.doAfterTextChanged
+import com.google.android.material.snackbar.Snackbar
+import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignUpBinding
+import com.grup3.alodokter_rakamin_android_grup3.models.Resource
+import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
@@ -62,11 +70,12 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 
         binding.etKonfirmasiKataSandi.doAfterTextChanged {
             val password = binding.etKataSandi.text.toString().trim()
-            viewModel.konfirmasiPasswordValidation(password ,it.toString())
+            viewModel.konfirmasiPasswordValidation(password, it.toString())
             viewModel.isKonfirmasiPasswordValid.observe(this, { status ->
                 if (!status) {
                     binding.tlKonfirmasiKataSandi.isErrorEnabled = true
-                    binding.tlKonfirmasiKataSandi.error = "Konfirmasi Kata sandi tidak boleh kurang dari 6 dan harus sama dengan kata sandi"
+                    binding.tlKonfirmasiKataSandi.error =
+                        "Konfirmasi Kata sandi tidak boleh kurang dari 6 dan harus sama dengan kata sandi"
                 } else {
                     binding.tlKonfirmasiKataSandi.isErrorEnabled = false
                 }
@@ -102,10 +111,10 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 //            }
 //        }
 
-        if(viewModel.checkInput(namaLengkap, email, password, konfirmasiPassword)) {
+        if (viewModel.checkInput(namaLengkap, email, password, konfirmasiPassword)) {
 
             signUp()
-       //Toast.makeText(this, "Sukses", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Sukses", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Gagal", Toast.LENGTH_SHORT).show()
         }
@@ -135,48 +144,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
         onBackPressed()
         return true
     }
-
-//    private fun setupKataSandiListener() {
-//        binding.etKataSandi.addTextChangedListener(object: TextWatcher{
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                val inputKataSandi = binding.etKataSandi.text.toString().trim()
-//                when {
-//                    inputKataSandi.isEmpty() -> {
-//                        binding.tlKataSandi.error =  "Kata sandi tidak boleh kosong"
-//                    }
-//                }
-//            }
-//            override fun afterTextChanged(p0: Editable?) {
-//            }
-//        })
-//    }
-
-//    private fun setupEmailListener() {
-//        binding.etEmail.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                val inputEmail = binding.etEmail.text.toString().trim()
-//                when {
-//                    inputEmail.isEmpty() -> {
-//                        binding.tlEmail.error = "Email tidak boleh kosong"
-//                    }
-//                    Patterns.EMAIL_ADDRESS.matcher(inputEmail).matches() -> {
-//                        binding.tlEmail.isErrorEnabled = false
-//                    }
-//                    else -> {
-//                        binding.tlEmail.error = "Format email salah"
-//                    }
-//                }
-//            }
-//            override fun afterTextChanged(p0: Editable?) {
-//            }
-//        })
-//    }
 
     private fun setupAlertDialog() {
         loadingDialog = AlertDialog.Builder(this)
