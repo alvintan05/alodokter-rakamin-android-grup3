@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor
+package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -18,7 +18,7 @@ class ScheduleDoctordapter(var mContex: Context, var resources: Int, var items:L
         val hariPraktik: TextView = view.findViewById(R.id.tv_hari_praktik)
         val jamPraktik: TextView = view.findViewById(R.id.tv_jam_praktik)
 
-        var mItem:ScheduleDoctor = items[position]
+        var mItem: ScheduleDoctor = items[position]
         hariPraktik.text = mItem.hari
         jamPraktik.text = mItem.jam
         return view

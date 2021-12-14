@@ -3,6 +3,7 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
@@ -17,6 +18,7 @@ import com.grup3.alodokter_rakamin_android_grup3.adapters.DoctorRecyclerViewAdap
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentDoctorBinding
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
 
 const val PERMISSION_ID = 1010
 
@@ -152,6 +154,10 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
         val adapter = context?.let { DoctorRecyclerViewAdapter(it) }
         binding.rvDoctor.setHasFixedSize(true)
         binding.rvDoctor.adapter = adapter
+
+        adapter?.onClickListener = {
+            startActivity(Intent(requireActivity(), ProfilDoctorActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

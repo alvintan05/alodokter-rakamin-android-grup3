@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor
+package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

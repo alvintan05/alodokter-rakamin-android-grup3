@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor
+package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +19,8 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
     private val viewModel: ProfilDoctorViewModel by viewModels()
     private lateinit var builder: AlertDialog.Builder
 
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfilDoctorBinding = ActivityProfilDoctorBinding.inflate(layoutInflater)
+    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfilDoctorBinding =
+        ActivityProfilDoctorBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,7 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         supportActionBar?.title = "Profil Dokter"
         builder = AlertDialog.Builder(this)
 
-       // checkUserLogin()
+        // checkUserLogin()
         checkUserLoginStatus()
 
         var listView = binding.listJadwalPraktik
@@ -43,22 +44,22 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
 
     private fun checkUserLogin() {
 
-            val view = View.inflate(this@ProfilDoctorActivity, R.layout.custom_alert_dialog_error, null)
+        val view = View.inflate(this@ProfilDoctorActivity, R.layout.custom_alert_dialog_error, null)
 
-            val builder = AlertDialog.Builder(this@ProfilDoctorActivity)
-            builder.setView(view)
+        val builder = AlertDialog.Builder(this@ProfilDoctorActivity)
+        builder.setView(view)
 
-            val dialog = builder.create()
-            dialog.show()
-            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        val dialog = builder.setCancelable(false).create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-            view.findViewById<TextView>(R.id.tv_yes_login).setOnClickListener {
-                startActivity(Intent(this@ProfilDoctorActivity, SignInActivity::class.java))
-            }
+        view.findViewById<TextView>(R.id.tv_yes_login).setOnClickListener {
+            startActivity(Intent(this@ProfilDoctorActivity, SignInActivity::class.java))
+        }
 
-            view.findViewById<TextView>(R.id.tv_no_login).setOnClickListener {
-                finish()
-            }
+        view.findViewById<TextView>(R.id.tv_no_login).setOnClickListener {
+            finish()
+        }
     }
 
     private fun checkUserLoginStatus() {

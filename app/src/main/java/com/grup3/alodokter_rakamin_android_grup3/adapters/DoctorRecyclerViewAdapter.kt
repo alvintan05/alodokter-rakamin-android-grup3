@@ -11,6 +11,8 @@ import com.grup3.alodokter_rakamin_android_grup3.databinding.ItemDoctorBinding
 class DoctorRecyclerViewAdapter(val context: Context) :
     RecyclerView.Adapter<DoctorRecyclerViewAdapter.ViewHolder>() {
 
+    var onClickListener: ((item: Any?) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ItemDoctorBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
@@ -29,6 +31,10 @@ class DoctorRecyclerViewAdapter(val context: Context) :
                 .load("https://image.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg")
                 .circleCrop()
                 .into(binding.ivDoctor)
+
+            binding.root.setOnClickListener {
+                onClickListener?.invoke(null)
+            }
         }
     }
 
