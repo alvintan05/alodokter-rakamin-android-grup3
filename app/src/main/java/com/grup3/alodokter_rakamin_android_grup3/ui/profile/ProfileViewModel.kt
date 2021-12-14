@@ -54,5 +54,4 @@ class ProfileViewModel @Inject constructor(
             prefsStoreImpl.deleteLoginSessionData()
         }
     }
-
 }

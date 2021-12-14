@@ -29,8 +29,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         setupAlertDialog()
 
         setSupportActionBar(binding.tbDaftar)
@@ -103,20 +101,12 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
         val password = binding.etKataSandi.text.toString().trim()
         val konfirmasiPassword = binding.etKonfirmasiKataSandi.text.toString().trim()
 
-        //cek jenis kelamin
-//        binding.rgJenisKelamin.setOnCheckedChangeListener { radioGroup, i ->
-//            var rb: RadioButton = findViewById<RadioButton>(i)
-//            if (rb != null){
-//                val jenisKelamin = rb.text.toString()
-//            }
-//        }
+        val isCheckedGender = binding.rbLaki.isChecked || binding.rbPerempuan.isChecked
 
-        if (viewModel.checkInput(namaLengkap, email, password, konfirmasiPassword)) {
-
+        if (viewModel.checkInput(namaLengkap, email, password, konfirmasiPassword) && isCheckedGender) {
             signUp()
-            //Toast.makeText(this, "Sukses", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Gagal", Toast.LENGTH_SHORT).show()
+            setupSnackbarError(resources.getString(R.string.message_fix_input_data))
         }
     }
 
@@ -133,7 +123,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
         val rbGender = findViewById<RadioButton>(binding.rgJenisKelamin.checkedRadioButtonId)
         return RegisterBody(
             email = binding.etEmail.text.toString(),
-            firstName = binding.etNamaLengkap.text.toString(),
+            fullname = binding.etNamaLengkap.text.toString(),
             password = binding.etKataSandi.text.toString(),
             gender = rbGender?.text.toString(),
         )

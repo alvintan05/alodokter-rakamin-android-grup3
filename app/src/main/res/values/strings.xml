@@ -10,14 +10,14 @@
     <string name="alamat">Alamat</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="nomor_telepon">Nomor Telepon</string>
-    <string name="laki_laki">Laki-laki</string>
-    <string name="perempuan">Perempuan</string>
+    <string name="laki_laki">Pria</string>
+    <string name="perempuan">Wanita</string>
     <string name="data_saya">Data Saya</string>
     <string name="email">E-mail</string>
     <string name="masuk">MASUK</string>
     <string name="tv_masuk">Masuk</string>
     <string name="daftar">DAFTAR</string>
-    <string name="laki">Laki-laki</string>
+    <string name="laki">Pria</string>
     <string name="belum_punya_akun">Belum punya akun? <b>Daftar sekarang</b></string>
     <string name="kata_sandi">Kata sandi</string>
     <string name="konfirmasi_kata_sandi">Konfirmasi kata sandi</string>
@@ -137,6 +137,7 @@
     <string name="text_location_and_time">Lokasi dan waktu</string>
     <string name="text_booking_date_time">Senin, 06 Desember 2021 15:00</string>
     <string name="title_list_booking_toolbar">Janji Saya</string>
+    <string name="image_user">Image User</string>
 
     <string-array name="category_array">
         <item>Trending</item>
