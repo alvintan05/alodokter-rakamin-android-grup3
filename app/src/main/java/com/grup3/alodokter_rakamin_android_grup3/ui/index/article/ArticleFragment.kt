@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.adapters.ArticleRecyclerViewAdapter
@@ -14,6 +15,7 @@ import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentArticleBind
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SampleArticleSliderItem
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail.DetailArticleActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.search.SearchArticleActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
@@ -37,6 +39,26 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         setupArticleSlider()
         setupSpinner()
         setupArticleList()
+
+
+        binding.svSearchArticle.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                // make a server call
+                return false
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                val intent = Intent(requireActivity(),SearchArticleActivity::class.java)
+                intent.putExtra("query", p0)
+                startActivity(intent)
+                //clear the input
+                binding.svSearchArticle.setQuery("", false)
+                //clear focus and keyboard
+                binding.svSearchArticle.clearFocus()
+                return false
+            }
+        })
     }
 
     private fun setupArticleSlider() {
@@ -110,6 +132,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.index_article_menu, menu)
     }
 
