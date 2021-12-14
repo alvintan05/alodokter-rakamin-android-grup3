@@ -22,7 +22,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tb_detail_profile"
@@ -34,13 +34,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/background_grey"
-            android:padding="@dimen/spacing_5">
+            android:padding="@dimen/spacing_8">
 
             <ImageView
                 android:id="@+id/profile_picture"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                tools:src="@drawable/app_logo" />
+                tools:src="@drawable/app_logo"
+                android:contentDescription="@string/image_user" />
 
             <TextView
                 android:id="@+id/tv_user_name"
@@ -77,9 +78,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/profile_picture"
                 android:includeFontPadding="false"
-                tools:text="Eamil"
                 android:textColor="@color/primary_font"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="Email" />
 
             <TextView
                 android:id="@+id/tv_label_tanggal_lahir"
@@ -103,10 +104,31 @@
                 tools:text="Tanggal Lahir" />
 
             <TextView
-                android:id="@+id/tv_label_nomor_ktp"
+                android:id="@+id/tv_label_jenis_kelamin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_tanggal_lahir"
+                android:layout_marginTop="@dimen/spacing_20"
+                android:layout_marginStart="@dimen/spacing_10"
+                android:text="@string/jenis_kelamin"
+                android:textColor="@color/primary_font"
+                android:textSize="@dimen/font_12" />
+
+            <TextView
+                android:id="@+id/tv_jenis_kelamin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_label_jenis_kelamin"
+                android:layout_marginStart="@dimen/spacing_10"
+                android:textColor="@color/primary_font"
+                android:textSize="@dimen/font_14"
+                tools:text="Jenis Kelamin" />
+
+            <TextView
+                android:id="@+id/tv_label_nomor_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_jenis_kelamin"
                 android:layout_marginTop="@dimen/spacing_20"
                 android:layout_marginStart="@dimen/spacing_10"
                 android:text="@string/nomor_ktp"
@@ -142,7 +164,7 @@
                 android:layout_marginStart="@dimen/spacing_10"
                 android:textColor="@color/primary_font"
                 android:textSize="@dimen/font_14"
-                tools:text="Jl. JendralSudirman" />
+                tools:text="Jl. Jendral Sudirman" />
 
         </RelativeLayout>
 

@@ -49,17 +49,17 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
                         if (resource.data?.identityNumber == "") "Belum ditambahkan" else resource.data?.identityNumber
                     val address =
                         if (resource.data?.address == "") "Belum ditambahkan" else resource.data?.address
-                    val name = resource.data?.firstName
+                    val name = resource.data?.fullname
                     binding.tvUserName.text = name
                     binding.tvNomorTelpon.text = phoneNumber
                     binding.tvEmail.text = resource.data?.email
+                    binding.tvJenisKelamin.text = resource.data?.gender
                     binding.tvTanggalLahir.text = birthDate
                     binding.tvNomorKtp.text = identityNumber
                     binding.tvAlamat.text = address
                     userData = UserEntity(resource.data?.id,
                         resource.data?.email,
-                        resource.data?.firstName,
-                        resource.data?.lastName,
+                        resource.data?.fullname,
                         resource.data?.birthDate,
                         resource.data?.gender,
                         resource.data?.phone,
