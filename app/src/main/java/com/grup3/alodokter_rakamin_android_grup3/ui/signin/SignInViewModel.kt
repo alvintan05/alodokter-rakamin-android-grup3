@@ -4,6 +4,7 @@ import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.grup3.alodokter_rakamin_android_grup3.data.interactor.InteractorImpl
 import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.RemoteRepository
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
@@ -18,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SignInViewModel @Inject constructor(
     private val prefsStoreImpl: PrefsStoreImpl,
-    private val repository: RemoteRepository
+    private val interactorImpl: InteractorImpl
 ) : ViewModel() {
 
     val loading get() = _loading
@@ -40,7 +41,7 @@ class SignInViewModel @Inject constructor(
     fun signInUser(loginBody: LoginBody) {
         _loading.value = true
         viewModelScope.launch {
-            val result = repository.signInUser(loginBody)
+            val result = interactorImpl.signInUser(loginBody)
             withContext(Dispatchers.Main) {
                 _userResult.value = result
                 _loading.value = false
