@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.signin
+package com.grup3.alodokter_rakamin_android_grup3.ui.signup
 
 import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.RemoteRepository
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
-import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
-import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
-import com.grup3.alodokter_rakamin_android_grup3.preference.PrefsStoreImpl
+import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,31 +15,30 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class SignInViewModel @Inject constructor(
-    private val prefsStoreImpl: PrefsStoreImpl,
+class SignUpViewModel@Inject constructor(
     private val repository: RemoteRepository
-) : ViewModel() {
+) : ViewModel()  {
 
     val loading get() = _loading
     val userResult get() = _userResult
+
+    val isNamaLengkapValid get() = _isNamaLengkapValid
     val isEmailValid get() = _isEmailValid
     val isPasswordValid get() = _isPasswordValid
+    val isKonfirmasiPasswordValid get() = _isKonfirmasiPasswordValid
 
     private var _loading = MutableLiveData(false)
-    private var _userResult: MutableLiveData<Resource<SignInEntity>> = MutableLiveData()
+    private var _userResult: MutableLiveData<Resource<UserEntity>> = MutableLiveData()
+
+    private var _isNamaLengkapValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isEmailValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
+    private var _isKonfirmasiPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun saveUserLoginSession(id: Int, token: String) {
-        viewModelScope.launch {
-            prefsStoreImpl.saveLoginSessionData(id, token)
-        }
-    }
-
-    fun signInUser(loginBody: LoginBody) {
+    fun signUpUser(registerBody: RegisterBody) {
         _loading.value = true
         viewModelScope.launch {
-            val result = repository.signInUser(loginBody)
+            val result = repository.signUpUser(registerBody)
             withContext(Dispatchers.Main) {
                 _userResult.value = result
                 _loading.value = false
@@ -59,6 +57,7 @@ class SignInViewModel @Inject constructor(
         }
     }
 
+
     fun passwordValidation(password: String) {
         when {
             password.length >= 6 -> {
@@ -69,10 +68,25 @@ class SignInViewModel @Inject constructor(
             }
         }
     }
-
-    fun checkInput(email: String, password: String): Boolean {
-        return email.isNotEmpty() && password.isNotEmpty() && isEmailValid.value == true
-                && isPasswordValid.value == true
+    fun konfirmasiPasswordValidation(password: String, konfirmasiPassword: String) {
+        when {
+            konfirmasiPassword.length >= 6 -> {
+                _isKonfirmasiPasswordValid.value = true
+            }
+            password != konfirmasiPassword -> {
+                _isKonfirmasiPasswordValid.value = false
+            }
+            else -> {
+                _isKonfirmasiPasswordValid.value = false
+            }
+        }
     }
 
+    fun checkInput(namaLengkap: String, email: String, password: String, konfirmasiPassword: String ): Boolean {
+        return namaLengkap.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && konfirmasiPassword.isNotEmpty()
+                isNamaLengkapValid.value == true
+                && isEmailValid.value == true
+                && isPasswordValid.value == true
+                && isKonfirmasiPasswordValid.value == true
+    }
 }
