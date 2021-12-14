@@ -81,7 +81,7 @@
     <string name="title_detail_article">Detail Artikel</string>
     <string name="title_daftar">Daftar</string>
     <string name="title_profil_dokter">Profil Dokter</string>
-    <string name="harap_login_terlebih_dahulu">Harap masuk terlebih dahulu !</string>
+    <string name="title_alert_login">Masuk untuk melanjutkan\nproses buat janji</string>
     <string name="nanti">Nanti</string>
 
 

@@ -53,11 +53,11 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         dialog.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        view.findViewById<TextView>(R.id.tv_yes_login).setOnClickListener {
+        view.findViewById<TextView>(R.id.btn_redirect_masuk).setOnClickListener {
             startActivity(Intent(this@ProfilDoctorActivity, SignInActivity::class.java))
         }
 
-        view.findViewById<TextView>(R.id.tv_no_login).setOnClickListener {
+        view.findViewById<TextView>(R.id.btn_nanti).setOnClickListener {
             finish()
         }
     }
