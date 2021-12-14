@@ -21,6 +21,7 @@ import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.DetailBookingActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.ListBookingActivity
 import dagger.hilt.android.AndroidEntryPoint
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
 
 const val PERMISSION_ID = 1010
 
@@ -157,6 +158,10 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
         val adapter = context?.let { DoctorRecyclerViewAdapter(it) }
         binding.rvDoctor.setHasFixedSize(true)
         binding.rvDoctor.adapter = adapter
+
+        adapter?.onClickListener = {
+            startActivity(Intent(requireActivity(), ProfilDoctorActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -27,6 +27,7 @@
     <dimen name="spacing_45">45dp</dimen>
     <dimen name="spacing_48">48dp</dimen>
     <dimen name="spacing_49">49dp</dimen>
+    <dimen name="spacing_50">50dp</dimen>
     <dimen name="spacing_58">58dp</dimen>
     <dimen name="spacing_60">60dp</dimen>
     <dimen name="spacing_63">63dp</dimen>

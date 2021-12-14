@@ -25,6 +25,7 @@
             app:titleEnabled="false">
 
             <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv_search_article"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -33,7 +34,9 @@
                 android:layout_marginHorizontal="@dimen/spacing_15"
                 android:layout_marginBottom="@dimen/spacing_15"
                 android:background="@color/white"
+
                 app:iconifiedByDefault="false"
+                android:imeOptions="actionSearch"
                 app:queryHint="Cari Artikel" />
 
             <androidx.appcompat.widget.Toolbar
