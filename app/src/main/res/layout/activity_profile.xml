@@ -7,67 +7,29 @@
     android:background="@color/background_grey"
     tools:context=".ui.profile.ProfileActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/abl_profile"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_profile"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
-        android:fitsSystemWindows="true"
+        android:elevation="@dimen/spacing_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_profile"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/title_profile"
-            app:titleTextColor="@color/black" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
-
-            <ImageView
-                android:id="@+id/iv_profile_picture"
-                android:layout_width="@dimen/spacing_64"
-                android:layout_height="@dimen/spacing_64"
-                android:layout_marginStart="@dimen/spacing_20"
-                android:contentDescription="@string/cd_foto_profil"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/app_logo" />
-
-            <TextView
-                android:id="@+id/tv_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_20"
-                android:fontFamily="@font/lato"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_20"
-                app:layout_constraintBottom_toBottomOf="@id/iv_profile_picture"
-                app:layout_constraintStart_toEndOf="@id/iv_profile_picture"
-                app:layout_constraintTop_toTopOf="@id/iv_profile_picture"
-                tools:text="Account Name" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/title_profile"
+        app:titleTextColor="@color/black" />
 
     <LinearLayout
         android:id="@+id/ll_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_24"
-        android:layout_marginTop="@dimen/spacing_15"
+        android:layout_marginTop="@dimen/spacing_24"
         android:background="@drawable/ic_bg_layout_white_rounded"
         android:elevation="@dimen/spacing_4"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@+id/abl_profile"
-        app:layout_constraintTop_toBottomOf="@+id/abl_profile">
+        app:layout_constraintStart_toStartOf="@+id/tb_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tb_profile">
 
         <TextView
             android:id="@+id/tv_account_title"
