@@ -44,7 +44,7 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
 
     private fun checkUserLogin() {
 
-        val view = View.inflate(this@ProfilDoctorActivity, R.layout.custom_alert_dialog_error, null)
+        val view = View.inflate(this@ProfilDoctorActivity, R.layout.custom_alert_dialog_login, null)
 
         val builder = AlertDialog.Builder(this@ProfilDoctorActivity)
         builder.setView(view)
@@ -58,12 +58,13 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         }
 
         view.findViewById<TextView>(R.id.btn_nanti).setOnClickListener {
+            dialog.dismiss()
             finish()
         }
     }
 
     private fun checkUserLoginStatus() {
-        if (viewModel.getUserLoginStatus() == false) checkUserLogin()
+        if (!viewModel.getUserLoginStatus()) checkUserLogin()
     }
 
     override fun onSupportNavigateUp(): Boolean {

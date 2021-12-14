@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.index.article
+package com.grup3.alodokter_rakamin_android_grup3.ui.index
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ArticleViewModel @Inject constructor(
+class IndexSharedViewModel @Inject constructor(
     private val prefsStoreImpl: PrefsStoreImpl
 ) : ViewModel() {
 

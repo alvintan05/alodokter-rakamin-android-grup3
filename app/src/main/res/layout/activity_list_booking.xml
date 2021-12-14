@@ -7,14 +7,22 @@
     android:orientation="vertical"
     tools:context=".ui.index.doctor.bookhistory.ListBookingActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/color_primary"
+        app:titleTextColor="@color/white"
+        android:elevation="0dp"
+        android:id="@+id/tb_list_booking"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_height="?attr/actionBarSize"/>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
+        android:background="@color/color_primary"
         app:tabGravity="fill"
-        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorColor="@color/color_accent"
         app:tabIndicatorHeight="2dp"
         app:tabMode="fixed"
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
