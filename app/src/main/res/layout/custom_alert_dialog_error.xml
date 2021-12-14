@@ -7,63 +7,49 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
+        android:layout_height="200dp"
         android:layout_marginStart="@dimen/spacing_40"
-        android:layout_marginEnd="@dimen/spacing_40"
-        android:layout_height="150dp"
-        android:background="@drawable/bg_alert_dialog"
         android:layout_marginTop="@dimen/spacing_20"
+        android:layout_marginEnd="@dimen/spacing_40"
+        android:background="@drawable/bg_alert_dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_error"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="@dimen/spacing_10"
-        android:src="@drawable/ic_error"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_5"
-        android:text="@string/harap_login_terlebih_dahulu"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:text="@string/title_alert_login"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="@dimen/font_18"
+        android:textSize="@dimen/font_24"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/iv_error" />
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-    <TextView
-        android:id="@+id/tv_yes_login"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_redirect_masuk"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_10"
-        android:text="@string/tv_masuk"
-        android:layout_marginStart="@dimen/spacing_30"
-        android:textColor="@color/color_primary"
-        android:textSize="@dimen/font_16"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        android:layout_marginStart="@dimen/spacing_60"
+        android:layout_marginTop="@dimen/spacing_15"
+        android:layout_marginEnd="@dimen/spacing_60"
+        android:text="@string/masuk"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/tv_no_login"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_nanti"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nanti"
-        android:textColor="@color/grey_line"
-        android:textSize="@dimen/font_16"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_yes_login"
-        app:layout_constraintEnd_toEndOf="@+id/iv_error"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/tv_yes_login" />
+        android:textColor="@color/red"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_marginStart="@dimen/spacing_60"
+        android:layout_marginTop="@dimen/spacing_10"
+        android:layout_marginEnd="@dimen/spacing_60"
+        app:layout_constraintTop_toBottomOf="@+id/btn_redirect_masuk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
