@@ -3,7 +3,7 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.profile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.RemoteRepository
+import com.grup3.alodokter_rakamin_android_grup3.data.interactor.InteractorImpl
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val prefsStoreImpl: PrefsStoreImpl,
-    private val repository: RemoteRepository
+    private val interactorImpl: InteractorImpl
 ) : ViewModel() {
 
     val loading get() = _loading
@@ -27,7 +27,7 @@ class ProfileViewModel @Inject constructor(
     fun editProfile(editProfileBody: EditProfileBody) {
         _loading.value = true
         viewModelScope.launch {
-            val result = repository.editProfile(
+            val result = interactorImpl.editProfile(
                 prefsStoreImpl.getUserToken(),
                 editProfileBody,
                 prefsStoreImpl.getUserId()
@@ -40,7 +40,7 @@ class ProfileViewModel @Inject constructor(
     fun getDetailProfile(){
         _loading.value = true
         viewModelScope.launch {
-            val result = repository.getDetailProfile(
+            val result = interactorImpl.getDetailProfile(
                 prefsStoreImpl.getUserToken(),
                 prefsStoreImpl.getUserId()
             )

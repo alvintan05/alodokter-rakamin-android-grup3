@@ -4,6 +4,7 @@ import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.grup3.alodokter_rakamin_android_grup3.data.interactor.InteractorImpl
 import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.RemoteRepository
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
@@ -16,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel@Inject constructor(
-    private val repository: RemoteRepository
+    private val interactorImpl: InteractorImpl
 ) : ViewModel()  {
 
     val loading get() = _loading
@@ -38,7 +39,7 @@ class SignUpViewModel@Inject constructor(
     fun signUpUser(registerBody: RegisterBody) {
         _loading.value = true
         viewModelScope.launch {
-            val result = repository.signUpUser(registerBody)
+            val result = interactorImpl.signUpUser(registerBody)
             withContext(Dispatchers.Main) {
                 _userResult.value = result
                 _loading.value = false
