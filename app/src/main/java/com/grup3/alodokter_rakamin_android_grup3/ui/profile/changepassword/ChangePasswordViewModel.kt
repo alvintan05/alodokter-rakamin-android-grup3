@@ -8,9 +8,11 @@ import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import com.grup3.alodokter_rakamin_android_grup3.preference.PrefsStoreImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ChangePasswordViewModel @Inject constructor(
     private val interactorImpl: InteractorImpl,
     private val prefsStoreImpl: PrefsStoreImpl
@@ -65,12 +67,10 @@ class ChangePasswordViewModel @Inject constructor(
 
     fun confirmationPasswordValidation(password: String, confirmationPassword: String) {
         when {
-            confirmationPassword.length >= 6 -> {
+            confirmationPassword.length >= 6 && password == confirmationPassword -> {
                 _isConfirmationPasswordValid.value = true
             }
-            password != confirmationPassword -> {
-                _isConfirmationPasswordValid.value = false
-            }
+            
             else -> {
                 _isConfirmationPasswordValid.value = false
             }
@@ -86,5 +86,6 @@ class ChangePasswordViewModel @Inject constructor(
                 && isoldPassword.value == true
                 && isPasswordValid.value == true
                 && isConfirmationPasswordValid.value == true
+                && password == confirmationPassword
     }
 }

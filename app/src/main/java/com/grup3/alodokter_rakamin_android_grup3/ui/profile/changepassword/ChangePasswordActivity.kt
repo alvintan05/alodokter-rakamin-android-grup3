@@ -12,7 +12,9 @@ import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityChangePassw
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
 
     private val viewModel : ChangePasswordViewModel by viewModels()
@@ -29,6 +31,8 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
 
         binding.btnUbah.setOnClickListener {
             checkInput()
+
+            hideKeyboard()
         }
 
         binding.etKataSandiLama.doAfterTextChanged {
