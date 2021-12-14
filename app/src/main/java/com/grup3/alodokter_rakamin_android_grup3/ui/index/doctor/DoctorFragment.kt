@@ -3,6 +3,7 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
@@ -17,9 +18,13 @@ import com.grup3.alodokter_rakamin_android_grup3.adapters.DoctorRecyclerViewAdap
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentDoctorBinding
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.DetailBookingActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.ListBookingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
 const val PERMISSION_ID = 1010
 
+@AndroidEntryPoint
 class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -156,5 +161,12 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.index_doctor_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_history) {
+            startActivity(Intent(activity, ListBookingActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

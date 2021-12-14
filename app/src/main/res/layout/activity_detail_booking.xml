@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.index.doctor.bookhistory.DetailBookingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/spacing_48">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_detail_booking"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/white"
+            android:elevation="@dimen/spacing_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/text_detail_booking" />
+
+        <ImageView
+            android:id="@+id/iv_doctor"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="@dimen/spacing_36"
+            android:layout_marginTop="@dimen/spacing_14"
+            android:contentDescription="@string/image_doctor_face"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_detail_booking" />
+
+        <TextView
+            android:id="@+id/tv_doctor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_16"
+            android:layout_marginTop="@dimen/spacing_7"
+            android:fontFamily="@font/lato"
+            android:text="@string/text_doctor_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_14"
+            app:layout_constraintStart_toEndOf="@id/iv_doctor"
+            app:layout_constraintTop_toTopOf="@id/iv_doctor" />
+
+        <TextView
+            android:id="@+id/tv_doctor_specialist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            android:fontFamily="@font/lato"
+            android:text="@string/text_doctor_specialist"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_13"
+            app:layout_constraintStart_toStartOf="@id/tv_doctor_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_doctor_name" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_data_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_27"
+            android:layout_marginTop="@dimen/spacing_15"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_doctor"
+            app:strokeColor="@color/grey_outline_border"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_bg_layout_white_rounded"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/spacing_8"
+                android:paddingEnd="@dimen/spacing_14"
+                android:paddingBottom="@dimen/spacing_17">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_12"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_location_and_time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/tv_doctor_clinic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_11"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_practice_location"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/tv_booking_date_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_booking_date_time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_16" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_data_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_27"
+            android:layout_marginTop="@dimen/spacing_24"
+            android:layout_marginBottom="@dimen/spacing_48"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_data_doctor"
+            app:strokeColor="@color/grey_outline_border"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_bg_layout_white_rounded"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/spacing_7"
+                android:paddingTop="@dimen/spacing_5"
+                android:paddingEnd="@dimen/spacing_14"
+                android:paddingBottom="@dimen/spacing_24">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_patient_data"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_19"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/nama_lengkap"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_patient_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_4"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_patient_name"
+                    android:textColor="@color/grey_outline_border"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_helper_patient_phone"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_patient_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_4"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_patient_phone"
+                    android:textColor="@color/grey_outline_border"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/tanggal_lahir"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_patient_birth_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_4"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_patient_birth_date"
+                    android:textColor="@color/grey_outline_border"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/jenis_kelamin"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_patient_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_4"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_patient_gender"
+                    android:textColor="@color/grey_outline_border"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/nomor_ktp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_patient_identity_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_4"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_patient_identity_card"
+                    android:textColor="@color/grey_outline_border"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_16"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/alamat"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_patient_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_4"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_patient_address"
+                    android:textColor="@color/grey_outline_border"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
