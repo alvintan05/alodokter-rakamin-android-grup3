@@ -33,9 +33,10 @@
         <activity
             android:name=".ui.booking.BookingProcessActivity"
             android:exported="true"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.index.doctor.bookhistory.ListBookingActivity"
+            android:theme="@style/NoActionBar"
             android:exported="true"/>
         <activity
             android:name=".ui.profile.changepassword.ChangePasswordActivity"
