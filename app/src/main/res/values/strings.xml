@@ -144,7 +144,6 @@
     <string name="image_user">Image User</string>
 
     <string-array name="category_array">
-        <item>Trending</item>
         <item>Hidup Sehat</item>
         <item>Keluarga</item>
         <item>Kesehatan</item>
