@@ -3,6 +3,7 @@ package com.grup3.alodokter_rakamin_android_grup3.data.source.remote
 import android.content.Context
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
+import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
@@ -78,6 +79,19 @@ class RemoteRepository @Inject constructor(
             }
         } else {
             Resource.Error("Error, please try again")
+        }
+    }
+
+    override suspend fun changePassword(token: String, changePasswordBody: ChangePasswordBody, id: Int): Resource<UserEntity> {
+        val response = endpoint.changePassword(token, changePasswordBody, id)
+        val responseData = response.body()
+
+        return if (response.isSuccessful && responseData != null) {
+            Resource.Success(responseData.data)
+        } else if (response.code() == 401) {
+            Resource.Error(message = context.resources.getString(R.string.response_change_password_error))
+        } else {
+            Resource.Error(message = context.resources.getString(R.string.response_error))
         }
     }
 }
