@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:name=".di.MyApplication"
         android:allowBackup="true"
@@ -16,6 +15,11 @@
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
 
         <activity
+            android:name=".ui.index.article.search.SearchArticleActivity"
+            android:exported="false"
+            android:theme="@style/NoActionBar"/>
+        
+        <activity
             android:name=".ui.index.doctor.detail.ProfilDoctorActivity"
             android:exported="true"
             android:theme="@style/NoActionBar" />
@@ -24,14 +28,16 @@
             android:name=".ui.forgotpassword.ForgotPasswordActivity"
             android:exported="false"
             android:theme="@style/NoActionBar" />
+      
         <activity
             android:name=".ui.booking.BookingProcessActivity"
             android:exported="true"
-                  android:theme="@style/NoActionBar"/>
+            android:theme="@style/NoActionBar"/>
 
         <activity
             android:name=".ui.profile.changepassword.ChangePasswordActivity"
             android:theme="@style/NoActionBar" />
+      
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false"
@@ -58,6 +64,7 @@
             android:name=".ui.index.IndexActivity"
             android:exported="false"
             android:label="@string/title_activity_index"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
