@@ -82,6 +82,7 @@
     <string name="title_daftar">Daftar</string>
     <string name="title_profil_dokter">Profil Dokter</string>
     <string name="title_alert_login">Masuk untuk melanjutkan\nproses buat janji</string>
+    <string name="title_alert_login_at_profile">Masuk untuk melihat fitur selengkapnya</string>
     <string name="nanti">Nanti</string>
 
 

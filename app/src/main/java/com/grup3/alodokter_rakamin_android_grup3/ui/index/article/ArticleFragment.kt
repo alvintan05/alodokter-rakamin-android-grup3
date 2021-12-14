@@ -4,7 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import com.grup3.alodokter_rakamin_android_grup3.R
@@ -14,6 +15,7 @@ import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentArticleBinding
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SampleArticleSliderItem
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexSharedViewModel
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail.DetailArticleActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.search.SearchArticleActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
@@ -25,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
-    private val viewModel: ArticleViewModel by viewModels()
+    private val viewModel: IndexSharedViewModel by viewModels()
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -49,7 +51,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             }
 
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                val intent = Intent(requireActivity(),SearchArticleActivity::class.java)
+                val intent = Intent(requireActivity(), SearchArticleActivity::class.java)
                 intent.putExtra("query", p0)
                 startActivity(intent)
                 //clear the input
@@ -127,8 +129,32 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         if (viewModel.getUserLoginStatus()) {
             startActivity(Intent(activity, ProfileActivity::class.java))
         } else {
-            startActivity(Intent(activity, SignInActivity::class.java))
+            showLoginDialog()
         }
+    }
+
+    private fun showLoginDialog() {
+        val view = View.inflate(requireActivity(), R.layout.custom_alert_dialog_login, null)
+
+        view.findViewById<TextView>(R.id.tv_alert_title).text =
+            resources.getString(R.string.title_alert_login_at_profile)
+
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setView(view)
+
+        val dialog = builder.setCancelable(false).create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        view.findViewById<TextView>(R.id.btn_redirect_masuk).setOnClickListener {
+            startActivity(Intent(requireActivity(), SignInActivity::class.java))
+            dialog.dismiss()
+        }
+
+        view.findViewById<TextView>(R.id.btn_nanti).setOnClickListener {
+            dialog.dismiss()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
