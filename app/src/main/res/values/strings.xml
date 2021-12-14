@@ -143,6 +143,11 @@
     <string name="title_list_booking_toolbar">Janji Saya</string>
     <string name="image_user">Image User</string>
 
+    <string name="booking_success">Buat Janji Berhasil</string>
+    <string name="booking_success_desc">Terima kasih telah melakukan buat janji dengan dokter</string>
+    <string name="button_back">Kembali</string>
+    <string name="message_alert_cannot_use_back_button">Tolong tekan tombol kembali</string>
+
     <string-array name="category_array">
         <item>Hidup Sehat</item>
         <item>Keluarga</item>
