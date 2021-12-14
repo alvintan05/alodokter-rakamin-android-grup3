@@ -140,7 +140,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         binding.etNomorKtp.setText(userEntity.identityNumber)
         binding.etAlamat.setText(userEntity.address)
 
-        val buttonId = if (userEntity.gender == "Laki-laki") {
+        val buttonId = if (userEntity.gender.equals(getString(R.string.laki), ignoreCase = true)) {
             R.id.rb_gender_male
         } else {
             R.id.rb_gender_female
