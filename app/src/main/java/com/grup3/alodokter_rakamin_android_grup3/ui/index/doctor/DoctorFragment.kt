@@ -2,14 +2,16 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.IntentSender
+import android.content.IntentSender.SendIntentException
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -26,13 +28,14 @@ import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.Lis
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
 
+    private lateinit var requestLauncher: ActivityResultLauncher<String>
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var location: Location
     private lateinit var locationRequest: LocationRequest
-    private lateinit var requestLauncher: ActivityResultLauncher<String>
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -48,7 +51,6 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
         getLocation()
 
         setHasOptionsMenu(true)
-        setupDoctorList()
     }
 
     @SuppressLint("MissingPermission")
@@ -58,6 +60,7 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
                 fusedLocationClient.lastLocation.addOnCompleteListener {
                     val location: Location? = it.result
                     if (location == null) {
+                        Log.d("TAG", "onLocationResult: null dipanggil")
                         requestNewLocationData()
                     } else {
                         Toast.makeText(
@@ -65,6 +68,7 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
                             "Latitude: ${location.latitude}, Longitude: ${location.longitude}",
                             Toast.LENGTH_SHORT
                         ).show()
+                        setupDoctorList()
                     }
                 }
             } else {
@@ -129,29 +133,54 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
             task.addOnFailureListener { e ->
                 if (e is ResolvableApiException) {
                     try {
-                        e.startResolutionForResult(
-                            it,
-                            LOCATION_SETTING_REQUEST
+                        startIntentSenderForResult(
+                            e.resolution.intentSender,
+                            LOCATION_SETTING_REQUEST,
+                            null, 0, 0, 0, null
                         )
-                    } catch (sendEx: IntentSender.SendIntentException) {
+                    } catch (sendEx: SendIntentException) {
                     }
                 }
             }
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            LOCATION_SETTING_REQUEST -> when (resultCode) {
+                Activity.RESULT_OK -> {
+                    getLocation()
+                }
+                Activity.RESULT_CANCELED -> {
+                    showEnableLocationSetting()
+                    Toast.makeText(context, "Location Service not Enabled", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                else -> {}
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
     private fun requestNewLocationData() {
-        locationRequest = LocationRequest.create().apply {
+        Log.d("TAG", "onLocationResult: dipanggil req")
+        val locationRequest = LocationRequest.create().apply {
             interval = 50000
             fastestInterval = 50000
             priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
         }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        startLocationUpdates()
+        fusedLocationClient.requestLocationUpdates(
+            locationRequest,
+            locationCallback,
+            Looper.getMainLooper()
+        )
+        setupDoctorList()
     }
 
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
+            Log.d("TAG", "onLocationResult: dipanggil call")
             location = locationResult.lastLocation
             Toast.makeText(
                 context,
@@ -159,15 +188,6 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun startLocationUpdates() {
-        fusedLocationClient.requestLocationUpdates(
-            locationRequest,
-            locationCallback,
-            Looper.getMainLooper()
-        )
     }
 
     private fun stopLocationUpdates() {
@@ -199,11 +219,6 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
         super.onPause()
         stopLocationUpdates()
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        startLocationUpdates()
-//    }
 
     companion object {
         const val LOCATION_SETTING_REQUEST = 1010
