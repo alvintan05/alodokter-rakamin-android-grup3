@@ -17,26 +17,22 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.common.api.ResolvableApiException
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
+import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.adapters.DoctorRecyclerViewAdapter
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentDoctorBinding
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
-import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.ListBookingActivity
-import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexSharedViewModel
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.ListBookingActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
@@ -219,7 +215,7 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.menu_history -> {
                 if (viewModel.getUserLoginStatus()) {
                     startActivity(Intent(activity, ListBookingActivity::class.java))
@@ -265,7 +261,7 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
             dialog.dismiss()
         }
     }
-    
+
     companion object {
         const val LOCATION_SETTING_REQUEST = 1010
     }
