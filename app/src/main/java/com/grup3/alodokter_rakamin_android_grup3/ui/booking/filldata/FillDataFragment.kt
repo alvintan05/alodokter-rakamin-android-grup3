@@ -2,6 +2,7 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.booking.filldata
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,8 @@ class FillDataFragment : BaseFragment<FragmentFillDataBinding>() {
 
     // this is for access same view model with activity contaienr
     private val viewModel: BookingSharedViewModel by activityViewModels()
-    private var birthDate: String = ""
+    private var birthDateFormatUI: String = ""
+    private var birthDateFormatApi: String = ""
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -32,7 +34,8 @@ class FillDataFragment : BaseFragment<FragmentFillDataBinding>() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        binding.btnChooseBirthDate.setOnClickListener {
+        binding.edtTanggalLahir.inputType = InputType.TYPE_NULL
+        binding.edtTanggalLahir.setOnClickListener {
             showDatePickerDialog(year, month, day)
         }
 
@@ -47,8 +50,9 @@ class FillDataFragment : BaseFragment<FragmentFillDataBinding>() {
         val dpd = DatePickerDialog(
             this.requireActivity(),
             DatePickerDialog.OnDateSetListener { _, mYear, mMonth, mDay ->
-                birthDate = "$mDay/$mMonth/$mYear"
-                binding.edtTanggalLahir.setText(birthDate)
+                birthDateFormatUI = "$mDay/${mMonth+1}/$mYear"
+                birthDateFormatApi = "$mYear" + "-" + "${mMonth+1}" + "-" + "$mDay"
+                binding.edtTanggalLahir.setText(birthDateFormatUI)
             },
             year,
             month,
