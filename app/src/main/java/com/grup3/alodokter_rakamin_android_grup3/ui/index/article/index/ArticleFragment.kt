@@ -7,10 +7,13 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.grup3.alodokter_rakamin_android_grup3.R
-import com.grup3.alodokter_rakamin_android_grup3.adapters.ArticleRecyclerViewAdapter
 import com.grup3.alodokter_rakamin_android_grup3.adapters.SliderArticleAdapter
+import com.grup3.alodokter_rakamin_android_grup3.adapters.pagination.ArticlePagingAdapter
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentArticleBinding
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SampleArticleSliderItem
@@ -23,11 +26,17 @@ import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
     private val viewModel: IndexSharedViewModel by viewModels()
+    private val articleViewModel: ArticleViewModel by viewModels()
+
+    private lateinit var loadingDialog: AlertDialog
+    private val adapter = ArticlePagingAdapter()
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -38,10 +47,10 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (activity as IndexActivity).setSupportActionBar(binding.tbIndexArticle)
         setHasOptionsMenu(true)
+        setupAlertDialog()
         setupArticleSlider()
         setupSpinner()
         setupArticleList()
-
 
         binding.svSearchArticle.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
@@ -61,6 +70,13 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
                 return false
             }
         })
+    }
+
+    private fun setupAlertDialog() {
+        loadingDialog = AlertDialog.Builder(requireActivity())
+            .setCancelable(false)
+            .setView(R.layout.custom_progress_dialog)
+            .create()
     }
 
     private fun setupArticleSlider() {
@@ -117,12 +133,27 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     }
 
     private fun setupArticleList() {
-        val adapter = ArticleRecyclerViewAdapter()
-        binding.rvArticle.setHasFixedSize(true)
         binding.rvArticle.adapter = adapter
-        adapter.onClickListener = {
-            startActivity(Intent(activity, DetailArticleActivity::class.java))
+
+        articleViewModel.articleList.observe(viewLifecycleOwner, {
+            adapter.submitData(viewLifecycleOwner.lifecycle, it)
+        })
+
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest {
+                if (it.refresh is LoadState.Loading) {
+                    loadingDialog.show()
+                } else {
+                    loadingDialog.dismiss()
+                }
+                binding.rvArticle.isVisible = it.refresh !is LoadState.Error
+            }
         }
+
+        adapter.onClickListener = {
+            startActivity(Intent(requireActivity(), DetailArticleActivity::class.java))
+        }
+
     }
 
     private fun checkUserLoginStatus() {

@@ -13,13 +13,15 @@ class ArticlePagingAdapter : PagingDataAdapter<ArticleEntity, ArticlePagingAdapt
     DIFF_CALLBACK
 ) {
 
+    var onClickListener: ((item: Any?) -> Unit)? = null
+
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ArticleEntity>() {
             override fun areItemsTheSame(
                 oldEntity: ArticleEntity,
                 newEntity: ArticleEntity
             ): Boolean =
-                oldEntity.title == newEntity.title
+                oldEntity.id == newEntity.id
 
 
             override fun areContentsTheSame(
@@ -40,6 +42,10 @@ class ArticlePagingAdapter : PagingDataAdapter<ArticleEntity, ArticlePagingAdapt
             Glide.with(root)
                 .load(item?.image)
                 .into(ivArticle)
+
+            root.setOnClickListener {
+                onClickListener?.invoke(item)
+            }
         }
     }
 
