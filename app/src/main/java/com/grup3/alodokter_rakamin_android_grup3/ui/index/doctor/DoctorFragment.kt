@@ -36,10 +36,11 @@ import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDo
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.search.SearchDoctorActivity
 import java.util.*
 
-const val PERMISSION_ID = 1010
 import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
+
+const val PERMISSION_ID = 1010
 
 @AndroidEntryPoint
 class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
