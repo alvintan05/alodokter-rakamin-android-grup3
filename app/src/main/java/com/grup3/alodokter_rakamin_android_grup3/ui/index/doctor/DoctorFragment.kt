@@ -13,11 +13,15 @@ import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.*
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.common.api.ResolvableApiException
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.viewModels
 import com.google.android.gms.location.*
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.adapters.DoctorRecyclerViewAdapter
@@ -26,6 +30,11 @@ import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentDoctorBindi
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.ListBookingActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexSharedViewModel
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.ListBookingActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -36,6 +45,7 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var location: Location
     private lateinit var locationRequest: LocationRequest
+    private val viewModel: IndexSharedViewModel by viewModels()
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -209,8 +219,21 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_history) {
-            startActivity(Intent(activity, ListBookingActivity::class.java))
+        when(item.itemId){
+            R.id.menu_history -> {
+                if (viewModel.getUserLoginStatus()) {
+                    startActivity(Intent(activity, ListBookingActivity::class.java))
+                } else {
+                    showLoginDialog()
+                }
+            }
+            R.id.menu_profile -> {
+                if (viewModel.getUserLoginStatus()) {
+                    startActivity(Intent(activity, ProfileActivity::class.java))
+                } else {
+                    showLoginDialog()
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -220,6 +243,29 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
         stopLocationUpdates()
     }
 
+    private fun showLoginDialog() {
+        val view = View.inflate(requireActivity(), R.layout.custom_alert_dialog_login, null)
+
+        view.findViewById<TextView>(R.id.tv_alert_title).text =
+            resources.getString(R.string.title_alert_login_at_profile)
+
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setView(view)
+
+        val dialog = builder.setCancelable(false).create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        view.findViewById<TextView>(R.id.btn_redirect_masuk).setOnClickListener {
+            startActivity(Intent(requireActivity(), SignInActivity::class.java))
+            dialog.dismiss()
+        }
+
+        view.findViewById<TextView>(R.id.btn_nanti).setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+    
     companion object {
         const val LOCATION_SETTING_REQUEST = 1010
     }

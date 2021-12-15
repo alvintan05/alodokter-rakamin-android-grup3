@@ -42,6 +42,7 @@ class ListBookingActivity : BaseActivity<ActivityListBookingBinding>() {
     }
 
     private fun setupToolbar() {
+        setSupportActionBar(binding.tbListBooking)
         supportActionBar?.title = getString(R.string.title_list_booking_toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

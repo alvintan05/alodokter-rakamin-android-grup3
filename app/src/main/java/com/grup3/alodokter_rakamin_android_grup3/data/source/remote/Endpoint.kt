@@ -1,5 +1,6 @@
 package com.grup3.alodokter_rakamin_android_grup3.data.source.remote
 
+import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -30,10 +31,17 @@ interface Endpoint {
         @Body registerBody: RegisterBody
     ): Response<ApiResponse<UserEntity>>
 
-    @PUT("users/{id}")
+    @PUT("users/{id}/update_personal")
     suspend fun editProfile(
         @Header("Authorization") token: String,
         @Body editProfileBody: EditProfileBody,
+        @Path("id") id: Int
+    ): Response<ApiResponse<UserEntity>>
+
+    @PUT("users/{id}/update_password")
+    suspend fun changePassword(
+        @Header("Authorization") token: String,
+        @Body changePassword: ChangePasswordBody,
         @Path("id") id: Int
     ): Response<ApiResponse<UserEntity>>
 

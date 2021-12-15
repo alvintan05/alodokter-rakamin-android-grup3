@@ -8,10 +8,8 @@ import kotlinx.parcelize.Parcelize
 data class UserEntity(
     val id: Int? = 0,
     val email: String? = "",
-    @SerializedName("firstname")
-    val firstName: String? = "",
-    @SerializedName("lastname")
-    val lastName: String? = "",
+    @SerializedName("fullname")
+    val fullname: String? = "",
     @SerializedName("birthdate")
     val birthDate: String? = "",
     val gender: String? = "",

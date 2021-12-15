@@ -4,6 +4,7 @@ import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.grup3.alodokter_rakamin_android_grup3.data.interactor.InteractorImpl
 import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.RemoteRepository
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
@@ -16,13 +17,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel@Inject constructor(
-    private val repository: RemoteRepository
+    private val interactorImpl: InteractorImpl
 ) : ViewModel()  {
 
     val loading get() = _loading
     val userResult get() = _userResult
 
-    val isNamaLengkapValid get() = _isNamaLengkapValid
     val isEmailValid get() = _isEmailValid
     val isPasswordValid get() = _isPasswordValid
     val isKonfirmasiPasswordValid get() = _isKonfirmasiPasswordValid
@@ -30,7 +30,6 @@ class SignUpViewModel@Inject constructor(
     private var _loading = MutableLiveData(false)
     private var _userResult: MutableLiveData<Resource<UserEntity>> = MutableLiveData()
 
-    private var _isNamaLengkapValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isEmailValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isKonfirmasiPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
@@ -38,7 +37,7 @@ class SignUpViewModel@Inject constructor(
     fun signUpUser(registerBody: RegisterBody) {
         _loading.value = true
         viewModelScope.launch {
-            val result = repository.signUpUser(registerBody)
+            val result = interactorImpl.signUpUser(registerBody)
             withContext(Dispatchers.Main) {
                 _userResult.value = result
                 _loading.value = false
@@ -84,7 +83,6 @@ class SignUpViewModel@Inject constructor(
 
     fun checkInput(namaLengkap: String, email: String, password: String, konfirmasiPassword: String ): Boolean {
         return namaLengkap.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && konfirmasiPassword.isNotEmpty()
-                isNamaLengkapValid.value == true
                 && isEmailValid.value == true
                 && isPasswordValid.value == true
                 && isKonfirmasiPasswordValid.value == true

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/spacing_5"
+    app:cardElevation="@dimen/spacing_4"
+    app:contentPaddingBottom="@dimen/spacing_20"
+    app:contentPaddingTop="@dimen/spacing_20">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_alert_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_20"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/title_alert_login"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_redirect_masuk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_15"
+            android:paddingVertical="@dimen/spacing_10"
+            android:text="@string/masuk"
+            app:cornerRadius="@dimen/spacing_5"
+            app:layout_constraintEnd_toEndOf="@id/tv_alert_title"
+            app:layout_constraintStart_toStartOf="@id/tv_alert_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_title" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_nanti"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/spacing_10"
+            android:layout_marginTop="@dimen/spacing_5"
+            android:text="@string/nanti"
+            android:textColor="@color/red"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="@dimen/spacing_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btn_redirect_masuk"
+            app:layout_constraintStart_toStartOf="@id/btn_redirect_masuk"
+            app:layout_constraintTop_toBottomOf="@+id/btn_redirect_masuk"
+            app:strokeColor="@color/red"
+            app:strokeWidth="1dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
