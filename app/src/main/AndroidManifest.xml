@@ -18,6 +18,10 @@
             android:exported="false"
             android:theme="@style/NoActionBar"/>
         <activity
+            android:name=".ui.booking.BookingSuccessActivity"
+            android:theme="@style/NoActionBar"
+            android:exported="false" />
+        <activity
             android:name=".ui.index.doctor.bookhistory.DetailBookingActivity"
             android:exported="false"
             android:theme="@style/NoActionBar" />
@@ -39,7 +43,8 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.index.doctor.bookhistory.ListBookingActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.profile.changepassword.ChangePasswordActivity"
             android:theme="@style/NoActionBar" />

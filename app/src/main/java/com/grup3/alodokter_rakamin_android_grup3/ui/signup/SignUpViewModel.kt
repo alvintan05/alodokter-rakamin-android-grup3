@@ -23,7 +23,6 @@ class SignUpViewModel@Inject constructor(
     val loading get() = _loading
     val userResult get() = _userResult
 
-    val isNamaLengkapValid get() = _isNamaLengkapValid
     val isEmailValid get() = _isEmailValid
     val isPasswordValid get() = _isPasswordValid
     val isKonfirmasiPasswordValid get() = _isKonfirmasiPasswordValid
@@ -31,7 +30,6 @@ class SignUpViewModel@Inject constructor(
     private var _loading = MutableLiveData(false)
     private var _userResult: MutableLiveData<Resource<UserEntity>> = MutableLiveData()
 
-    private var _isNamaLengkapValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isEmailValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isKonfirmasiPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
@@ -85,7 +83,6 @@ class SignUpViewModel@Inject constructor(
 
     fun checkInput(namaLengkap: String, email: String, password: String, konfirmasiPassword: String ): Boolean {
         return namaLengkap.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && konfirmasiPassword.isNotEmpty()
-                isNamaLengkapValid.value == true
                 && isEmailValid.value == true
                 && isPasswordValid.value == true
                 && isKonfirmasiPasswordValid.value == true

@@ -105,7 +105,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         val rbGender = findViewById<RadioButton>(binding.rgJenisKelamin.checkedRadioButtonId)
         return EditProfileBody(
             null,
-            firstName = binding.tilName.editText?.text.toString(),
+            fullname = binding.tilName.editText?.text.toString(),
             phone = binding.tilPhoneNumber.editText?.text.toString(),
             birthDate = binding.etTanggalLahir.text.toString(),
             gender = rbGender?.text.toString(),
@@ -134,13 +134,13 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
     }
 
     private fun initUserData(userEntity: UserEntity) {
-        binding.tilName.editText?.setText(userEntity.firstName)
+        binding.tilName.editText?.setText(userEntity.fullname)
         binding.tilPhoneNumber.editText?.setText(userEntity.phone)
         binding.etTanggalLahir.setText(userEntity.birthDate)
         binding.etNomorKtp.setText(userEntity.identityNumber)
         binding.etAlamat.setText(userEntity.address)
 
-        val buttonId = if (userEntity.gender == "Laki-laki") {
+        val buttonId = if (userEntity.gender.equals(getString(R.string.laki), ignoreCase = true)) {
             R.id.rb_gender_male
         } else {
             R.id.rb_gender_female

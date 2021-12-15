@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class EditProfileBody(
     val email: String? = null,
-    @SerializedName("firstname") val firstName: String? = null,
-    @SerializedName("lastname") val lastName: String? = null,
+    @SerializedName("fullname") val fullname: String? = null,
     @SerializedName("birthdate")
     val birthDate: String? = null,
     val gender: String? = null,

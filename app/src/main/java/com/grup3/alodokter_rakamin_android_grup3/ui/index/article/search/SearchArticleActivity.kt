@@ -4,19 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.grup3.alodokter_rakamin_android_grup3.adapters.ArticleRecyclerViewAdapter
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySearchArticleBinding
-import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.ArticleViewModel
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail.DetailArticleActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchArticleActivity : BaseActivity<ActivitySearchArticleBinding>() {
-
-    private val viewModel: ArticleViewModel by viewModels()
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivitySearchArticleBinding =
         ActivitySearchArticleBinding.inflate(layoutInflater)

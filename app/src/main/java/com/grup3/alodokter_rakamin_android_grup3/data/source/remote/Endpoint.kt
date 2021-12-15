@@ -31,7 +31,7 @@ interface Endpoint {
         @Body registerBody: RegisterBody
     ): Response<ApiResponse<UserEntity>>
 
-    @PUT("users/{id}")
+    @PUT("users/{id}/update_personal")
     suspend fun editProfile(
         @Header("Authorization") token: String,
         @Body editProfileBody: EditProfileBody,
