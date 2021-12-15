@@ -2,6 +2,7 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.booking.choosedate
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,8 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>() {
 
     // this is for access same view model with activity contaienr
     private val viewModel: BookingSharedViewModel by activityViewModels()
-    private var practiceDate: String = ""
+    private var practiceDateFormatUI: String = ""
+    private var practiceDateFormatApi: String = ""
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -44,7 +46,8 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>() {
             .circleCrop()
             .into(binding.ivDoctor)
 
-        binding.btnChoosePracticeDate.setOnClickListener {
+        binding.etPracticeDate.inputType = InputType.TYPE_NULL
+        binding.etPracticeDate.setOnClickListener {
             showDatePickerDialog(year, month, day)
         }
         binding.btnNext.setOnClickListener {
@@ -57,8 +60,9 @@ class ChooseDateFragment : BaseFragment<FragmentChooseDateBinding>() {
         val dpd = DatePickerDialog(
             this.requireActivity(),
             DatePickerDialog.OnDateSetListener { _, mYear, mMonth, mDay ->
-                practiceDate = "$mDay/$mMonth/$mYear"
-                binding.etPracticeDate.setText(practiceDate)
+                practiceDateFormatUI = "$mDay/${mMonth+1}/$mYear"
+                practiceDateFormatApi = "$mYear" + "-" + "${mMonth+1}" + "-" + "$mDay"
+                binding.etPracticeDate.setText(practiceDateFormatUI)
             },
             year,
             month,
