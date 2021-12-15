@@ -25,6 +25,7 @@
             app:titleEnabled="false">
 
             <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv_search_doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"

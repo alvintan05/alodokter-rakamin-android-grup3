@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Alodokterrakaminandroidgrup3">
         <activity
+            android:name=".ui.index.doctor.search.SearchDoctorActivity"
+            android:exported="false"
+            android:theme="@style/NoActionBar"/>
+        <activity
             android:name=".ui.booking.BookingSuccessActivity"
             android:theme="@style/NoActionBar"
             android:exported="false" />

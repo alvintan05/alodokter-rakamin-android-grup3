@@ -19,6 +19,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -27,9 +28,15 @@ import com.grup3.alodokter_rakamin_android_grup3.adapters.DoctorRecyclerViewAdap
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentDoctorBinding
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.search.SearchArticleActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.DetailBookingActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexSharedViewModel
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.bookhistory.ListBookingActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.search.SearchDoctorActivity
+import java.util.*
+
+const val PERMISSION_ID = 1010
 import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,6 +64,27 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
         getLocation()
 
         setHasOptionsMenu(true)
+        setupDoctorList()
+
+        binding.svSearchDoctor.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                // make a server call
+                return false
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                val intent = Intent(requireActivity(), SearchDoctorActivity::class.java)
+                intent.putExtra("query", p0)
+                startActivity(intent)
+                //clear the input
+                binding.svSearchDoctor.setQuery("", false)
+                //clear focus and keyboard
+                binding.svSearchDoctor.clearFocus()
+                return false
+            }
+        })
+
     }
 
     @SuppressLint("MissingPermission")
