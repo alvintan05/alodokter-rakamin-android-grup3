@@ -6,6 +6,7 @@ import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import javax.inject.Inject
@@ -34,5 +35,10 @@ class InteractorImpl @Inject constructor(
         changePasswordBody: ChangePasswordBody,
         id: Int
     ): Resource<UserEntity> = remoteRepository.changePassword(token, changePasswordBody, id)
+
+    override suspend fun getDetailArticle(id: Int): Resource<DetailArticleEntity> =
+        remoteRepository.getDetailArticle(id)
+
+
 
 }
