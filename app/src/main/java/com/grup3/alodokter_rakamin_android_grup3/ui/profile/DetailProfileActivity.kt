@@ -113,7 +113,7 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
         val backgroundColor = if (isSuccess) ContextCompat.getColor(this, R.color.success)
         else ContextCompat.getColor(this, R.color.error)
 
-        sbGetDetailProfile = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        sbGetDetailProfile = Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
             .setBackgroundTint(backgroundColor)
         sbGetDetailProfile.show()
     }
