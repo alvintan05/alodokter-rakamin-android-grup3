@@ -29,14 +29,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
-                android:focusable="false"
-                android:focusableInTouchMode="true"
                 android:layout_marginHorizontal="@dimen/spacing_15"
                 android:layout_marginBottom="@dimen/spacing_15"
                 android:background="@color/white"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
 
-                app:iconifiedByDefault="false"
                 android:imeOptions="actionSearch"
+                app:iconifiedByDefault="false"
                 app:queryHint="Cari Artikel" />
 
             <androidx.appcompat.widget.Toolbar
@@ -52,64 +52,163 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_article"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:descendantFocusability="blocksDescendants"
             android:layout_height="match_parent">
 
-            <com.smarteist.autoimageslider.SliderView
-                android:id="@+id/slider_article"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:sliderAnimationDuration="600"
-                app:sliderAutoCycleDirection="right"
-                app:sliderAutoCycleEnabled="true"
-                app:sliderIndicatorAnimationDuration="600"
-                app:sliderIndicatorGravity="center_horizontal|bottom"
-                app:sliderIndicatorMargin="15dp"
-                app:sliderIndicatorOrientation="horizontal"
-                app:sliderIndicatorPadding="3dp"
-                app:sliderIndicatorRadius="2dp"
-                app:sliderIndicatorSelectedColor="@color/color_accent"
-                app:sliderIndicatorUnselectedColor="@color/white"
-                app:sliderScrollTimeInSec="3"
-                app:sliderStartAutoCycle="true" />
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinner_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing_15"
-                android:layout_marginTop="@dimen/spacing_10"
-                android:background="@drawable/bg_spinner"
-                android:spinnerMode="dialog"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/slider_article" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_article"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing_10"
-                android:layout_marginVertical="@dimen/spacing_10"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinner_category"
-                tools:listitem="@layout/item_article" />
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/slider_article"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="right"
+                        app:sliderAutoCycleEnabled="true"
+                        app:sliderIndicatorAnimationDuration="600"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="@color/color_accent"
+                        app:sliderIndicatorUnselectedColor="@color/white"
+                        app:sliderScrollTimeInSec="3"
+                        app:sliderStartAutoCycle="true" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ProgressBar
+                        android:id="@+id/progress_bar_slider"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_10"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.core.widget.NestedScrollView>
+                    <TextView
+                        android:id="@+id/tv_error_slider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato"
+                        android:text="@string/response_error_id"
+                        android:textColor="@color/secondary_font"
+                        android:textSize="@dimen/font_16"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@id/btn_try_slider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_try_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_try_again"
+                        android:visibility="gone"
+                        app:backgroundTint="@color/color_accent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tv_error_slider"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@id/tv_error_slider"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_error_slider" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/spacing_15"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:background="@drawable/bg_spinner"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/container_slider" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_article"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/spacing_10"
+                    android:layout_marginVertical="@dimen/spacing_10"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_category"
+                    tools:listitem="@layout/item_article" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_article"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_category" />
+
+                <TextView
+                    android:id="@+id/tv_error_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/response_error_id"
+                    android:textColor="@color/secondary_font"
+                    android:textSize="@dimen/font_16"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/btn_try_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_category"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_try_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_try_again"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/color_accent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/tv_error_list"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/tv_error_list"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_error_list" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

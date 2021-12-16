@@ -38,7 +38,10 @@ class InteractorImpl @Inject constructor(
         id: Int
     ): Resource<UserEntity> = remoteRepository.changePassword(token, changePasswordBody, id)
 
-    override suspend fun getListArticle(): LiveData<PagingData<ArticleEntity>> =
-        remoteRepository.getListArticle()
+    override suspend fun getListArticle(category: Int): LiveData<PagingData<ArticleEntity>> =
+        remoteRepository.getListArticle(category)
+
+    override suspend fun getHeadlineArticle(): Resource<List<ArticleEntity>> =
+        remoteRepository.getHeadlineArticle()
 
 }

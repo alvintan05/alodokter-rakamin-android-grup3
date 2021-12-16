@@ -35,22 +35,27 @@ class ArticlePagingAdapter : PagingDataAdapter<ArticleEntity, ArticlePagingAdapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.binding.apply {
-            tvArticleTitle.text = item?.title
-            tvArticleCategory.text = item?.category
-
-            Glide.with(root)
-                .load(item?.image)
-                .into(ivArticle)
-
-            root.setOnClickListener {
-                onClickListener?.invoke(item)
-            }
-        }
+        item?.let { holder.bindItem(item) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    inner class ViewHolder(val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: ItemArticleBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindItem(item: ArticleEntity) {
+            binding.apply {
+                tvArticleTitle.text = item.title
+                tvArticleCategory.text = item.category
+
+                Glide.with(root)
+                    .load(item.image)
+                    .into(ivArticle)
+
+                root.setOnClickListener {
+                    onClickListener?.invoke(item)
+                }
+            }
+        }
+    }
 }

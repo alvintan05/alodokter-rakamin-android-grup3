@@ -4,15 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ItemSliderBinding
-import com.grup3.alodokter_rakamin_android_grup3.models.entity.SampleArticleSliderItem
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 import com.smarteist.autoimageslider.SliderViewAdapter
 
 class SliderArticleAdapter : SliderViewAdapter<SliderArticleAdapter.SliderAdapterVH>() {
 
-    private val itemList = arrayListOf<SampleArticleSliderItem>()
-    var onClickListener : ((item: SampleArticleSliderItem) -> Unit)? = null
+    private val itemList = arrayListOf<ArticleEntity>()
+    var onClickListener: ((item: ArticleEntity) -> Unit)? = null
 
-    fun setItem(list: List<SampleArticleSliderItem>) {
+    fun setItem(list: List<ArticleEntity>) {
+        itemList.clear()
         itemList.addAll(list)
         notifyDataSetChanged()
     }
@@ -33,7 +34,7 @@ class SliderArticleAdapter : SliderViewAdapter<SliderArticleAdapter.SliderAdapte
 
         viewHolder.binding.tvTitle.text = item.title
         Glide.with(viewHolder.binding.root)
-            .load(item.imageUrl)
+            .load(item.image)
             .fitCenter()
             .into(viewHolder.binding.ivAutoImageSlider)
         viewHolder.binding.root.setOnClickListener {

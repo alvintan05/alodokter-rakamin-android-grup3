@@ -32,5 +32,6 @@ interface Interactor {
         id: Int
     ): Resource<UserEntity>
 
-    suspend fun getListArticle(): LiveData<PagingData<ArticleEntity>>
+    suspend fun getListArticle(category: Int): LiveData<PagingData<ArticleEntity>>
+    suspend fun getHeadlineArticle(): Resource<List<ArticleEntity>>
 }

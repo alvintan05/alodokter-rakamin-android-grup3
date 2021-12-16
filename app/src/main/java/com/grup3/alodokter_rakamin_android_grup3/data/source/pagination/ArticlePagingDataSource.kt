@@ -5,12 +5,11 @@ import androidx.paging.PagingState
 import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.Endpoint
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.response.ApiResponse
-import okio.IOException
-import retrofit2.HttpException
 import retrofit2.Response
 
-class ArticlePagingDataSource (
-    private val endpoint: Endpoint
+class ArticlePagingDataSource(
+    private val endpoint: Endpoint,
+    private val category: Int
 ) : PagingSource<Int, ArticleEntity>() {
 
     private val PAGE_INDEX = 1
@@ -23,7 +22,7 @@ class ArticlePagingDataSource (
         val data: List<ArticleEntity>
 
         return try {
-            response = endpoint.getListArticle(page = position)
+            response = endpoint.getListArticle(page = position, category = category)
             data = response.body()?.data ?: emptyList()
 
             LoadResult.Page(
@@ -31,9 +30,7 @@ class ArticlePagingDataSource (
                 prevKey = if (position == PAGE_INDEX) null else position - 1,
                 nextKey = if (data.isEmpty()) null else position + 1
             )
-        } catch (exception: IOException) {
-            LoadResult.Error(exception)
-        } catch (exception: HttpException) {
+        } catch (exception: Exception) {
             LoadResult.Error(exception)
         }
     }

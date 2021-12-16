@@ -3,20 +3,23 @@ package com.grup3.alodokter_rakamin_android_grup3.ui.index.article.index
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.adapters.SliderArticleAdapter
+import com.grup3.alodokter_rakamin_android_grup3.adapters.pagination.ArticleLoadStateAdapter
 import com.grup3.alodokter_rakamin_android_grup3.adapters.pagination.ArticlePagingAdapter
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentArticleBinding
-import com.grup3.alodokter_rakamin_android_grup3.models.entity.SampleArticleSliderItem
+import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.IndexSharedViewModel
 import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail.DetailArticleActivity
@@ -45,17 +48,18 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         (activity as IndexActivity).setSupportActionBar(binding.tbIndexArticle)
         setHasOptionsMenu(true)
         setupAlertDialog()
         setupArticleSlider()
         setupSpinner()
         setupArticleList()
+        setupSwipeRefresh()
 
         binding.svSearchArticle.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(p0: String?): Boolean {
-                // make a server call
                 return false
             }
 
@@ -72,6 +76,23 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         })
     }
 
+    private fun setupSwipeRefresh() {
+        binding.swipeRefreshArticle.setColorSchemeColors(
+            ContextCompat.getColor(
+                requireActivity(),
+                R.color.color_accent
+            )
+        )
+
+        binding.swipeRefreshArticle.setOnRefreshListener {
+            binding.swipeRefreshArticle.isRefreshing = false
+            articleViewModel.getHeadlineList()
+            adapter.refresh()
+            binding.progressBarSlider.isVisible = true
+            binding.progressBarArticle.isVisible = true
+        }
+    }
+
     private fun setupAlertDialog() {
         loadingDialog = AlertDialog.Builder(requireActivity())
             .setCancelable(false)
@@ -80,40 +101,36 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     }
 
     private fun setupArticleSlider() {
-        val listArticle = listOf(
-            SampleArticleSliderItem(
-                "Beberapa Makanan Tinggi Antioksidan dan Jenisnya",
-                "https://res.cloudinary.com/dk0z4ums3/image/upload/v1592875194/attached_image/beberapa-makanan-tinggi-antioksidan-dan-jenisnya-0-alodokter.jpg"
-            ),
-            SampleArticleSliderItem(
-                "Kenali Mitos dan Fakta Seputar Susu UHT",
-                "https://res.cloudinary.com/dk0z4ums3/image/upload/v1606454160/attached_image/susu-uht-ketahui-fakta-dan-mitosnya-di-sini-0-alodokter.jpg"
-            ),
-            SampleArticleSliderItem(
-                "Bunda, Ini Tips Mengatasi Rasa Sakit Saat BAB setelah Melahirkan",
-                "https://res.cloudinary.com/dk0z4ums3/image/upload/v1638792011/attached_image/bunda-ini-tips-mengatasi-rasa-sakit-saat-bab-setelah-melahirkan-0-alodokter.jpg"
-            ),
-            SampleArticleSliderItem(
-                "Makanan Pendamping ASI Bisa Dimulai dengan Menu Berikut",
-                "https://res.cloudinary.com/dk0z4ums3/image/upload/v1592894934/attached_image/makanan-pendamping-asi-bisa-dimulai-dengan-menu-berikut-0-alodokter.jpg"
-            ),
-            SampleArticleSliderItem(
-                "4 Penyakit Tulang yang Jarang Diketahui",
-                "https://res.cloudinary.com/dk0z4ums3/image/upload/v1638867328/attached_image/4-penyakit-tulang-yang-jarang-diketahui-0-alodokter.jpg"
-            ),
-            SampleArticleSliderItem(
-                "Mengenali Lapisan Anatomi Kulit dan Nutrisi Penunjangnya",
-                "https://res.cloudinary.com/dk0z4ums3/image/upload/v1627875763/attached_image/mengenali-lapisan-anatomi-kulit-dan-nutrisi-penunjangnya-0-alodokter.jpg"
-            ),
-        )
         val sliderAdapter = SliderArticleAdapter()
-        sliderAdapter.setItem(listArticle)
+
         binding.sliderArticle.apply {
             setSliderAdapter(sliderAdapter)
             setIndicatorAnimation(IndicatorAnimationType.SLIDE)
             setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
             startAutoCycle()
         }
+
+        articleViewModel.headlineList.observe(viewLifecycleOwner, { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    resource.data?.let { sliderAdapter.setItem(it) }
+                }
+                is Resource.Error -> {
+                    showErrorSlider()
+                }
+            }
+        })
+
+        binding.btnTrySlider.setOnClickListener {
+            articleViewModel.getHeadlineList()
+            hideErrorSlider()
+        }
+
+        articleViewModel.loadingSlider.observe(viewLifecycleOwner, {
+            binding.progressBarSlider.isVisible = it
+            binding.sliderArticle.isVisible = !it
+        })
+
 
         sliderAdapter.onClickListener = { item ->
             startActivity(Intent(activity, DetailArticleActivity::class.java))
@@ -130,10 +147,31 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             )
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategory.adapter = arrayAdapter
+
+//        binding.spinnerCategory.onItemSelectedListener { adapterView, view, i, l ->
+//            articleViewModel.getArticleFromCategory(view, i)
+//        }
+
+//        binding.spinnerCategory.onItemSelectedListener =
+//            object : AdapterView.OnItemSelectedListener {
+//                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+//                    if (p1 != null) {
+//                        articleViewModel.getArticleFromCategory(p1, p2)
+//                    }
+//                }
+//
+//                override fun onNothingSelected(p0: AdapterView<*>?) {
+//
+//                }
+//
+//            }
     }
 
     private fun setupArticleList() {
-        binding.rvArticle.adapter = adapter
+        binding.rvArticle.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = ArticleLoadStateAdapter { adapter.retry() },
+            footer = ArticleLoadStateAdapter { adapter.retry() }
+        )
 
         articleViewModel.articleList.observe(viewLifecycleOwner, {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
@@ -141,11 +179,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest {
-                if (it.refresh is LoadState.Loading) {
-                    loadingDialog.show()
-                } else {
-                    loadingDialog.dismiss()
-                }
+                binding.progressBarArticle.isVisible = it.refresh is LoadState.Loading
                 binding.rvArticle.isVisible = it.refresh !is LoadState.Error
             }
         }
@@ -186,6 +220,30 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             dialog.dismiss()
         }
 
+    }
+
+    private fun showErrorSlider() {
+        binding.progressBarSlider.isVisible = false
+        binding.tvErrorSlider.isVisible = true
+        binding.btnTrySlider.isVisible = true
+    }
+
+    private fun hideErrorSlider() {
+        binding.progressBarSlider.isVisible = true
+        binding.tvErrorSlider.isVisible = false
+        binding.btnTrySlider.isVisible = false
+    }
+
+    private fun showErrorList() {
+        binding.progressBarArticle.isVisible = false
+        binding.tvErrorList.isVisible = true
+        binding.btnTryList.isVisible = true
+    }
+
+    private fun hideErrorList() {
+        binding.progressBarArticle.isVisible = true
+        binding.tvErrorList.isVisible = false
+        binding.btnTryList.isVisible = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
