@@ -1,16 +1,21 @@
 package com.grup3.alodokter_rakamin_android_grup3.data.source.remote
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.paging.*
 import com.grup3.alodokter_rakamin_android_grup3.R
+import com.grup3.alodokter_rakamin_android_grup3.data.source.pagination.ArticlePagingDataSource
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
+import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
-import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
 
 class RemoteRepository @Inject constructor(
     private val endpoint: Endpoint,
@@ -43,8 +48,6 @@ class RemoteRepository @Inject constructor(
         }
     }
 
-
-
     override suspend fun editProfile(
         token: String,
         editProfileBody: EditProfileBody,
@@ -60,7 +63,7 @@ class RemoteRepository @Inject constructor(
                 Resource.Error(responseData.message)
             }
         } else {
-            Resource.Error("Error, please try again")
+            Resource.Error(message = context.resources.getString(R.string.response_error))
         }
     }
 
@@ -78,7 +81,7 @@ class RemoteRepository @Inject constructor(
                 Resource.Error(responseData.message)
             }
         } else {
-            Resource.Error("Error, please try again")
+            Resource.Error(message = context.resources.getString(R.string.response_error))
         }
     }
 
@@ -92,6 +95,47 @@ class RemoteRepository @Inject constructor(
             Resource.Error(message = context.resources.getString(R.string.response_change_password_error))
         } else {
             Resource.Error(message = context.resources.getString(R.string.response_error))
+        }
+    }
+
+    override suspend fun getListArticle(category: Int): LiveData<PagingData<ArticleEntity>> =
+        Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                maxSize = 30,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { ArticlePagingDataSource(endpoint,category) }
+        ).liveData
+
+
+    override suspend fun getHeadlineArticle(): Resource<List<ArticleEntity>> {
+        val response = endpoint.getHeadlineArticle()
+        val responseData = response.body()
+
+        return try {
+            if (response.isSuccessful && responseData != null) {
+                Resource.Success(responseData.data)
+            } else {
+                Resource.Error(message = context.resources.getString(R.string.response_error))
+            }
+        } catch (e: Exception) {
+            Resource.Error(message = context.resources.getString(R.string.response_error))
+        }
+    }
+
+    override suspend fun getDetailArticle(id: Int): Resource<DetailArticleEntity> {
+        val response = endpoint.getDetailArticle(id)
+        val responseData = response.body()
+
+        return if (response.isSuccessful && responseData != null) {
+            if (response.body()?.message == "success") {
+                Resource.Success(responseData.data)
+            } else {
+                Resource.Error(responseData.message)
+            }
+        } else {
+            Resource.Error("Error, please try again")
         }
     }
 }
