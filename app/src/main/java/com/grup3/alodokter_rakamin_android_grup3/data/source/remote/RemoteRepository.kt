@@ -1,14 +1,11 @@
 package com.grup3.alodokter_rakamin_android_grup3.data.source.remote
 
 import android.content.Context
-import android.media.MediaDrm
-import android.os.Build
-import android.security.keystore.UserNotAuthenticatedException
-import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
-import androidx.paging.*
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.data.source.pagination.ArticlePagingDataSource
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
@@ -17,16 +14,11 @@ import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
-import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
-import org.json.JSONObject
-import java.lang.Error
-import java.lang.Exception
-import java.security.AccessController.getContext
-import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
 
 
 class RemoteRepository @Inject constructor(
@@ -98,7 +90,11 @@ class RemoteRepository @Inject constructor(
         }
     }
 
-    override suspend fun changePassword(token: String, changePasswordBody: ChangePasswordBody, id: Int): Resource<UserEntity> {
+    override suspend fun changePassword(
+        token: String,
+        changePasswordBody: ChangePasswordBody,
+        id: Int
+    ): Resource<UserEntity> {
         val response = endpoint.changePassword(token, changePasswordBody, id)
         val responseData = response.body()
 
@@ -118,7 +114,7 @@ class RemoteRepository @Inject constructor(
                 maxSize = 30,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { ArticlePagingDataSource(endpoint,category) }
+            pagingSourceFactory = { ArticlePagingDataSource(endpoint, category) }
         ).liveData
 
 

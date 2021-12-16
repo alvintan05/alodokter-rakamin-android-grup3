@@ -30,11 +30,11 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Profil Dokter"
 
+        createAlertDialog()
 
         checkUserLoginStatus()
         setupScheduleDoctor()
 
-        createAlertDialog()
     }
 
     private fun setupScheduleDoctor() {
@@ -52,7 +52,7 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         rvScheduleDoctor.adapter = listScheduleDoctor
 
         list.add(ScheduleDoctor("Sabtu", "13.00 - 15.00"))
-        listView.adapter = ScheduleDoctordapter(this, R.layout.item_jadwal_praktik, list)
+//        listView.adapter = ScheduleDoctordapter(this, R.layout.item_jadwal_praktik, list)
 
         binding.btnBuatJanji.setOnClickListener {
             startActivity(Intent(this, BookingProcessActivity::class.java))
