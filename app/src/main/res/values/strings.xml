@@ -154,6 +154,8 @@
     <string name="button_back">Kembali</string>
     <string name="message_alert_cannot_use_back_button">Tolong tekan tombol kembali</string>
 
+    <string name="search_article_hint">Cari Artikel</string>
+
     <string-array name="category_array">
         <item>Hidup Sehat</item>
         <item>Keluarga</item>
