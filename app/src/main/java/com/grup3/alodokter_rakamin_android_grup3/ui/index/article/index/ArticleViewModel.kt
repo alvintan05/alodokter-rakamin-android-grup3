@@ -26,26 +26,18 @@ class ArticleViewModel @Inject constructor(
 
     private var _loadingSlider = MutableLiveData(false)
     private var _headlineList: MutableLiveData<Resource<List<ArticleEntity>>> = MutableLiveData()
-    private var idCategory = 1
 
     init {
         getArticleList()
         getHeadlineList()
     }
 
-    private fun getArticleList() {
+    fun getArticleList(id: Int = 1) {
         viewModelScope.launch {
-            val response = interactorImpl.getListArticle(idCategory).cachedIn(viewModelScope)
+            val response = interactorImpl.getListArticle(id).cachedIn(viewModelScope)
             articleList = response
         }
     }
-
-    fun getArticleFromCategory(view: View, position: Int) {
-        val idCategoryList = view.resources.getStringArray(R.array.id_category_array)
-        idCategory = idCategoryList[position].toInt()
-        getArticleList()
-    }
-
 
     fun getHeadlineList() {
         _loadingSlider.value = true

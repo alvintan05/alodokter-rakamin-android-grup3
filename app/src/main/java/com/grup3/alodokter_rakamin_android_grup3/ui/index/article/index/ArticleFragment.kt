@@ -6,6 +6,7 @@ import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
@@ -41,6 +42,8 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     private lateinit var loadingDialog: AlertDialog
     private val adapter = ArticlePagingAdapter()
 
+    private var currentCategory = 1
+
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -74,6 +77,24 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
                 return false
             }
         })
+
+        binding.spinnerCategory.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    val idCategoryList = resources.getStringArray(R.array.id_category_array)
+                    val idCategory = idCategoryList[p2].toInt()
+
+                    if (idCategory != currentCategory) {
+                        currentCategory = idCategory
+                        articleViewModel.getArticleList(id = idCategory)
+                        observeArticleList()
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+            }
+
+        observeArticleList()
     }
 
     private fun setupSwipeRefresh() {
@@ -147,24 +168,6 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             )
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategory.adapter = arrayAdapter
-
-//        binding.spinnerCategory.onItemSelectedListener { adapterView, view, i, l ->
-//            articleViewModel.getArticleFromCategory(view, i)
-//        }
-
-//        binding.spinnerCategory.onItemSelectedListener =
-//            object : AdapterView.OnItemSelectedListener {
-//                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                    if (p1 != null) {
-//                        articleViewModel.getArticleFromCategory(p1, p2)
-//                    }
-//                }
-//
-//                override fun onNothingSelected(p0: AdapterView<*>?) {
-//
-//                }
-//
-//            }
     }
 
     private fun setupArticleList() {
@@ -172,7 +175,12 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             header = ArticleLoadStateAdapter { adapter.retry() },
             footer = ArticleLoadStateAdapter { adapter.retry() }
         )
+        adapter.onClickListener = {
+            startActivity(Intent(requireActivity(), DetailArticleActivity::class.java))
+        }
+    }
 
+    private fun observeArticleList() {
         articleViewModel.articleList.observe(viewLifecycleOwner, {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         })
@@ -183,11 +191,6 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
                 binding.rvArticle.isVisible = it.refresh !is LoadState.Error
             }
         }
-
-        adapter.onClickListener = {
-            startActivity(Intent(requireActivity(), DetailArticleActivity::class.java))
-        }
-
     }
 
     private fun checkUserLoginStatus() {
