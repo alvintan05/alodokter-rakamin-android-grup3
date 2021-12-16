@@ -60,10 +60,9 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
                     //2021-12-15T02:02:22.754Z
                     val date = resource.data?.updateDate?.subSequence(0, 10)
                     binding.tvUpdatedDate.text = date
-                        Glide.with(this)
-                            .load(resource.data?.image)
-                            .circleCrop()
-                            .into(binding.ivArticle)
+                    Glide.with(this)
+                        .load(resource.data?.image)
+                        .into(binding.ivArticle)
                 }
                 is Resource.Error -> {
                     resource.error?.let { setupSnackbar(it) }
@@ -75,9 +74,9 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
         })
     }
 
-    //id = 13,14
     private fun getDataArticle() {
-        viewModel.getDetailArticle(13)
+        val intentData = intent.getIntExtra("EXTRA_ARCTICLE_ID", 1)
+        viewModel.getDetailArticle(intentData)
 
         viewModel.loading.observe(this, {
             if (it) {
