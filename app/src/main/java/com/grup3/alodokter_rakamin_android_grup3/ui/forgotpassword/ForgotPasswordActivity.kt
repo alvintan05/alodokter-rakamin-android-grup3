@@ -15,12 +15,10 @@ class ForgotPasswordActivity : BaseActivity<ActivityForgotPasswordBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupToolbar()
-
     }
 
     private fun setupToolbar() {
         setSupportActionBar(binding.tbForgotPassword)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 

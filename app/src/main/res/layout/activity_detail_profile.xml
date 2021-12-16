@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background_grey">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_detail_profile"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:elevation="@dimen/spacing_4"
         android:background="@color/white"
-        app:title="@string/data_saya"
-        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="@dimen/spacing_4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/data_saya" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/spacing_18"
+        android:layout_marginTop="@dimen/spacing_26"
+        android:layout_marginBottom="@dimen/spacing_8"
+        app:cardCornerRadius="@dimen/spacing_6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_detail_profile"
-        android:layout_marginStart="@dimen/spacing_18"
-        android:layout_marginEnd="@dimen/spacing_18"
-        android:layout_marginTop="@dimen/spacing_22">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_detail_profile">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background_grey"
-            android:padding="@dimen/spacing_8">
+            android:background="@color/white"
+            android:paddingHorizontal="@dimen/spacing_8"
+            android:paddingVertical="@dimen/spacing_14">
 
             <ImageView
                 android:id="@+id/profile_picture"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                tools:src="@drawable/app_logo"
-                android:contentDescription="@string/image_user" />
+                android:contentDescription="@string/image_user"
+                tools:src="@drawable/app_logo" />
 
             <TextView
                 android:id="@+id/tv_user_name"
@@ -53,7 +52,7 @@
                 android:fontFamily="@font/lato_bold"
                 android:includeFontPadding="false"
                 android:textColor="@color/primary_font"
-                android:textSize="@dimen/font_14"
+                android:textSize="@dimen/font_16"
                 tools:text="Account Name" />
 
             <TextView
@@ -61,13 +60,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_user_name"
-                android:layout_marginStart="10dp"
                 android:layout_marginVertical="@dimen/spacing_5"
+                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/profile_picture"
+                android:fontFamily="@font/lato"
                 android:includeFontPadding="false"
-                tools:text="Phone Number"
                 android:textColor="@color/primary_font"
-                android:textSize="12sp" />
+                android:textSize="@dimen/font_12"
+                tools:text="Phone Number" />
 
             <TextView
                 android:id="@+id/tv_email"
@@ -77,20 +77,22 @@
                 android:layout_marginVertical="@dimen/spacing_5"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/profile_picture"
+                android:fontFamily="@font/lato"
                 android:includeFontPadding="false"
                 android:textColor="@color/primary_font"
-                android:textSize="12sp"
+                android:textSize="@dimen/font_12"
                 tools:text="Email" />
 
             <TextView
                 android:id="@+id/tv_label_tanggal_lahir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profile_picture"
-                 android:layout_marginTop="@dimen/spacing_20"
+                android:layout_below="@id/tv_email"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_20"
+                android:fontFamily="@font/lato_bold"
                 android:text="@string/tanggal_lahir"
-                android:textColor="@color/primary_font"
+                android:textColor="@color/secondary_font"
                 android:textSize="@dimen/font_12" />
 
             <TextView
@@ -99,6 +101,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_label_tanggal_lahir"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:fontFamily="@font/lato"
                 android:textColor="@color/primary_font"
                 android:textSize="@dimen/font_14"
                 tools:text="Tanggal Lahir" />
@@ -108,10 +112,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_tanggal_lahir"
-                android:layout_marginTop="@dimen/spacing_20"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_20"
+                android:fontFamily="@font/lato_bold"
                 android:text="@string/jenis_kelamin"
-                android:textColor="@color/primary_font"
+                android:textColor="@color/secondary_font"
                 android:textSize="@dimen/font_12" />
 
             <TextView
@@ -120,6 +125,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_label_jenis_kelamin"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:fontFamily="@font/lato"
                 android:textColor="@color/primary_font"
                 android:textSize="@dimen/font_14"
                 tools:text="Jenis Kelamin" />
@@ -129,8 +136,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_jenis_kelamin"
-                android:layout_marginTop="@dimen/spacing_20"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_20"
+                android:fontFamily="@font/lato_bold"
                 android:text="@string/nomor_ktp"
                 android:textColor="@color/secondary_font"
                 android:textSize="@dimen/font_12" />
@@ -141,6 +149,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_label_nomor_ktp"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:fontFamily="@font/lato"
                 android:textColor="@color/primary_font"
                 android:textSize="@dimen/font_14"
                 tools:text="3661445297123456" />
@@ -150,8 +160,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_nomor_ktp"
-                android:layout_marginTop="@dimen/spacing_20"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_20"
+                android:fontFamily="@font/lato_bold"
                 android:text="@string/alamat"
                 android:textColor="@color/secondary_font"
                 android:textSize="@dimen/font_12" />
@@ -162,6 +173,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_label_alamat"
                 android:layout_marginStart="@dimen/spacing_10"
+                android:layout_marginTop="@dimen/spacing_4"
+                android:fontFamily="@font/lato"
                 android:textColor="@color/primary_font"
                 android:textSize="@dimen/font_14"
                 tools:text="Jl. Jendral Sudirman" />
@@ -169,6 +182,5 @@
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
