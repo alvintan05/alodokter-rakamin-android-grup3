@@ -7,6 +7,7 @@ import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
@@ -34,5 +35,9 @@ interface RemoteDataSource {
 
     suspend fun getListArticle(category: Int): LiveData<PagingData<ArticleEntity>>
     suspend fun getHeadlineArticle(): Resource<List<ArticleEntity>>
+
+    suspend fun getDetailArticle(
+        id: Int
+    ): Resource<DetailArticleEntity>
 
 }

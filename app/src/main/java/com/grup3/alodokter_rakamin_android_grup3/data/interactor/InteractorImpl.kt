@@ -9,6 +9,7 @@ import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import javax.inject.Inject
@@ -43,5 +44,10 @@ class InteractorImpl @Inject constructor(
 
     override suspend fun getHeadlineArticle(): Resource<List<ArticleEntity>> =
         remoteRepository.getHeadlineArticle()
+
+    override suspend fun getDetailArticle(id: Int): Resource<DetailArticleEntity> =
+        remoteRepository.getDetailArticle(id)
+
+
 
 }

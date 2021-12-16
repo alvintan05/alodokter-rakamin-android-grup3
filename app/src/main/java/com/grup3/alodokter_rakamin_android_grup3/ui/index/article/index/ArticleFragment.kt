@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.index.article.index
+package com.grup3.alodokter_rakamin_android_grup3.ui.index.article
 
 import android.content.Intent
 import android.os.Bundle

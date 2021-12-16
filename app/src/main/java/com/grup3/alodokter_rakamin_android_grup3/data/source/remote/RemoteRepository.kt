@@ -15,6 +15,7 @@ import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
 
 class RemoteRepository @Inject constructor(
     private val endpoint: Endpoint,
@@ -46,7 +47,6 @@ class RemoteRepository @Inject constructor(
             Resource.Error(message = context.resources.getString(R.string.response_error))
         }
     }
-
 
     override suspend fun editProfile(
         token: String,
@@ -85,11 +85,7 @@ class RemoteRepository @Inject constructor(
         }
     }
 
-    override suspend fun changePassword(
-        token: String,
-        changePasswordBody: ChangePasswordBody,
-        id: Int
-    ): Resource<UserEntity> {
+    override suspend fun changePassword(token: String, changePasswordBody: ChangePasswordBody, id: Int): Resource<UserEntity> {
         val response = endpoint.changePassword(token, changePasswordBody, id)
         val responseData = response.body()
 
@@ -125,6 +121,21 @@ class RemoteRepository @Inject constructor(
             }
         } catch (e: Exception) {
             Resource.Error(message = context.resources.getString(R.string.response_error))
+        }
+    }
+
+    override suspend fun getDetailArticle(id: Int): Resource<DetailArticleEntity> {
+        val response = endpoint.getDetailArticle(id)
+        val responseData = response.body()
+
+        return if (response.isSuccessful && responseData != null) {
+            if (response.body()?.message == "success") {
+                Resource.Success(responseData.data)
+            } else {
+                Resource.Error(responseData.message)
+            }
+        } else {
+            Resource.Error("Error, please try again")
         }
     }
 }

@@ -1,56 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.index.article.detail.DetailArticleActivity">
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_try_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_try_again"
+        android:backgroundTint="@color/color_primary"
+        android:visibility="invisible"
+        android:layout_gravity="center"/>
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_16">
 
-           <TextView
-               android:id="@+id/tv_judul_article"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="@dimen/spacing_20"
-               android:layout_marginTop="@dimen/spacing_10"
-               android:hint="Judul Artikel"
-               android:textColor="@color/black"
-               android:textSize="@dimen/font_20"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:id="@+id/layout_detail_article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-           <ImageView
-               android:id="@+id/imageView"
-               android:layout_width="180dp"
-               android:layout_height="180dp"
-               android:layout_marginTop="@dimen/spacing_6"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/tv_judul_article"
-               tools:src="@drawable/app_logo" />
+            <TextView
+                android:id="@+id/tv_title_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_title_article"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_20"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="@dimen/spacing_20"
-               android:layout_marginTop="@dimen/spacing_10"
-               android:layout_marginRight="@dimen/spacing_20"
-               android:lineSpacingExtra="@dimen/spacing_6"
-               android:text="@string/lorem"
-               android:textAlignment="textStart"
-               android:textColor="@color/black"
-               app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_article"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/spacing_8"
+                    android:contentDescription="@string/image_content_article"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/app_logo" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_helper_reviewer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:text="@string/text_reviewer"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_14"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_reviewer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_8"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/tv_content_article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:lineSpacingExtra="@dimen/spacing_4"
+                android:textAlignment="textStart"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_helper_updated_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:text="@string/text_updated_date"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_14"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_updated_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_8"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_14" />
+        </LinearLayout>
+
+    </ScrollView>
 
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
-
-   </ScrollView>
-
-</RelativeLayout>
+</FrameLayout>
