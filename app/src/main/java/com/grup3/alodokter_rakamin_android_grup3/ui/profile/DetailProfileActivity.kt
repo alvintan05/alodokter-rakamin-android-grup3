@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -26,6 +27,7 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
     private lateinit var sbGetDetailProfile: Snackbar
     private lateinit var loadingDialog: AlertDialog
     private lateinit var userData: UserEntity
+    private lateinit var editProfileResultLauncher: ActivityResultLauncher<Intent>
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityDetailProfileBinding =
         ActivityDetailProfileBinding.inflate(layoutInflater)
@@ -38,6 +40,13 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
 
         setupAlertDialog()
         showData()
+
+        editProfileResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    setupSnackbar(getString(R.string.message_update_data_success), true)
+                }
+            }
 
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
@@ -53,14 +62,15 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
 
     private fun initUserData(resource: Resource<UserEntity>) {
         val phoneNumber =
-            if (resource.data?.phone == "") "No HP Belum ditambahkan" else resource.data?.phone
+            if (resource.data?.phone.isNullOrEmpty()) "No HP Belum ditambahkan" else resource.data?.phone
         val birthDate =
-            if (resource.data?.birthDate == "") "Belum ditambahkan" else resource.data?.birthDate
+            if (resource.data?.birthDate.isNullOrEmpty()) "Belum ditambahkan" else resource.data?.birthDate
         val identityNumber =
-            if (resource.data?.identityNumber == "") "Belum ditambahkan" else resource.data?.identityNumber
+            if (resource.data?.identityNumber.isNullOrEmpty()) "Belum ditambahkan" else resource.data?.identityNumber
         val address =
-            if (resource.data?.address == "") "Belum ditambahkan" else resource.data?.address
+            if (resource.data?.address.isNullOrEmpty()) "Belum ditambahkan" else resource.data?.address
         val name = resource.data?.fullname
+
         binding.tvUserName.text = name
         binding.tvNomorTelpon.text = phoneNumber
         binding.tvEmail.text = resource.data?.email
@@ -68,6 +78,7 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
         binding.tvTanggalLahir.text = birthDate
         binding.tvNomorKtp.text = identityNumber
         binding.tvAlamat.text = address
+
         userData = UserEntity(
             resource.data?.id,
             resource.data?.email,
@@ -132,13 +143,6 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_change) {
             if (::userData.isInitialized) {
-                val editProfileResultLauncher =
-                    registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                        if (result.resultCode == Activity.RESULT_OK) {
-                            setupSnackbar(getString(R.string.message_update_data_success), true)
-                        }
-                    }
-
                 val intent = Intent(this, EditProfileActivity::class.java)
                 intent.putExtra(PROFILE_KEY, userData)
                 editProfileResultLauncher.launch(intent)

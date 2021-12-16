@@ -151,6 +151,7 @@
     <string name="booking_success_desc">Terima kasih telah melakukan buat janji dengan dokter</string>
     <string name="button_back">Kembali</string>
     <string name="message_alert_cannot_use_back_button">Tolong tekan tombol kembali</string>
+    <string name="konfirmasi_email">Konfirmasi E-mail</string>
 
     <string-array name="category_array">
         <item>Hidup Sehat</item>
