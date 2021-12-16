@@ -13,7 +13,7 @@ class ArticlePagingAdapter : PagingDataAdapter<ArticleEntity, ArticlePagingAdapt
     DIFF_CALLBACK
 ) {
 
-    var onClickListener: ((item: Any?) -> Unit)? = null
+    var onClickListener: ((id: Int) -> Unit)? = null
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ArticleEntity>() {
@@ -53,7 +53,7 @@ class ArticlePagingAdapter : PagingDataAdapter<ArticleEntity, ArticlePagingAdapt
                     .into(ivArticle)
 
                 root.setOnClickListener {
-                    onClickListener?.invoke(item)
+                    onClickListener?.invoke(item.id)
                 }
             }
         }

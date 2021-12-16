@@ -10,7 +10,7 @@ import com.smarteist.autoimageslider.SliderViewAdapter
 class SliderArticleAdapter : SliderViewAdapter<SliderArticleAdapter.SliderAdapterVH>() {
 
     private val itemList = arrayListOf<ArticleEntity>()
-    var onClickListener: ((item: ArticleEntity) -> Unit)? = null
+    var onClickListener: ((item: Int) -> Unit)? = null
 
     fun setItem(list: List<ArticleEntity>) {
         itemList.clear()
@@ -38,7 +38,7 @@ class SliderArticleAdapter : SliderViewAdapter<SliderArticleAdapter.SliderAdapte
             .fitCenter()
             .into(viewHolder.binding.ivAutoImageSlider)
         viewHolder.binding.root.setOnClickListener {
-            onClickListener?.invoke(item)
+            onClickListener?.invoke(item.id)
         }
     }
 

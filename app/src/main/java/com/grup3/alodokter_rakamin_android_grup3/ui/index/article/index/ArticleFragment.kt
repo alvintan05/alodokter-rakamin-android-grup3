@@ -93,8 +93,6 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {}
             }
-
-        observeArticleList()
     }
 
     private fun setupSwipeRefresh() {
@@ -153,8 +151,10 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         })
 
 
-        sliderAdapter.onClickListener = { item ->
-            startActivity(Intent(activity, DetailArticleActivity::class.java))
+        sliderAdapter.onClickListener = {
+            val intentWithData = Intent(requireActivity(), DetailArticleActivity::class.java)
+            intentWithData.putExtra("EXTRA_ARCTICLE_ID", it)
+            startActivity(intentWithData)
         }
 
     }
@@ -176,8 +176,11 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             footer = ArticleLoadStateAdapter { adapter.retry() }
         )
         adapter.onClickListener = {
-            startActivity(Intent(requireActivity(), DetailArticleActivity::class.java))
+            val intentWithData = Intent(requireActivity(), DetailArticleActivity::class.java)
+            intentWithData.putExtra("EXTRA_ARCTICLE_ID", it)
+            startActivity(intentWithData)
         }
+        observeArticleList()
     }
 
     private fun observeArticleList() {
