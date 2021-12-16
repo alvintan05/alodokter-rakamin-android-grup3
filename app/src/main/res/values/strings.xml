@@ -71,6 +71,10 @@
     <string name="forgot_pass_error_confirmation_mismatch">Konfirmasi kata sandi tidak sesuai</string>
 
     <string name="profile_logout_confirmation_message">Apakah kamu yakin ingin keluar dari aplikasi?</string>
+    <string name="get_location_request_message">Aktifkan lokasi perangkat untuk pengalaman yang
+        lebih baik. Lokasi akan diakses menggunakan Google location service</string>
+    <string name="ok_button">OK</string>
+    <string name="manual_activation_button">Aktifkan Manual</string>
 
     <!--  Content Description  -->
     <string name="cd_foto_profil">Foto Profil</string>
@@ -127,6 +131,8 @@
     <string name="progress_title">Harap Tunggu …</string>
     <string name="response_success">success</string>
     <string name="response_error">Error Please Try Again</string>
+    <string name="response_error_id">Error, Harap Coba Lagi!</string>
+    <string name="button_try_again">Coba lagi</string>
     <string name="response_login_error">Password atau Email salah</string>
     <string name="response_change_password_error">Password lama anda salah</string>
     <string name="password_change_succes">Password anda berhasil diubah!</string>
@@ -143,10 +149,31 @@
     <string name="title_list_booking_toolbar">Janji Saya</string>
     <string name="image_user">Image User</string>
 
+    <string name="booking_success">Buat Janji Berhasil</string>
+    <string name="booking_success_desc">Terima kasih telah melakukan buat janji dengan dokter</string>
+    <string name="button_back">Kembali</string>
+    <string name="message_alert_cannot_use_back_button">Tolong tekan tombol kembali</string>
+    <string name="konfirmasi_email">Konfirmasi E-mail</string>
+    <string name="text_title_article">Judul Artikel</string>
+    <string name="image_content_article">Image Content Article</string>
+    <string name="text_reviewer">Ditinjau oleh :</string>
+    <string name="text_value_reviewer">Value Reviewer</string>
+    <string name="text_updated_date">Terakhir diperbarui :</string>
+    <string name="text_value_updated_date">Value Updated Date</string>
+    <string name="text_try_again">Try Again</string>
+
+    <string name="search_article_hint">Cari Artikel</string>
+
     <string-array name="category_array">
         <item>Hidup Sehat</item>
         <item>Keluarga</item>
         <item>Kesehatan</item>
+    </string-array>
+
+    <string-array name="id_category_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="practice_hour_array">

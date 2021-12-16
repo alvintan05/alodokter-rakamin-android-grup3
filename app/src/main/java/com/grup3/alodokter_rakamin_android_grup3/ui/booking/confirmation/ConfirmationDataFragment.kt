@@ -1,5 +1,6 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.booking.confirmation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseFragment
 import com.grup3.alodokter_rakamin_android_grup3.databinding.FragmentConfirmationDataBinding
 import com.grup3.alodokter_rakamin_android_grup3.ui.booking.BookingSharedViewModel
+import com.grup3.alodokter_rakamin_android_grup3.ui.booking.BookingSuccessActivity
 
 
 class ConfirmationDataFragment : BaseFragment<FragmentConfirmationDataBinding>() {
@@ -30,5 +32,10 @@ class ConfirmationDataFragment : BaseFragment<FragmentConfirmationDataBinding>()
             .load("https://image.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg")
             .circleCrop()
             .into(binding.ivDoctor)
+
+        binding.btnMakePromise.setOnClickListener {
+            startActivity(Intent(requireActivity(), BookingSuccessActivity::class.java))
+            requireActivity().finish()
+        }
     }
 }

@@ -11,13 +11,12 @@ import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityChangePasswordBinding
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
-import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
 
-    private val viewModel : ChangePasswordViewModel by viewModels()
+    private val viewModel: ChangePasswordViewModel by viewModels()
     private lateinit var loadingDialog: AlertDialog
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityChangePasswordBinding =
@@ -81,7 +80,11 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    Toast.makeText(this,  resources.getString(R.string.password_change_succes), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.password_change_succes),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 }
                 is Resource.Error -> {
@@ -110,9 +113,11 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
         val confirmationPassword = binding.etKonfirmasiKataSandiBaru.text.toString().trim()
 
         if (viewModel.allPasswordValidation(oldPassword, password, confirmationPassword)) {
-            changePassword(ChangePasswordBody(
-                oldPassword, password
-            ))
+            changePassword(
+                ChangePasswordBody(
+                    oldPassword, password
+                )
+            )
         } else {
             setupSnackbarError(resources.getString(R.string.message_fix_input_data))
         }

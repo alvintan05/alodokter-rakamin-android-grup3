@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfilDoctorBinding
+import com.grup3.alodokter_rakamin_android_grup3.ui.booking.BookingProcessActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
 
     private val viewModel: ProfilDoctorViewModel by viewModels()
-    private lateinit var builder: AlertDialog.Builder
+    private lateinit var dialog: AlertDialog
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfilDoctorBinding =
         ActivityProfilDoctorBinding.inflate(layoutInflater)
@@ -28,11 +29,12 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         setSupportActionBar(binding.tbProfilDokter)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Profil Dokter"
-        builder = AlertDialog.Builder(this)
+
 
         checkUserLoginStatus()
         setupScheduleDoctor()
 
+        createAlertDialog()
     }
 
     private fun setupScheduleDoctor() {
@@ -48,17 +50,28 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         rvScheduleDoctor.layoutManager = LinearLayoutManager(this)
         val listScheduleDoctor = ScheduleDoctordapter(list)
         rvScheduleDoctor.adapter = listScheduleDoctor
+
+        list.add(ScheduleDoctor("Sabtu", "13.00 - 15.00"))
+        listView.adapter = ScheduleDoctordapter(this, R.layout.item_jadwal_praktik, list)
+
+        binding.btnBuatJanji.setOnClickListener {
+            startActivity(Intent(this, BookingProcessActivity::class.java))
+        }
     }
 
-    private fun checkUserLogin() {
+    override fun onResume() {
+        super.onResume()
+        checkUserLoginStatus()
+    }
+
+    private fun createAlertDialog() {
 
         val view = View.inflate(this@ProfilDoctorActivity, R.layout.custom_alert_dialog_login, null)
 
         val builder = AlertDialog.Builder(this@ProfilDoctorActivity)
         builder.setView(view)
 
-        val dialog = builder.setCancelable(false).create()
-        dialog.show()
+        dialog = builder.setCancelable(false).create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         view.findViewById<TextView>(R.id.btn_redirect_masuk).setOnClickListener {
@@ -72,7 +85,13 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
     }
 
     private fun checkUserLoginStatus() {
-        if (!viewModel.getUserLoginStatus()) checkUserLogin()
+        if (viewModel.getUserLoginStatus()) {
+            if (dialog.isShowing && ::dialog.isInitialized) {
+                dialog.dismiss()
+            }
+        } else {
+            dialog.show()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
