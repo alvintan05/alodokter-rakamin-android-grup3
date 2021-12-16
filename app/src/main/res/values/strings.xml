@@ -151,6 +151,13 @@
     <string name="booking_success_desc">Terima kasih telah melakukan buat janji dengan dokter</string>
     <string name="button_back">Kembali</string>
     <string name="message_alert_cannot_use_back_button">Tolong tekan tombol kembali</string>
+    <string name="text_title_article">Judul Artikel</string>
+    <string name="image_content_article">Image Content Article</string>
+    <string name="text_reviewer">Ditinjau oleh :</string>
+    <string name="text_value_reviewer">Value Reviewer</string>
+    <string name="text_updated_date">Terakhir diperbarui :</string>
+    <string name="text_value_updated_date">Value Updated Date</string>
+    <string name="text_try_again">Try Again</string>
 
     <string-array name="category_array">
         <item>Hidup Sehat</item>

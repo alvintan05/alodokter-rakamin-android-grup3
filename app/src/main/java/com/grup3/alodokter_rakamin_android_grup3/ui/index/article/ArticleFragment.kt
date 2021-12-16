@@ -120,8 +120,10 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         val adapter = ArticleRecyclerViewAdapter()
         binding.rvArticle.setHasFixedSize(true)
         binding.rvArticle.adapter = adapter
-        adapter.onClickListener = {
-            startActivity(Intent(activity, DetailArticleActivity::class.java))
+        adapter.onClickListener = { item->
+            val intent = Intent(activity, DetailArticleActivity::class.java)
+//            intent.putExtra("EXTRA_ARTICLE_ID", 2)
+            startActivity(intent)
         }
     }
 
