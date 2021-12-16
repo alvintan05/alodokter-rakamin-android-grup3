@@ -3,11 +3,11 @@ package com.grup3.alodokter_rakamin_android_grup3.data.source.remote
 import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import retrofit2.http.GET
 import retrofit2.http.Path
-
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.response.ApiResponse
@@ -25,7 +25,6 @@ interface Endpoint {
     suspend fun signInUser(
         @Body loginBody: LoginBody
     ): Response<ApiResponse<SignInEntity>>
-
 
     @POST("users/register")
     suspend fun signUpUser(
@@ -45,6 +44,18 @@ interface Endpoint {
         @Body changePassword: ChangePasswordBody,
         @Path("id") id: Int
     ): Response<ApiResponse<UserEntity>>
+
+    @GET("articles")
+    suspend fun getListArticle(
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int = 10,
+        @Query("category") category: Int
+    ): Response<ApiResponse<List<ArticleEntity>>>
+
+    @GET("articles")
+    suspend fun getHeadlineArticle(
+        @Query("headline") headline: Boolean = true
+    ): Response<ApiResponse<List<ArticleEntity>>>
 
     @GET("articles/{id}")
     suspend fun getDetailArticle(

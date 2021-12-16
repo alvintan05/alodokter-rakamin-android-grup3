@@ -131,6 +131,8 @@
     <string name="progress_title">Harap Tunggu …</string>
     <string name="response_success">success</string>
     <string name="response_error">Error Please Try Again</string>
+    <string name="response_error_id">Error, Harap Coba Lagi!</string>
+    <string name="button_try_again">Coba lagi</string>
     <string name="response_login_error">Password atau Email salah</string>
     <string name="response_change_password_error">Password lama anda salah</string>
     <string name="password_change_succes">Password anda berhasil diubah!</string>
@@ -159,10 +161,18 @@
     <string name="text_value_updated_date">Value Updated Date</string>
     <string name="text_try_again">Try Again</string>
 
+    <string name="search_article_hint">Cari Artikel</string>
+
     <string-array name="category_array">
         <item>Hidup Sehat</item>
         <item>Keluarga</item>
         <item>Kesehatan</item>
+    </string-array>
+
+    <string-array name="id_category_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="practice_hour_array">
