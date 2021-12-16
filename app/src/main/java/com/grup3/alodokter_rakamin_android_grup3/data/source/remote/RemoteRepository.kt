@@ -1,6 +1,12 @@
 package com.grup3.alodokter_rakamin_android_grup3.data.source.remote
 
 import android.content.Context
+import android.media.MediaDrm
+import android.os.Build
+import android.security.keystore.UserNotAuthenticatedException
+import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.paging.*
 import com.grup3.alodokter_rakamin_android_grup3.R
@@ -15,7 +21,13 @@ import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import org.json.JSONObject
+import java.lang.Error
+import java.lang.Exception
+import java.security.AccessController.getContext
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
+
 
 class RemoteRepository @Inject constructor(
     private val endpoint: Endpoint,
@@ -28,6 +40,7 @@ class RemoteRepository @Inject constructor(
 
         return if (response.isSuccessful && responseData != null) {
             Resource.Success(responseData.data)
+
         } else if (response.code() == 401) {
             Resource.Error(message = context.resources.getString(R.string.response_login_error))
         } else {

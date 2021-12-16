@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfilDoctorBinding
@@ -29,14 +30,27 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Profil Dokter"
 
+
+        checkUserLoginStatus()
+        setupScheduleDoctor()
+
         createAlertDialog()
+    }
 
-        var listView = binding.listJadwalPraktik
-        var list = mutableListOf<ScheduleDoctor>()
+    private fun setupScheduleDoctor() {
+        val rvScheduleDoctor = binding.rvJadwalPraktik
+        rvScheduleDoctor.setHasFixedSize(true)
 
+        var list = ArrayList<ScheduleDoctor>()
         list.add(ScheduleDoctor("Senin", "19.00 - 22.00"))
         list.add(ScheduleDoctor("Selasa", "18.00 - 20.00"))
         list.add(ScheduleDoctor("Kamis", "19.00 - 22.00"))
+        list.add(ScheduleDoctor("Sabtu", "13.00 - 16.00"))
+
+        rvScheduleDoctor.layoutManager = LinearLayoutManager(this)
+        val listScheduleDoctor = ScheduleDoctordapter(list)
+        rvScheduleDoctor.adapter = listScheduleDoctor
+
         list.add(ScheduleDoctor("Sabtu", "13.00 - 15.00"))
         listView.adapter = ScheduleDoctordapter(this, R.layout.item_jadwal_praktik, list)
 
