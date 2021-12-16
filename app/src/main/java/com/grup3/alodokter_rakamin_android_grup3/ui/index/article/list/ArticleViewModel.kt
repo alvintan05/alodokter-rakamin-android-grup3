@@ -1,13 +1,11 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.index.article.index
+package com.grup3.alodokter_rakamin_android_grup3.ui.index.article.list
 
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.data.interactor.InteractorImpl
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity

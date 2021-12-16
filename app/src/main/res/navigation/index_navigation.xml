@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_article"
-        android:name="com.grup3.alodokter_rakamin_android_grup3.ui.index.article.index.ArticleFragment"
+        android:name="com.grup3.alodokter_rakamin_android_grup3.ui.index.article.list.ArticleFragment"
         android:label="@string/title_article"
         tools:layout="@layout/fragment_article" />
 
