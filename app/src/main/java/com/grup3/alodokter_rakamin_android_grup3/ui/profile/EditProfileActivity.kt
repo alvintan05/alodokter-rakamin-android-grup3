@@ -1,11 +1,11 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.profile
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.widget.RadioButton
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -29,7 +29,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
     private lateinit var dateFormatter: SimpleDateFormat
     private lateinit var datePicker: DatePickerDialog
     private lateinit var calendar: Calendar
-    private var userData : UserEntity? = null
+    private var userData: UserEntity? = null
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityEditProfileBinding =
         ActivityEditProfileBinding.inflate(layoutInflater)
@@ -39,8 +39,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         setSupportActionBar(binding.tbEditProfile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
-        userData = intent.getParcelableExtra<UserEntity>("Profile_Key")
+        userData = intent.getParcelableExtra(DetailProfileActivity.PROFILE_KEY)
         userData?.let { initUserData(it) }
         setupAlertDialog()
         setupDatePickerDialog()
@@ -57,11 +56,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    Toast.makeText(
-                        this,
-                        getString(R.string.message_update_data_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    this.setResult(Activity.RESULT_OK)
                     finish()
                 }
                 is Resource.Error -> {
@@ -127,7 +122,6 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         sbEditProfile.show()
     }
 
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
@@ -147,4 +141,5 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         }
         binding.rgJenisKelamin.check(buttonId)
     }
+
 }
