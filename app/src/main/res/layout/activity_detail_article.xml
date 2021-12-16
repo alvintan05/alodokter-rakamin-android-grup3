@@ -41,7 +41,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/spacing_8"
                 app:cardCornerRadius="10dp">
 
                 <ImageView
@@ -49,9 +50,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/spacing_8"
                     android:contentDescription="@string/image_content_article"
                     android:scaleType="centerCrop"
+                    android:cropToPadding="true"
                     tools:src="@drawable/app_logo" />
 
             </androidx.cardview.widget.CardView>

@@ -1,4 +1,4 @@
-package com.grup3.alodokter_rakamin_android_grup3.ui.index.article
+package com.grup3.alodokter_rakamin_android_grup3.ui.index.article.list
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
