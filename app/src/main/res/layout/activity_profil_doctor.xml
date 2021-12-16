@@ -59,6 +59,8 @@
         android:layout_marginHorizontal="@dimen/spacing_24"
         android:layout_marginTop="@dimen/spacing_10"
         android:background="@drawable/ic_bg_layout_white_rounded"
+        android:clickable="false"
+        android:contextClickable="false"
         android:elevation="@dimen/spacing_4"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/tv_nama_spesialis"
@@ -72,7 +74,7 @@
             android:layout_marginStart="@dimen/spacing_15"
             android:fontFamily="@font/lato"
             android:text="Lokasi dan jadwal praktik"
-            android:textColor="@color/secondary_font"
+            android:textColor="@color/black"
             android:textSize="@dimen/font_18" />
 
 
@@ -82,23 +84,27 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_40"
             android:text="Rumah Sakit Siloam"
+            android:textColor="@color/black"
             android:textSize="@dimen/font_16"
             android:textStyle="bold" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/grey_line" />
+        <!--        <View-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="1dp"-->
+        <!--            android:background="@color/grey_line" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_10"
+            android:clickable="false"
+            android:contextClickable="false"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_10"
+                android:layout_marginLeft="@dimen/spacing_20"
                 android:text="Hari"
                 android:textColor="@color/black" />
 
@@ -115,19 +121,18 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_5"
             android:background="@color/grey_line" />
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rv_jadwal_praktik"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            tools:itemCount="5"-->
-<!--            tools:listitem="@layout/item_jadwal_praktik" />-->
-
-        <ListView
-            android:id="@+id/list_jadwal_praktik"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_jadwal_praktik"
             android:layout_width="match_parent"
+            tools:listitem="@layout/item_jadwal_praktik"
+            tools:itemCount="4"
+            android:overScrollMode="never"
+            android:nestedScrollingEnabled="false"
             android:layout_height="match_parent"/>
+
 
     </LinearLayout>
 
@@ -150,6 +155,7 @@
             android:layout_marginTop="@dimen/spacing_10"
             android:fontFamily="@font/lato"
             android:text="Profil Dokter"
+            android:textColor="@color/black"
             android:textSize="@dimen/font_18"
             android:textStyle="bold" />
 
@@ -159,7 +165,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_10"
             android:layout_marginTop="@dimen/spacing_10"
-            android:text="Dokter ini adalah dokter spesialis ....." />
+            android:text="Dokter ini adalah dokter spesialis ....."
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
