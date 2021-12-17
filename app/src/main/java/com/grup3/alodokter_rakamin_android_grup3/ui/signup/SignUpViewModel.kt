@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.grup3.alodokter_rakamin_android_grup3.data.interactor.InteractorImpl
-import com.grup3.alodokter_rakamin_android_grup3.data.source.remote.RemoteRepository
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
@@ -16,23 +15,23 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModel@Inject constructor(
+class SignUpViewModel @Inject constructor(
     private val interactorImpl: InteractorImpl
-) : ViewModel()  {
+) : ViewModel() {
 
     val loading get() = _loading
     val userResult get() = _userResult
 
     val isEmailValid get() = _isEmailValid
     val isPasswordValid get() = _isPasswordValid
-    val isKonfirmasiPasswordValid get() = _isKonfirmasiPasswordValid
+    val isConfirmationPasswordValid get() = _isConfirmationPasswordValid
 
     private var _loading = MutableLiveData(false)
     private var _userResult: MutableLiveData<Resource<UserEntity>> = MutableLiveData()
 
     private var _isEmailValid: MutableLiveData<Boolean> = MutableLiveData()
     private var _isPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
-    private var _isKonfirmasiPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
+    private var _isConfirmationPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
 
     fun signUpUser(registerBody: RegisterBody) {
         _loading.value = true
@@ -67,24 +66,28 @@ class SignUpViewModel@Inject constructor(
             }
         }
     }
-    fun konfirmasiPasswordValidation(password: String, konfirmasiPassword: String) {
+
+    fun confirmationPasswordValidation(password: String, confirmationPassword: String) {
         when {
-            konfirmasiPassword.length >= 6 -> {
-                _isKonfirmasiPasswordValid.value = true
+            confirmationPassword.length >= 6 && password == confirmationPassword -> {
+                _isConfirmationPasswordValid.value = true
             }
-            password != konfirmasiPassword -> {
-                _isKonfirmasiPasswordValid.value = false
-            }
+
             else -> {
-                _isKonfirmasiPasswordValid.value = false
+                _isConfirmationPasswordValid.value = false
             }
         }
     }
 
-    fun checkInput(namaLengkap: String, email: String, password: String, konfirmasiPassword: String ): Boolean {
+    fun checkInput(
+        namaLengkap: String,
+        email: String,
+        password: String,
+        konfirmasiPassword: String
+    ): Boolean {
         return namaLengkap.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && konfirmasiPassword.isNotEmpty()
                 && isEmailValid.value == true
                 && isPasswordValid.value == true
-                && isKonfirmasiPasswordValid.value == true
+                && isConfirmationPasswordValid.value == true
     }
 }

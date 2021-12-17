@@ -138,8 +138,8 @@
     <string name="password_change_succes">Password anda berhasil diubah!</string>
     <string name="response_sign_up_error">Gagal Daftar, isi data yang benar</string>
 
-    <string name="message_password_less_than_six">Password tidak boleh kurang dari 6 karakter</string>
-    <string name="message_password_doesnt_match">Password tidak cocok</string>
+    <string name="message_password_less_than_six">Kata sandi tidak boleh kurang dari 6 karakter</string>
+    <string name="message_password_doesnt_match">Konfirmasi kata sandi tidak sesuai</string>
     <string name="message_fix_input_data">Harap perbaiki data yang dimasukkan</string>
     <string name="message_update_data_success">Data berhasil diperbarui</string>
     <string name="tab_text_current">Terkini</string>
@@ -164,6 +164,9 @@
     <string name="text_value_updated_date">Value Updated Date</string>
     <string name="text_try_again">Try Again</string>
     <string name="search_article_hint">Cari Artikel</string>
+    <string name="successful_registration">Daftar Berhasil</string>
+    <string name="title_register">Daftar</string>
+
 
     <string-array name="category_array">
         <item>Hidup Sehat</item>

@@ -23,7 +23,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
     private lateinit var loadingDialog: AlertDialog
     private lateinit var sbSignIn: Snackbar
 
-
     override fun inflateLayout(layoutInflater: LayoutInflater):
             ActivitySignUpBinding = ActivitySignUpBinding.inflate(layoutInflater)
 
@@ -33,10 +32,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 
         setSupportActionBar(binding.tbDaftar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Daftar"
-
-//        setupEmailListener()
-//        setupKataSandiListener()
+        supportActionBar?.title = getString(R.string.title_register)
 
         binding.btnDaftar.setOnClickListener {
             checkInput()
@@ -47,7 +43,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
             viewModel.isEmailValid.observe(this, { status ->
                 if (!status) {
                     binding.tlEmail.isErrorEnabled = true
-                    binding.tlEmail.error = "Format email salah"
+                    binding.tlEmail.error = getString(R.string.forgot_pass_error_invalid_email)
                 } else {
                     binding.tlEmail.isErrorEnabled = false
                 }
@@ -59,7 +55,8 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
             viewModel.isPasswordValid.observe(this, { status ->
                 if (!status) {
                     binding.tlKataSandi.isErrorEnabled = true
-                    binding.tlKataSandi.error = "Kata sandi tidak boleh kurang dari 6"
+                    binding.tlKataSandi.error =
+                        resources.getString(R.string.message_password_less_than_six)
                 } else {
                     binding.tlKataSandi.isErrorEnabled = false
                 }
@@ -68,23 +65,26 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 
         binding.etKonfirmasiKataSandi.doAfterTextChanged {
             val password = binding.etKataSandi.text.toString().trim()
-            viewModel.konfirmasiPasswordValidation(password, it.toString())
-            viewModel.isKonfirmasiPasswordValid.observe(this, { status ->
+            viewModel.confirmationPasswordValidation(password, it.toString())
+            viewModel.isConfirmationPasswordValid.observe(this, { status ->
                 if (!status) {
                     binding.tlKonfirmasiKataSandi.isErrorEnabled = true
                     binding.tlKonfirmasiKataSandi.error =
-                        "Konfirmasi Kata sandi tidak boleh kurang dari 6 dan harus sama dengan kata sandi"
+                        getString(R.string.message_password_doesnt_match)
                 } else {
                     binding.tlKonfirmasiKataSandi.isErrorEnabled = false
                 }
-
             })
         }
 
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    Toast.makeText(this, "Daftar Berhasil", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.successful_registration),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 }
                 is Resource.Error -> {
@@ -103,13 +103,18 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 
         val isCheckedGender = binding.rbLaki.isChecked || binding.rbPerempuan.isChecked
 
-        if (viewModel.checkInput(namaLengkap, email, password, konfirmasiPassword) && isCheckedGender) {
+        if (viewModel.checkInput(
+                namaLengkap,
+                email,
+                password,
+                konfirmasiPassword
+            ) && isCheckedGender
+        ) {
             signUp()
         } else {
             setupSnackbarError(resources.getString(R.string.message_fix_input_data))
         }
     }
-
 
     private fun signUp() {
         viewModel.signUpUser(getRegisterBody())
@@ -128,7 +133,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
             gender = rbGender?.text.toString(),
         )
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
