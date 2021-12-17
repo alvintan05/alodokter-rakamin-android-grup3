@@ -27,9 +27,12 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         imm.hideSoftInputFromWindow(binding.root.applicationWindowToken, 0)
     }
 
-    fun setupSnackbarError(message: String) {
-        val snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-            .setBackgroundTint(ContextCompat.getColor(this, R.color.error))
+    fun setupSnackbar(message: String, isSuccess: Boolean) {
+        val backgroundColor = if (isSuccess) ContextCompat.getColor(this, R.color.success)
+        else ContextCompat.getColor(this, R.color.error)
+
+        val snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
+            .setBackgroundTint(backgroundColor)
         snackbar.show()
     }
 

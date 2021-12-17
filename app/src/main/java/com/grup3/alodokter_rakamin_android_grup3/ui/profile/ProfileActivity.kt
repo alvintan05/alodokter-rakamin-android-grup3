@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
@@ -20,7 +19,6 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
 
     private val viewModel: ProfileViewModel by viewModels()
     private lateinit var loadingDialog: AlertDialog
-    private lateinit var sbProfile: Snackbar
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfileBinding =
         ActivityProfileBinding.inflate(layoutInflater)
@@ -46,7 +44,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
                     data?.let { Log.d("RESPONEAPA", it.toString()) }
                 }
                 is Resource.Error -> {
-                    resource.error?.let { setupSnackbar(it) }
+                    resource.error?.let { setupSnackbar(it, false) }
                 }
             }
         })
@@ -55,12 +53,6 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
     private fun setupToolbar() {
         setSupportActionBar(binding.tbProfile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    private fun setupSnackbar(message: String) {
-        sbProfile = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-            .setBackgroundTint(ContextCompat.getColor(this, R.color.error))
-        sbProfile.show()
     }
 
     private fun setupAlertDialog() {

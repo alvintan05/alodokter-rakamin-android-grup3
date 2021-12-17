@@ -5,16 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
-import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignInBinding
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.ui.forgotpassword.ForgotPasswordActivity
-import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileActivity
 import com.grup3.alodokter_rakamin_android_grup3.ui.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,7 +50,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
                     finish()
                 }
                 is Resource.Error -> {
-                    resource.error?.let { setupSnackbarError(it) }
+                    resource.error?.let { setupSnackbar(it, false) }
                 }
             }
         })
@@ -104,8 +101,6 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
                 loadingDialog.dismiss()
             }
         })
-
-
     }
 
     private fun checkInput() {
@@ -115,7 +110,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
         if (viewModel.checkInput(email, password)) {
             signInUser(email, password)
         } else {
-            setupSnackbarError(resources.getString(R.string.message_fix_input_data))
+            setupSnackbar(resources.getString(R.string.message_fix_input_data), false)
         }
     }
 }

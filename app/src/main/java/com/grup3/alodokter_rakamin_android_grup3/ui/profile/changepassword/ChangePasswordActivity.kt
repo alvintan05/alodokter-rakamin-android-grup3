@@ -88,7 +88,7 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
                     finish()
                 }
                 is Resource.Error -> {
-                    resource.error?.let { setupSnackbarError(it) }
+                    resource.error?.let { setupSnackbar(it, false) }
                 }
             }
         })
@@ -119,7 +119,7 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
                 )
             )
         } else {
-            setupSnackbarError(resources.getString(R.string.message_fix_input_data))
+            setupSnackbar(resources.getString(R.string.message_fix_input_data), false)
         }
     }
 
@@ -134,6 +134,5 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
             }
         })
     }
-
 
 }

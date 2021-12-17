@@ -1,33 +1,23 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityDetailArticleBinding
 import com.grup3.alodokter_rakamin_android_grup3.models.Resource
-import com.grup3.alodokter_rakamin_android_grup3.models.entity.DetailArticleEntity
-import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
-import com.grup3.alodokter_rakamin_android_grup3.ui.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 @AndroidEntryPoint
 class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
 
     private val viewModel: DetailArticleViewModel by viewModels()
-    private lateinit var sbGetDetailArticle: Snackbar
     private lateinit var loadingDialog: AlertDialog
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityDetailArticleBinding =
@@ -66,7 +56,7 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
                         .into(binding.ivArticle)
                 }
                 is Resource.Error -> {
-                    resource.error?.let { setupSnackbar(it) }
+                    resource.error?.let { setupSnackbar(it, false) }
                     binding.btnTryAgain.visibility = View.VISIBLE
                     binding.layoutDetailArticle.visibility = View.INVISIBLE
                 }
@@ -83,7 +73,6 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
         val dateConvert = SimpleDateFormat(patternFromApi, locale).parse(date)
         return formatter.format(dateConvert)
     }
-
 
     private fun getDataArticle() {
         val intentData = intent.getIntExtra("EXTRA_ARCTICLE_ID", 1)
@@ -115,9 +104,4 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
             .create()
     }
 
-    private fun setupSnackbar(message: String) {
-        sbGetDetailArticle = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-            .setBackgroundTint(ContextCompat.getColor(this, R.color.error))
-        sbGetDetailArticle.show()
-    }
 }
