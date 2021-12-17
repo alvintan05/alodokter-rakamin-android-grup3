@@ -1,14 +1,12 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.signup
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.RadioButton
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
-import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySignUpBinding
@@ -21,7 +19,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
 
     private val viewModel: SignUpViewModel by viewModels()
     private lateinit var loadingDialog: AlertDialog
-    private lateinit var sbSignIn: Snackbar
 
     override fun inflateLayout(layoutInflater: LayoutInflater):
             ActivitySignUpBinding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -80,15 +77,11 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    Toast.makeText(
-                        this,
-                        getString(R.string.successful_registration),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    this@SignUpActivity.setResult(Activity.RESULT_OK)
                     finish()
                 }
                 is Resource.Error -> {
-                    resource.error?.let { setupSnackbar(it) }
+                    resource.error?.let { setupSnackbar(it, false) }
                 }
             }
         })
@@ -112,7 +105,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
         ) {
             signUp()
         } else {
-            setupSnackbarError(resources.getString(R.string.message_fix_input_data))
+            setupSnackbar(resources.getString(R.string.message_fix_input_data), false)
         }
     }
 
@@ -144,12 +137,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
             .setCancelable(false)
             .setView(R.layout.custom_progress_dialog)
             .create()
-    }
-
-    private fun setupSnackbar(message: String) {
-        sbSignIn = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-            .setBackgroundTint(ContextCompat.getColor(this, R.color.error))
-        sbSignIn.show()
     }
 
 }

@@ -7,8 +7,6 @@ import android.text.InputType
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityEditProfileBinding
@@ -24,7 +22,6 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
 
     private val viewModel: ProfileViewModel by viewModels()
     private lateinit var loadingDialog: AlertDialog
-    private lateinit var sbEditProfile: Snackbar
     private lateinit var dateFormatter: SimpleDateFormat
     private lateinit var datePicker: DatePickerDialog
     private lateinit var calendar: Calendar
@@ -55,11 +52,11 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    this.setResult(Activity.RESULT_OK)
+                    this@EditProfileActivity.setResult(Activity.RESULT_OK)
                     finish()
                 }
                 is Resource.Error -> {
-                    resource.error?.let { setupSnackbar(it) }
+                    resource.error?.let { setupSnackbar(it, false) }
                 }
             }
         })
@@ -110,12 +107,6 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
             .setCancelable(false)
             .setView(R.layout.custom_progress_dialog)
             .create()
-    }
-
-    private fun setupSnackbar(message: String) {
-        sbEditProfile = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-            .setBackgroundTint(ContextCompat.getColor(this, R.color.error))
-        sbEditProfile.show()
     }
 
     override fun onSupportNavigateUp(): Boolean {

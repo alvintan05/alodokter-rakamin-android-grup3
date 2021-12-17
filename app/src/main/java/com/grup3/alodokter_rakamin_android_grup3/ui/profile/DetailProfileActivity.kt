@@ -10,8 +10,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityDetailProfileBinding
@@ -23,7 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
 
     private val viewModel: ProfileViewModel by viewModels()
-    private lateinit var sbGetDetailProfile: Snackbar
     private lateinit var loadingDialog: AlertDialog
     private lateinit var userData: UserEntity
     private lateinit var editProfileResultLauncher: ActivityResultLauncher<Intent>
@@ -100,15 +97,6 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
                 loadingDialog.dismiss()
             }
         })
-    }
-
-    private fun setupSnackbar(message: String, isSuccess: Boolean) {
-        val backgroundColor = if (isSuccess) ContextCompat.getColor(this, R.color.success)
-        else ContextCompat.getColor(this, R.color.error)
-
-        sbGetDetailProfile = Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
-            .setBackgroundTint(backgroundColor)
-        sbGetDetailProfile.show()
     }
 
     private fun setupAlertDialog() {
