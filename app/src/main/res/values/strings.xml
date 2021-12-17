@@ -137,6 +137,7 @@
     <string name="response_change_password_error">Kata sandi lama tidak sesuai</string>
     <string name="password_change_succes">Kata sandi kamu berhasil diubah</string>
     <string name="response_sign_up_error">Gagal Daftar, isi data yang benar</string>
+    <string name="toast_login_success">Anda telah berhasil masuk</string>
 
     <string name="message_password_less_than_six">Kata sandi tidak boleh kurang dari 6 karakter</string>
     <string name="message_password_doesnt_match">Konfirmasi kata sandi tidak sesuai</string>

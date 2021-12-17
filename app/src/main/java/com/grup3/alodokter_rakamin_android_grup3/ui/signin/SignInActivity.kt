@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -58,6 +59,11 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
                 is Resource.Success -> {
                     val data = resource.data
                     data?.let { viewModel.saveUserLoginSession(it.id, it.token) }
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.toast_login_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 }
                 is Resource.Error -> {

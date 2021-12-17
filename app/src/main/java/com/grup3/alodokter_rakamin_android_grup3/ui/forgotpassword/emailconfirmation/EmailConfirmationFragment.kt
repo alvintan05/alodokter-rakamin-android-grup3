@@ -142,6 +142,8 @@ class EmailConfirmationFragment : BaseFragment<FragmentEmailConfirmationBinding>
 
     override fun onDestroyView() {
         super.onDestroyView()
-        timer.cancel()
+        if (::timer.isInitialized) {
+            timer.cancel()
+        }
     }
 }
