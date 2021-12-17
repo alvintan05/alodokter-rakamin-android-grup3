@@ -11,7 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
@@ -94,7 +93,6 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
 
     private fun showData() {
         viewModel.getDetailProfile()
-
         viewModel.loading.observe(this, {
             if (it) {
                 loadingDialog.show()
@@ -102,11 +100,6 @@ class DetailProfileActivity : BaseActivity<ActivityDetailProfileBinding>() {
                 loadingDialog.dismiss()
             }
         })
-
-        Glide.with(this)
-            .load("https://image.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg")
-            .circleCrop()
-            .into(binding.profilePicture)
     }
 
     private fun setupSnackbar(message: String, isSuccess: Boolean) {

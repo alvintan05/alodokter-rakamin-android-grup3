@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -86,7 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_16"
-            android:layout_marginTop="@dimen/spacing_15"
+            android:layout_marginTop="@dimen/spacing_18"
             android:fontFamily="@font/lato"
             android:text="@string/tanggal_lahir"
             android:textColor="@color/black"
@@ -128,53 +127,13 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tv_jenis_kelamin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_16"
-            android:layout_marginTop="@dimen/spacing_15"
-            android:fontFamily="@font/lato"
-            android:text="@string/jenis_kelamin"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_tanggal_lahir" />
-
-        <RadioGroup
-            android:id="@+id/rg_jenis_kelamin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_14"
-            android:layout_marginTop="@dimen/spacing_10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_jenis_kelamin">
-
-            <RadioButton
-                android:id="@+id/rb_gender_male"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spacing_30"
-                android:buttonTint="@color/color_primary"
-                android:text="@string/laki_laki"
-                tools:checked="true" />
-
-            <RadioButton
-                android:id="@+id/rb_gender_female"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spacing_30"
-                android:buttonTint="@color/color_primary"
-                android:text="@string/perempuan" />
-        </RadioGroup>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_nomor_ktp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_14"
-            android:layout_marginTop="@dimen/spacing_10"
+            android:layout_marginTop="@dimen/spacing_18"
             android:hint="@string/nomor_ktp"
             android:textColorHint="@color/ternary_font"
             app:boxCornerRadiusBottomEnd="@dimen/spacing_5"
@@ -186,7 +145,7 @@
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rg_jenis_kelamin">
+            app:layout_constraintTop_toBottomOf="@id/til_tanggal_lahir">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_nomor_ktp"
@@ -204,7 +163,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_14"
-            android:layout_marginTop="@dimen/spacing_10"
+            android:layout_marginTop="@dimen/spacing_18"
             android:hint="@string/alamat"
             android:textColorHint="@color/ternary_font"
             app:boxCornerRadiusBottomEnd="@dimen/spacing_5"

@@ -40,7 +40,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:contentDescription="@string/image_user"
-                tools:src="@drawable/app_logo" />
+                android:src="@drawable/ic_blue_profile" />
 
             <TextView
                 android:id="@+id/tv_user_name"
