@@ -17,7 +17,7 @@ interface RemoteDataSource {
     suspend fun signInUser(loginBody: LoginBody): Resource<SignInEntity>
     suspend fun signUpUser(registerBody: RegisterBody) : Resource<UserEntity>
     suspend fun searchArticle(title : String) : Resource<List<ArticleEntity>>
-    suspend fun signUpUser(registerBody: RegisterBody): Resource<UserEntity>
+
     suspend fun editProfile(
         token: String,
         editProfileBody: EditProfileBody,

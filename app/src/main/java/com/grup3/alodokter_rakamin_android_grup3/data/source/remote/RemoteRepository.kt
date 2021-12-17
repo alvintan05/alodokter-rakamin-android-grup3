@@ -21,8 +21,6 @@ import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONObject
 import javax.inject.Inject
-import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
-import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 
 class RemoteRepository @Inject constructor(
     private val endpoint: Endpoint,
@@ -135,7 +133,19 @@ class RemoteRepository @Inject constructor(
 
     override suspend fun searchArticle(title: String): Resource<List<ArticleEntity>> {
         val response = endpoint.searchArticle(title)
-        
+        val responseData = response.body()
+
+        return if (response.isSuccessful && responseData != null) {
+            if (response.body()?.message == "success") {
+                Resource.Success(responseData.data)
+            } else {
+                Resource.Error(responseData.message)
+            }
+        } else {
+            Resource.Error("Error, please try again")
+        }
+    }
+
     override suspend fun getListArticle(category: Int): LiveData<PagingData<ArticleEntity>> =
         Pager(
             config = PagingConfig(
