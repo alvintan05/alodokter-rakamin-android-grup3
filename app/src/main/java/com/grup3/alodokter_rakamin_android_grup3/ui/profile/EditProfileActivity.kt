@@ -7,6 +7,7 @@ import android.text.InputType
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityEditProfileBinding
@@ -38,6 +39,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         userData = intent.getParcelableExtra(DetailProfileActivity.PROFILE_KEY)
         userData?.let { initUserData(it) }
         setupAlertDialog()
+        setupTextListener()
         setupDatePickerDialog()
 
         binding.etTanggalLahir.inputType = InputType.TYPE_NULL
@@ -46,7 +48,11 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         }
 
         binding.btnSimpan.setOnClickListener {
-            editProfile(getProfileBody())
+            if (viewModel.checkNumberInput()) {
+                editProfile(getProfileBody())
+            } else {
+                setupSnackbar(resources.getString(R.string.message_fix_input_data), false)
+            }
         }
 
         viewModel.userResult.observe(this, { resource ->
@@ -60,6 +66,32 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
                 }
             }
         })
+    }
+
+    private fun setupTextListener() {
+        binding.etPhoneNumber.doAfterTextChanged {
+            viewModel.phoneNumberValidation((it.toString()))
+            viewModel.isPhoneNumberValid.observe(this, { status ->
+                if (!status) {
+                    binding.tilPhoneNumber.isErrorEnabled = true
+                    binding.tilPhoneNumber.error = getString(R.string.invalid_phone_number_error)
+                } else {
+                    binding.tilPhoneNumber.isErrorEnabled = false
+                }
+            })
+        }
+
+        binding.etNomorKtp.doAfterTextChanged {
+            viewModel.idNumberValidation((it.toString()))
+            viewModel.isIDNumberValid.observe(this, { status ->
+                if (!status) {
+                    binding.tilNomorKtp.isErrorEnabled = true
+                    binding.tilNomorKtp.error = getString(R.string.invalid_id_number_error)
+                } else {
+                    binding.tilNomorKtp.isErrorEnabled = false
+                }
+            })
+        }
     }
 
     private fun setupDatePickerDialog() {
