@@ -58,7 +58,8 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
                     binding.tvReviewer.text = resource.data?.reviewer
                     binding.tvContentArticle.text = resource.data?.content
                     //2021-12-15T02:02:22.754Z
-                    val date = resource.data?.updateDate?.subSequence(0, 10)
+//                    val date = resource.data?.updateDate?.subSequence(0, 10)
+                    val date = resource.data?.updateDate?.let { convertDate(it) }
                     binding.tvUpdatedDate.text = date
                     Glide.with(this)
                         .load(resource.data?.image)
@@ -73,6 +74,16 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
 
         })
     }
+
+    private fun convertDate(date: String): String {
+        val patternFromApi = "yyyy-MM-dd"
+        val pattern = "EEEE, dd MMMM yyyy"
+        val locale = Locale("id", "ID")
+        val formatter = SimpleDateFormat(pattern, locale)
+        val dateConvert = SimpleDateFormat(patternFromApi, locale).parse(date)
+        return formatter.format(dateConvert)
+    }
+
 
     private fun getDataArticle() {
         val intentData = intent.getIntExtra("EXTRA_ARCTICLE_ID", 1)
