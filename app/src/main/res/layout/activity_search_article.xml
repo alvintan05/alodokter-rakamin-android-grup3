@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.index.article.search.SearchArticleActivity">
 
+
+    <TextView
+        android:id="@+id/tv_article_not_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/text_article_not_found"
+        android:fontFamily="@font/lato"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_16"
+        android:visibility="invisible"
+        />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_search_article"
         android:layout_width="match_parent"
@@ -41,13 +57,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_10"
-        android:layout_marginTop="@dimen/spacing_58"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tb_search_article"
-        tools:listitem="@layout/item_article" />
+        tools:listitem="@layout/item_search_article" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

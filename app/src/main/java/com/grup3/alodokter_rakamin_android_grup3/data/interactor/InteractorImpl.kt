@@ -6,6 +6,7 @@ import com.grup3.alodokter_rakamin_android_grup3.models.body.ChangePasswordBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import javax.inject.Inject
@@ -19,6 +20,10 @@ class InteractorImpl @Inject constructor(
 
     override suspend fun signUpUser(registerBody: RegisterBody): Resource<UserEntity> =
         remoteRepository.signUpUser(registerBody)
+
+    override suspend fun searchArticle(title: String): Resource<List<ArticleEntity>> =
+        remoteRepository.searchArticle(title)
+
 
     override suspend fun editProfile(
         token: String,

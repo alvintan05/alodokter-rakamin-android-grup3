@@ -7,6 +7,7 @@ import retrofit2.http.Path
 import com.grup3.alodokter_rakamin_android_grup3.models.body.EditProfileBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.LoginBody
 import com.grup3.alodokter_rakamin_android_grup3.models.body.RegisterBody
+import com.grup3.alodokter_rakamin_android_grup3.models.entity.ArticleEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.SignInEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.entity.UserEntity
 import com.grup3.alodokter_rakamin_android_grup3.models.response.ApiResponse
@@ -19,6 +20,11 @@ interface Endpoint {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ) : Response<ApiResponse<UserEntity>>
+
+    @GET("articles")
+    suspend fun searchArticle(
+        @Query("search") title: String
+    ) : Response<ApiResponse<List<ArticleEntity>>>
 
     @POST("users/login")
     suspend fun signInUser(
