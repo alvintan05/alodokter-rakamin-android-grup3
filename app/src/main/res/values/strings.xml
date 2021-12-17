@@ -136,6 +136,7 @@
     <string name="response_login_error">Password atau Email salah</string>
     <string name="response_change_password_error">Password lama anda salah</string>
     <string name="password_change_succes">Password anda berhasil diubah!</string>
+    <string name="response_sign_up_error">Gagal Daftar, isi data yang benar</string>
 
     <string name="message_password_less_than_six">Password tidak boleh kurang dari 6 karakter</string>
     <string name="message_password_doesnt_match">Password tidak cocok</string>
