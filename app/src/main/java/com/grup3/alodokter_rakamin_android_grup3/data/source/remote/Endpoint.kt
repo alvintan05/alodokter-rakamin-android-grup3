@@ -21,6 +21,11 @@ interface Endpoint {
         @Path("id") id: Int
     ) : Response<ApiResponse<UserEntity>>
 
+    @GET("articles")
+    suspend fun searchArticle(
+        @Query("search") title: String
+    ) : Response<ApiResponse<List<ArticleEntity>>>
+
     @POST("users/login")
     suspend fun signInUser(
         @Body loginBody: LoginBody

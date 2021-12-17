@@ -24,6 +24,10 @@ class InteractorImpl @Inject constructor(
     override suspend fun signUpUser(registerBody: RegisterBody): Resource<UserEntity> =
         remoteRepository.signUpUser(registerBody)
 
+    override suspend fun searchArticle(title: String): Resource<List<ArticleEntity>> =
+        remoteRepository.searchArticle(title)
+
+
     override suspend fun editProfile(
         token: String,
         editProfileBody: EditProfileBody,

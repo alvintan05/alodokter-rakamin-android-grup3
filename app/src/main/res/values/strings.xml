@@ -153,6 +153,7 @@
     <string name="booking_success_desc">Terima kasih telah melakukan buat janji dengan dokter</string>
     <string name="button_back">Kembali</string>
     <string name="message_alert_cannot_use_back_button">Tolong tekan tombol kembali</string>
+    <string name="text_article_not_found">Artikel tidak ditemukan</string>
     <string name="konfirmasi_email">Konfirmasi E-mail</string>
     <string name="text_title_article">Judul Artikel</string>
     <string name="image_content_article">Image Content Article</string>
@@ -161,7 +162,6 @@
     <string name="text_updated_date">Terakhir diperbarui :</string>
     <string name="text_value_updated_date">Value Updated Date</string>
     <string name="text_try_again">Try Again</string>
-
     <string name="search_article_hint">Cari Artikel</string>
 
     <string-array name="category_array">
