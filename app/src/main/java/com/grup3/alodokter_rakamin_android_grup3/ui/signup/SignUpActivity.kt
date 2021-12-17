@@ -1,10 +1,10 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.signup
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.RadioButton
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import com.grup3.alodokter_rakamin_android_grup3.R
@@ -77,11 +77,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>() {
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    Toast.makeText(
-                        this,
-                        getString(R.string.successful_registration),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    this@SignUpActivity.setResult(Activity.RESULT_OK)
                     finish()
                 }
                 is Resource.Error -> {

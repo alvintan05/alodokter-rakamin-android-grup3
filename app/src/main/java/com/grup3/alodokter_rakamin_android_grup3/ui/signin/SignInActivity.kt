@@ -1,8 +1,11 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.signin
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
@@ -20,6 +23,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var loadingDialog: AlertDialog
+    private lateinit var signUpResultLauncher: ActivityResultLauncher<Intent>
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivitySignInBinding =
         ActivitySignInBinding.inflate(layoutInflater)
@@ -29,8 +33,15 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
         setupAlertDialog()
 
+        signUpResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    setupSnackbar(getString(R.string.successful_registration), true)
+                }
+            }
+
         binding.tvBelumPunyaAkun.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
+            signUpResultLauncher.launch(Intent(this, SignUpActivity::class.java))
         }
 
         binding.tvLupaKataSandi.setOnClickListener {

@@ -7,7 +7,6 @@ import android.text.InputType
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityEditProfileBinding
@@ -53,7 +52,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>() {
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    this.setResult(Activity.RESULT_OK)
+                    this@EditProfileActivity.setResult(Activity.RESULT_OK)
                     finish()
                 }
                 is Resource.Error -> {
