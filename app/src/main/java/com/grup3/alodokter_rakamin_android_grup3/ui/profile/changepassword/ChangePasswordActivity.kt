@@ -1,8 +1,8 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.profile.changepassword
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
@@ -80,11 +80,7 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
         viewModel.userResult.observe(this, { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    Toast.makeText(
-                        this,
-                        resources.getString(R.string.password_change_succes),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    this@ChangePasswordActivity.setResult(Activity.RESULT_OK)
                     finish()
                 }
                 is Resource.Error -> {
@@ -93,7 +89,6 @@ class ChangePasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
             }
         })
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

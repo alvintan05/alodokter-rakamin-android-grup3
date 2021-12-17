@@ -1,12 +1,14 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.profile
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import com.google.android.material.snackbar.Snackbar
 import com.grup3.alodokter_rakamin_android_grup3.R
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivityProfileBinding
@@ -19,6 +21,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
 
     private val viewModel: ProfileViewModel by viewModels()
     private lateinit var loadingDialog: AlertDialog
+    private lateinit var changePasswordResultLauncher: ActivityResultLauncher<Intent>
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfileBinding =
         ActivityProfileBinding.inflate(layoutInflater)
@@ -29,11 +32,18 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>() {
         setupToolbar()
         setupAlertDialog()
 
+        changePasswordResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    setupSnackbar(getString(R.string.password_change_succes), true)
+                }
+            }
+
         binding.btnMyData.setOnClickListener {
             startActivity(Intent(this, DetailProfileActivity::class.java))
         }
         binding.btnChangePassword.setOnClickListener {
-            startActivity(Intent(this, ChangePasswordActivity::class.java))
+            changePasswordResultLauncher.launch(Intent(this, ChangePasswordActivity::class.java))
         }
         binding.btnSignOut.setOnClickListener { showLogoutConfirmation() }
 
