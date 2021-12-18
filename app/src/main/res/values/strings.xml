@@ -173,6 +173,7 @@
     <string name="reset_password_description">Masukkan alamat email akun, kami akan mengirimkan email berisi link untuk reset kata sandi</string>
     <string name="open_email">Buka Email</string>
     <string name="kembali_ke_halaman_sign_in">Skip, reset nanti</string>
+    <string name="location_service_not_enabled">Service lokasi tidak diaktifkan</string>
 
     <string-array name="category_array">
         <item>Hidup Sehat</item>
