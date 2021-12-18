@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import com.grup3.alodokter_rakamin_android_grup3.adapters.ArticleRecyclerViewAdapter
+import com.grup3.alodokter_rakamin_android_grup3.adapters.DoctorRecyclerViewAdapter
 import com.grup3.alodokter_rakamin_android_grup3.base.BaseActivity
 import com.grup3.alodokter_rakamin_android_grup3.databinding.ActivitySearchDoctorBinding
-import com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail.DetailArticleActivity
+import com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail.ProfilDoctorActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,11 +50,11 @@ class SearchDoctorActivity : BaseActivity<ActivitySearchDoctorBinding>() {
     }
 
     private fun setupDoctorList() {
-        val adapter = ArticleRecyclerViewAdapter()
+        val adapter = DoctorRecyclerViewAdapter(this)
         binding.rvDoctor.setHasFixedSize(true)
         binding.rvDoctor.adapter = adapter
         adapter.onClickListener = {
-            startActivity(Intent(this, DetailArticleActivity::class.java))
+            startActivity(Intent(this, ProfilDoctorActivity::class.java))
         }
     }
 
