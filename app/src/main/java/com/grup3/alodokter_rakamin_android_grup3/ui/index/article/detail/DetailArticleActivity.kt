@@ -1,6 +1,10 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.index.article.detail
 
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.viewModels
@@ -46,7 +50,7 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
                 is Resource.Success -> {
                     binding.tvTitleArticle.text = resource.data?.title
                     binding.tvReviewer.text = resource.data?.reviewer
-                    binding.tvContentArticle.text = resource.data?.content
+                    binding.tvContentArticle.text = htmlParser(resource.data?.content)
                     //2021-12-15T02:02:22.754Z
 //                    val date = resource.data?.updateDate?.subSequence(0, 10)
                     val date = resource.data?.updateDate?.let { convertDate(it) }
@@ -104,4 +108,13 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
             .create()
     }
 
+    private fun htmlParser(html: String?): Spanned? {
+        return if (!TextUtils.isEmpty(html)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
+            } else {
+                Html.fromHtml(html)
+            }
+        } else null
+    }
 }
