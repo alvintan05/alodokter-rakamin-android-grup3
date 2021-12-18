@@ -64,6 +64,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
                         resources.getString(R.string.toast_login_success),
                         Toast.LENGTH_SHORT
                     ).show()
+                    this.setResult(Activity.RESULT_OK)
                     finish()
                 }
                 is Resource.Error -> {
