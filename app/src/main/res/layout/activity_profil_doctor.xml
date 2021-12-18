@@ -25,29 +25,31 @@
         android:layout_marginStart="@dimen/spacing_40"
         android:layout_marginTop="@dimen/spacing_10"
         android:contentDescription="@string/cd_foto_profil"
+        android:src="@drawable/app_logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_profil_dokter"
-        tools:src="@drawable/app_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/tb_profil_dokter" />
 
     <TextView
         android:id="@+id/tv_nama_dokter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_20"
-        android:fontFamily="@font/lato"
+        android:fontFamily="@font/lato_bold"
         android:textColor="@color/black"
         android:textSize="@dimen/font_20"
         app:layout_constraintBottom_toBottomOf="@+id/iv_foto_dokter"
         app:layout_constraintStart_toEndOf="@id/iv_foto_dokter"
         app:layout_constraintTop_toTopOf="@id/iv_foto_dokter"
-        tools:text="Account Name" />
+        android:text="dr. Budi" />
 
     <TextView
         android:id="@+id/tv_nama_spesialis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_6"
-        android:text="Specilist Name"
+        android:textColor="@color/black"
+        android:fontFamily="@font/lato"
+        android:text="Spesialis Tulang"
         app:layout_constraintBottom_toBottomOf="@+id/iv_foto_dokter"
         app:layout_constraintStart_toStartOf="@+id/tv_nama_dokter"
         app:layout_constraintTop_toBottomOf="@+id/tv_nama_dokter" />
@@ -127,11 +129,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_jadwal_praktik"
             android:layout_width="match_parent"
-            tools:listitem="@layout/item_jadwal_praktik"
-            tools:itemCount="4"
-            android:overScrollMode="never"
+            android:layout_height="match_parent"
             android:nestedScrollingEnabled="false"
-            android:layout_height="match_parent"/>
+            android:overScrollMode="never"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_jadwal_praktik" />
 
 
     </LinearLayout>
