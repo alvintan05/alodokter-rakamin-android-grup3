@@ -83,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_16"
                 android:lineSpacingExtra="@dimen/spacing_4"
+                android:textColorLink="@color/color_link"
                 android:textAlignment="textStart"
                 android:textColor="@color/black" />
 
