@@ -78,16 +78,6 @@
                 android:textSize="@dimen/font_14" />
 
             <TextView
-                android:id="@+id/tv_content_article"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_16"
-                android:lineSpacingExtra="@dimen/spacing_4"
-                android:textColorLink="@color/color_link"
-                android:textAlignment="textStart"
-                android:textColor="@color/black" />
-
-            <TextView
                 android:id="@+id/tv_helper_updated_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,6 +96,17 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/tv_content_article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_16"
+                android:lineSpacingExtra="@dimen/spacing_4"
+                android:textColorLink="@color/color_link"
+                android:textAlignment="textStart"
+                android:textColor="@color/black" />
+
         </LinearLayout>
 
     </ScrollView>
