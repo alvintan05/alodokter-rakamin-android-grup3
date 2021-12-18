@@ -35,7 +35,6 @@ class SliderArticleAdapter : SliderViewAdapter<SliderArticleAdapter.SliderAdapte
         viewHolder.binding.tvTitle.text = item.title
         Glide.with(viewHolder.binding.root)
             .load(item.image)
-            .fitCenter()
             .into(viewHolder.binding.ivAutoImageSlider)
         viewHolder.binding.root.setOnClickListener {
             onClickListener?.invoke(item.id)
