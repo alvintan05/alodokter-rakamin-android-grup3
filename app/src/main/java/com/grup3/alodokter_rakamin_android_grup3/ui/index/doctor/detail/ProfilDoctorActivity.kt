@@ -1,10 +1,13 @@
 package com.grup3.alodokter_rakamin_android_grup3.ui.index.doctor.detail
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +23,7 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
 
     private val viewModel: ProfilDoctorViewModel by viewModels()
     private lateinit var dialog: AlertDialog
+    private lateinit var signInResultLauncher: ActivityResultLauncher<Intent>
 
     override fun inflateLayout(layoutInflater: LayoutInflater): ActivityProfilDoctorBinding =
         ActivityProfilDoctorBinding.inflate(layoutInflater)
@@ -34,6 +38,13 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
 
         checkUserLoginStatus()
         setupScheduleDoctor()
+
+        signInResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    dialog.dismiss()
+                }
+            }
 
     }
 
@@ -59,11 +70,6 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        checkUserLoginStatus()
-    }
-
     private fun createAlertDialog() {
 
         val view = View.inflate(this@ProfilDoctorActivity, R.layout.custom_alert_dialog_login, null)
@@ -75,7 +81,7 @@ class ProfilDoctorActivity : BaseActivity<ActivityProfilDoctorBinding>() {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         view.findViewById<TextView>(R.id.btn_redirect_masuk).setOnClickListener {
-            startActivity(Intent(this@ProfilDoctorActivity, SignInActivity::class.java))
+            signInResultLauncher.launch(Intent(this@ProfilDoctorActivity, SignInActivity::class.java))
         }
 
         view.findViewById<TextView>(R.id.btn_nanti).setOnClickListener {
