@@ -132,6 +132,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             when (resource) {
                 is Resource.Success -> {
                     resource.data?.let { sliderAdapter.setItem(it) }
+                    binding.sliderArticle.setInfiniteAdapterEnabled(true)
                 }
                 is Resource.Error -> {
                     showErrorSlider()
