@@ -85,9 +85,6 @@ dependencies {
     // Image Slider
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
-    // PinView
-    implementation 'io.github.chaosleung:pinview:1.4.4'
-
     // Location
     implementation 'com.google.android.gms:play-services-location:18.0.0'
 

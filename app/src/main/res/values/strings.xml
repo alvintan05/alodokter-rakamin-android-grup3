@@ -22,7 +22,7 @@
     <string name="kata_sandi">Kata sandi</string>
     <string name="konfirmasi_kata_sandi">Konfirmasi kata sandi</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
-    <string name="lupa_kata_sandi">Lupa kata sandi</string>
+    <string name="lupa_kata_sandi">Lupa Kata Sandi</string>
     <string name="sign_in">Masuk dan mulai buat janji \ndengan dokter</string>
     <string name="sign_up">Daftar dan mulai buat janji \ndengan dokter</string>
 
@@ -56,10 +56,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="title_forgot_password">Lupa kata sandi</string>
-    <string name="title_create_new_password">Buat kata sandi baru</string>
+    <string name="title_check_your_email">Email berhasil dikirim</string>
+    <string name="title_check_your_email_desc">Kami telah mengirimkan link reset password ke email kamu</string>
     <string name="title_profile">Profil</string>
 
-    <string name="forgot_pass_button_send_otp">Kirim Kode OTP</string>
+    <string name="forgot_pass_button_send_email">Kirim Email</string>
     <string name="forgot_pass_message_otp_delivered">Email OTP berhasil terkirim</string>
     <string name="forgot_pass_message_email_not_found">Email tidak terdaftar</string>
     <string name="forgot_pass_otp_desc">Masukkan kode OTP yang telah dikirim pada email kamu</string>
@@ -156,7 +157,7 @@
     <string name="button_back">Kembali</string>
     <string name="message_alert_cannot_use_back_button">Tolong tekan tombol kembali</string>
     <string name="text_article_not_found">Artikel tidak ditemukan</string>
-    <string name="konfirmasi_email">Konfirmasi E-mail</string>
+    <string name="reset_password">Reset Kata Sandi</string>
     <string name="text_title_article">Judul Artikel</string>
     <string name="image_content_article">Image Content Article</string>
     <string name="text_reviewer">Ditinjau oleh :</string>
@@ -169,6 +170,10 @@
     <string name="title_register">Daftar</string>
     <string name="invalid_phone_number_error">Format nomor telepon tidak valid</string>
     <string name="invalid_id_number_error">Nomor KTP tidak boleh kurang dari 16 karakter</string>
+    <string name="reset_password_description">Masukkan alamat email akun, kami akan mengirimkan email berisi link untuk reset kata sandi</string>
+    <string name="open_email">Buka Email</string>
+    <string name="kembali_ke_halaman_sign_in">Skip, reset nanti</string>
+    <string name="location_service_not_enabled">Service lokasi tidak diaktifkan</string>
 
     <string-array name="category_array">
         <item>Hidup Sehat</item>

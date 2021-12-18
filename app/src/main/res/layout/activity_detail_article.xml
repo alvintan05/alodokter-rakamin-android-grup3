@@ -19,12 +19,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_16">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/layout_detail_article"
             android:layout_width="match_parent"
+            android:layout_margin="@dimen/spacing_16"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -109,6 +109,5 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 </FrameLayout>

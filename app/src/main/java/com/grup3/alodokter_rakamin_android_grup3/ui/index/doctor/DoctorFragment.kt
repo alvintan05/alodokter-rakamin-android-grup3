@@ -62,7 +62,6 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
 
         binding.svSearchDoctor.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(p0: String?): Boolean {
-                // make a server call
                 return false
             }
 
@@ -88,11 +87,10 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
                     if (location == null) {
                         requestNewLocationData()
                     } else {
-                        Toast.makeText(
-                            context,
-                            "Latitude: ${location.latitude}, Longitude: ${location.longitude}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Log.d(
+                            LOCATION_TAG,
+                            "getLocation: Latitude: ${location.latitude}, Longitude: ${location.longitude}"
+                        )
                         setupDoctorList()
                     }
                 }
@@ -178,7 +176,11 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
                 }
                 Activity.RESULT_CANCELED -> {
                     showEnableLocationSetting()
-                    Toast.makeText(context, "Location Service not Enabled", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        context,
+                        getString(R.string.location_service_not_enabled),
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
                 else -> {}
@@ -188,7 +190,6 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
 
     @SuppressLint("MissingPermission")
     private fun requestNewLocationData() {
-        Log.d("TAG", "onLocationResult: dipanggil req")
         val locationRequest = LocationRequest.create().apply {
             interval = 50000
             fastestInterval = 50000
@@ -205,13 +206,11 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
 
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
-            Log.d("TAG", "onLocationResult: dipanggil call")
             location = locationResult.lastLocation
-            Toast.makeText(
-                context,
-                "Latitude: ${location.latitude}, Longitude: ${location.longitude}",
-                Toast.LENGTH_SHORT
-            ).show()
+            Log.d(
+                LOCATION_TAG,
+                "getLocation: Latitude: ${location.latitude}, Longitude: ${location.longitude}"
+            )
         }
     }
 
@@ -283,6 +282,7 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
 
     companion object {
         const val LOCATION_SETTING_REQUEST = 1010
+        const val LOCATION_TAG = "LOCATION_TAG"
     }
 
 }
