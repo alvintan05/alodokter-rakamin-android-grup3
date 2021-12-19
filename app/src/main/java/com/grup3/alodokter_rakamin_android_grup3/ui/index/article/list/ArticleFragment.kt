@@ -177,7 +177,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         )
         adapter.onClickListener = {
             val intentWithData = Intent(requireActivity(), DetailArticleActivity::class.java)
-            intentWithData.putExtra("EXTRA_ARCTICLE_ID", it)
+            intentWithData.putExtra("EXTRA_ARTICLE_ID", it)
             startActivity(intentWithData)
         }
         observeArticleList()
