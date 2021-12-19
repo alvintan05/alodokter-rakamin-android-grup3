@@ -79,7 +79,7 @@ class DetailArticleActivity : BaseActivity<ActivityDetailArticleBinding>() {
     }
 
     private fun getDataArticle() {
-        val intentData = intent.getIntExtra("EXTRA_ARCTICLE_ID", 1)
+        val intentData = intent.getIntExtra("EXTRA_ARTICLE_ID", 1)
         viewModel.getDetailArticle(intentData)
 
         viewModel.loading.observe(this, {

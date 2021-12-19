@@ -153,7 +153,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
         sliderAdapter.onClickListener = {
             val intentWithData = Intent(requireActivity(), DetailArticleActivity::class.java)
-            intentWithData.putExtra("EXTRA_ARCTICLE_ID", it)
+            intentWithData.putExtra("EXTRA_ARTICLE_ID", it)
             startActivity(intentWithData)
         }
 
